@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        /* Login Form */
+        .login-form {
+            padding: 20px;
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            color: #2c3c4c;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .login-button:active {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 15px;
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #5a7a9a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .user-details {
+            flex: 1;
+        }
+
+        .username {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3c4c;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #2c3c4c;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3c4c;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #2c3c4c;
+        }
+
+        .level-section {
+            margin-bottom: 20px;
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .level-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c3c4c;
+        }
+
+        .level-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c3c4c;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .progress-fill.low {
+            background-color: #f44336;
+        }
+
+        /* Work Form */
+        .work-form {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3c4c;
+            margin-bottom: 10px;
+        }
+
+        .work-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .submit-btn:active {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+        }
+
+        /* Status Badges */
+        .submission-status {
+            margin-top: 15px;
+        }
+
+        .status-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c3c4c;
+            margin-bottom: 10px;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-review {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .status-approved {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .badge-icon {
+            font-size: 12px;
+        }
+
+        /* Bottom bar */
+        .bottom-bar {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bottom-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .bottom-icon {
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .time-display {
+            color: #d0d0d0;
+            font-size: 16px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 95%;
+            max-width: 420px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            background: linear-gradient(to bottom, #5a7a9a, #4a6a8a);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 20px;
+            background: linear-gradient(to bottom, #8ca8c8, #7c98b8);
+            min-height: 100px;
+        }
+
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .modal-btn {
+            background: linear-gradient(to bottom, #6a8aaa, #5a7a9a);
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 15px;
+            border: 1px solid #4a6a8a;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .modal-btn:active {
+            background: linear-gradient(to bottom, #5a7a9a, #4a6a8a);
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">Work Dashboard</div>
+            <div class="header-icons">
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+            </div>
+        </div>
+
+        <!-- Login Form (Initially Visible) -->
+        <div class="login-form" id="loginForm">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" class="form-input" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-input" id="password" placeholder="Enter your password">
+            </div>
+            <button class="login-button" onclick="login()">Login</button>
+        </div>
+
+        <!-- Dashboard (Initially Hidden) -->
+        <div class="dashboard" id="dashboard">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <div class="username" id="displayUsername">Username</div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="balanceValue">0.00</div>
+                    <div class="stat-label">BalancePTS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="usdBalanceValue">$0.00</div>
+                    <div class="stat-label">Balance USD</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="workRateValue">0</div>
+                    <div class="stat-label">Work Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="levelValue">0</div>
+                    <div class="stat-label">Level</div>
+                </div>
+            </div>
+
+            <!-- Level Progress -->
+            <div class="level-section">
+                <div class="level-header">
+                    <div class="level-label">Performance Level</div>
+                    <div class="level-value" id="levelPercent">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Work Submission Form -->
+            <div class="work-form">
+                <div class="form-title">Submit Work</div>
+                <textarea class="work-input" id="workInput" placeholder="Enter your work submission here..."></textarea>
+                <button class="submit-btn" onclick="submitWork()">Submit Work</button>
+            </div>
+
+            <!-- Submission Status -->
+            <div class="submission-status">
+                <div class="status-title">Submission Status</div>
+                <div class="status-badges" id="statusBadges">
+                    <!-- Status badges will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar with icons and time -->
+        <div class="bottom-bar">
+            <div class="bottom-icons">
+                <div class="bottom-icon"></div>
+                <div class="bottom-icon"></div>
+            </div>
+            <div class="time-display">
+                <span id="clock">07/10 12:29 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Success</div>
+                <button class="modal-close" onclick="closeModal('successModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Your work has been submitted successfully!</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('successModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Error</div>
+                <button class="modal-close" onclick="closeModal('errorModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Invalid username or password.</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('errorModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
+
+        // Current user data
+        let currentUser = null;
+        let userSubmissions = [];
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            document.getElementById('clock').textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
+        }
+
+        // Login function
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showError('Please enter both username and password.');
+                return;
+            }
+            
+            try {
+                const formData = new FormData();
+                formData.append('action', 'login');
+                formData.append('username', username);
+                formData.append('password', password);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentUser = result.user;
+                    userSubmissions = result.submissions || [];
+                    showDashboard();
+                } else {
+                    showError(result.message || 'Invalid username or password.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('Network error. Please try again.');
+            }
+        }
+
+        // Logout function
+        function logout() {
+            currentUser = null;
+            userSubmissions = [];
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        // Show dashboard
+        function showDashboard() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            
+            // Update user info
+            document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
+            document.getElementById('displayUsername').textContent = currentUser.username;
+            
+            // Update stats
+            document.getElementById('balanceValue').textContent = `$${parseFloat(currentUser.balance).toFixed(2)}`;
+            document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
+            document.getElementById('workRateValue').textContent = currentUser.workRate;
+            document.getElementById('levelValue').textContent = currentUser.level;
+            
+            // Update level progress
+            const levelPercent = parseInt(currentUser.level);
+            document.getElementById('levelPercent').textContent = `${levelPercent}%`;
+            const progressFill = document.getElementById('levelProgress');
+            progressFill.style.width = `${levelPercent}%`;
+            
+            // Set progress bar color based on level
+            if (levelPercent < 80) {
+                progressFill.classList.add('low');
+            } else {
+                progressFill.classList.remove('low');
+            }
+            
+            // Update submission status badges
+            updateStatusBadges();
+        }
+
+        // Submit work function
+        async function submitWork() {
+            const workInput = document.getElementById('workInput').value.trim();
+            
+            if (!workInput) {
+                showError('Please enter your work submission.');
+                return;
+            }
+            
+            try {
+                const formData = new FormData();
+                formData.append('action', 'submitWork');
+                formData.append('username', currentUser.username);
+                formData.append('submission', workInput);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Add the new submission to the list
+                    userSubmissions.unshift({
+                        id: Date.now(),
+                        submission: workInput,
+                        status: 'REVIEW',
+                        timestamp: new Date().toISOString()
+                    });
+                    
+                    // Clear input
+                    document.getElementById('workInput').value = '';
+                    
+                    // Update status badges
+                    updateStatusBadges();
+                    
+                    // Show success message
+                    document.getElementById('successModal').classList.add('active');
+                } else {
+                    showError(result.message || 'Failed to submit work.');
+                }
+            } catch (error) {
+                console.error('Submit work error:', error);
+                showError('Network error. Please try again.');
+            }
+        }
+
+        // Update status badges
+        function updateStatusBadges() {
+            const statusBadges = document.getElementById('statusBadges');
+            statusBadges.innerHTML = '';
+            
+            // Show only the 5 most recent submissions
+            const recentSubmissions = userSubmissions.slice(0, 5);
+            
+            recentSubmissions.forEach(submission => {
+                const badge = document.createElement('div');
+                badge.className = `status-badge ${submission.status === 'REVIEW' ? 'status-review' : 'status-approved'}`;
+                
+                const icon = document.createElement('span');
+                icon.className = 'badge-icon';
+                icon.textContent = submission.status === 'REVIEW' ? '⏳' : '✅';
+                
+                const text = document.createElement('span');
+                text.textContent = submission.status === 'REVIEW' ? 'REVIEW' : 'APPROVED';
+                
+                badge.appendChild(icon);
+                badge.appendChild(text);
+                statusBadges.appendChild(badge);
+            });
+            
+            // If no submissions, show message
+            if (userSubmissions.length === 0) {
+                statusBadges.innerHTML = '<div style="color: #2c3c4c; font-style: italic;">No submissions yet</div>';
+            }
+        }
+
+        // Show error modal
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorModal').classList.add('active');
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Initialize
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
