@@ -301,31 +301,191 @@
             font-size: 12px;
         }
 
-        /* Bottom bar */
-        .bottom-bar {
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
             background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-            padding: 10px 15px;
+            padding: 0;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item:last-child {
+            border-right: none;
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 15px;
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            min-height: 400px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Terms of Use Accordion */
+        .accordion {
+            margin-top: 15px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .accordion-header {
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            color: #2c3c4c;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .bottom-icons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+        .accordion-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .bottom-icon {
-            width: 28px;
-            height: 28px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
+        .accordion-item.active .accordion-content {
+            padding: 15px;
+            max-height: 500px;
         }
 
-        .time-display {
-            color: #d0d0d0;
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .terms-text {
+            color: #2c3c4c;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #ff1a1a;
+            font-weight: 500;
+        }
+
+        /* Cashout System */
+        .cashout-form {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .reward-select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: white;
             font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .reward-details {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .reward-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            color: #2c3c4c;
+        }
+
+        .cashout-history {
+            margin-top: 20px;
+        }
+
+        .cashout-item {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .cashout-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .cashout-reward {
+            font-weight: 500;
+            color: #2c3c4c;
+        }
+
+        .cashout-status {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-unsent {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .status-approved {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cashout-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .cashout-detail {
+            font-size: 14px;
+            color: #2c3c4c;
+        }
+
+        .cashout-notes {
+            font-size: 14px;
+            color: #2c3c4c;
+            font-style: italic;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Modal styles */
@@ -357,7 +517,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(to bottom, #5a7a9a, #4a6a8a);
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -478,41 +638,159 @@
                 </div>
             </div>
 
-            <!-- Level Progress -->
-            <div class="level-section">
-                <div class="level-header">
-                    <div class="level-label">Performance Level</div>
-                    <div class="level-value" id="levelPercent">0%</div>
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item active" data-target="work-section">Work</div>
+                <div class="nav-item" data-target="cashout-section">Cashout</div>
+                <div class="nav-item" data-target="terms-section">Terms</div>
+            </div>
+
+            <!-- Work Section -->
+            <div class="content-section active" id="work-section">
+                <!-- Level Progress -->
+                <div class="level-section">
+                    <div class="level-header">
+                        <div class="level-label">Performance Level</div>
+                        <div class="level-value" id="levelPercent">0%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
+                    </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
+
+                <!-- Work Submission Form -->
+                <div class="work-form">
+                    <div class="form-title">Submit Work</div>
+                    <textarea class="work-input" id="workInput" placeholder="Enter your work submission here..."></textarea>
+                    <button class="submit-btn" onclick="submitWork()">Submit Work</button>
+                </div>
+
+                <!-- Submission Status -->
+                <div class="submission-status">
+                    <div class="status-title">Submission Status</div>
+                    <div class="status-badges" id="statusBadges">
+                        <!-- Status badges will be added here dynamically -->
+                    </div>
                 </div>
             </div>
 
-            <!-- Work Submission Form -->
-            <div class="work-form">
-                <div class="form-title">Submit Work</div>
-                <textarea class="work-input" id="workInput" placeholder="Enter your work submission here..."></textarea>
-                <button class="submit-btn" onclick="submitWork()">Submit Work</button>
-            </div>
+            <!-- Cashout Section -->
+            <div class="content-section" id="cashout-section">
+                <div class="cashout-form">
+                    <div class="form-title">Request Cashout</div>
+                    <select class="reward-select" id="rewardSelect" onchange="updateRewardDetails()">
+                        <option value="">Select a reward</option>
+                        <option value="paypal_5" data-workrate="50" data-amount="5">PayPal $5 - Work Rate 50+</option>
+                        <option value="paypal_10" data-workrate="100" data-amount="10">PayPal $10 - Work Rate 100+</option>
+                        <option value="paypal_20" data-workrate="200" data-amount="20">PayPal $20 - Work Rate 200+</option>
+                        <option value="amazon_5" data-workrate="50" data-amount="5">Amazon $5 - Work Rate 50+</option>
+                        <option value="amazon_10" data-workrate="100" data-amount="10">Amazon $10 - Work Rate 100+</option>
+                    </select>
+                    
+                    <div class="reward-details" id="rewardDetails">
+                        <div class="reward-detail">
+                            <span>Work Rate Required:</span>
+                            <span id="requiredWorkRate">0</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Amount:</span>
+                            <span id="rewardAmount">$0.00</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your Work Rate:</span>
+                            <span id="userWorkRate">0</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your Balance:</span>
+                            <span id="userBalance">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>Request Cashout</button>
+                </div>
 
-            <!-- Submission Status -->
-            <div class="submission-status">
-                <div class="status-title">Submission Status</div>
-                <div class="status-badges" id="statusBadges">
-                    <!-- Status badges will be added here dynamically -->
+                <div class="cashout-history">
+                    <div class="status-title">Cashout History</div>
+                    <div id="cashoutHistory">
+                        <!-- Cashout history will be added here dynamically -->
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom bar with icons and time -->
-        <div class="bottom-bar">
-            <div class="bottom-icons">
-                <div class="bottom-icon"></div>
-                <div class="bottom-icon"></div>
-            </div>
-            <div class="time-display">
-                <span id="clock">07/10 12:29 PM</span>
+            <!-- Terms Section -->
+            <div class="content-section" id="terms-section">
+                <div class="form-title">Terms of Use</div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Work Submission Process
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="terms-text">
+                                Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
+                            </p>
+                            <p class="terms-text">
+                                <span class="highlight">Important:</span> If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements. In such cases, you will not see any approval notification.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Prohibited Activities
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="terms-text">
+                                Spamming the submission form is strictly prohibited. This includes but is not limited to:
+                            </p>
+                            <ul class="terms-text" style="padding-left: 20px;">
+                                <li>Submitting duplicate or near-identical work</li>
+                                <li>Submitting low-quality or irrelevant content</li>
+                                <li>Attempting to game the system through automated submissions</li>
+                                <li>Any other activity we determine to be spam</li>
+                            </ul>
+                            <p class="terms-text">
+                                <span class="highlight">Consequences:</span> If we detect spamming activities, your account will be <span class="highlight">permanently deleted</span> and you will <span class="highlight">forfeit your entire balance</span>.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Reward System
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="terms-text">
+                                Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                            </p>
+                            <p class="terms-text">
+                                The conversion rate between points and USD may vary based on current valuation. We reserve the right to adjust the point-to-USD conversion rate at our discretion.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Cashout Policy
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="terms-text">
+                                Cashout requests are processed manually by our admin team. Processing times may vary.
+                            </p>
+                            <p class="terms-text">
+                                Each reward has specific Work Rate requirements that must be met before you can request that reward.
+                            </p>
+                            <p class="terms-text">
+                                Cashout requests will initially show as "Unsent" until approved by an admin. Once approved, the status will change to "Approved" and any admin notes will be visible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -525,7 +803,7 @@
                 <button class="modal-close" onclick="closeModal('successModal')">×</button>
             </div>
             <div class="modal-body">
-                <p>Your work has been submitted successfully!</p>
+                <p id="successMessage">Your work has been submitted successfully!</p>
             </div>
             <div class="modal-buttons">
                 <button class="modal-btn" onclick="closeModal('successModal')">OK</button>
@@ -548,330 +826,7 @@
             </div>
         </div>
     </div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use - Work Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 420px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header-title {
-            color: white;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .header-icon {
-            width: 24px;
-            height: 24px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-        }
-
-        /* Content Area */
-        .content {
-            padding: 20px;
-            background: linear-gradient(to bottom, #8ca8c8, #7c98b8);
-            min-height: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .terms-title {
-            color: #2c3c4c;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .terms-section {
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            color: #2c3c4c;
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            border-bottom: 1px solid rgba(44, 60, 76, 0.3);
-            padding-bottom: 5px;
-        }
-
-        .terms-text {
-            color: #2c3c4c;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .highlight {
-            color: #ff1a1a;
-            font-weight: 500;
-        }
-
-        .terms-list {
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-
-        .terms-list li {
-            color: #2c3c4c;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 5px;
-        }
-
-        .agreement-section {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .checkbox-container {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .checkbox-container input {
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-
-        .checkbox-label {
-            color: #2c3c4c;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .accept-btn {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-            color: white;
-        }
-
-        .decline-btn {
-            background-color: #e0e0e0;
-            color: #2c3c4c;
-        }
-
-        /* Bottom bar */
-        .bottom-bar {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .bottom-icons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .bottom-icon {
-            width: 28px;
-            height: 28px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-        }
-
-        .time-display {
-            color: #d0d0d0;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-title">Terms of Use</div>
-            <div class="header-icons">
-                <div class="header-icon"></div>
-                <div class="header-icon"></div>
-                <div class="header-icon"></div>
-            </div>
-        </div>
-
-        <!-- Content Area -->
-        <div class="content">
-            <h1 class="terms-title">Terms of Use Agreement</h1>
-            
-            <div class="terms-section">
-                <h2 class="section-title">Work Submission Process</h2>
-                <p class="terms-text">
-                    Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
-                </p>
-                <p class="terms-text">
-                    <span class="highlight">Important:</span> If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements. In such cases, you will not see any approval notification.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2 class="section-title">Prohibited Activities</h2>
-                <p class="terms-text">
-                    Spamming the submission form is strictly prohibited. This includes but is not limited to:
-                </p>
-                <ul class="terms-list">
-                    <li>Submitting duplicate or near-identical work</li>
-                    <li>Submitting low-quality or irrelevant content</li>
-                    <li>Attempting to game the system through automated submissions</li>
-                    <li>Any other activity we determine to be spam</li>
-                </ul>
-                <p class="terms-text">
-                    <span class="highlight">Consequences:</span> If we detect spamming activities, your account will be <span class="highlight">permanently deleted</span> and you will <span class="highlight">forfeit your entire balance</span>.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2 class="section-title">Reward System</h2>
-                <p class="terms-text">
-                    Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
-                </p>
-                <p class="terms-text">
-                    The conversion rate between points and USD may vary based on current valuation. We reserve the right to adjust the point-to-USD conversion rate at our discretion.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2 class="section-title">General Terms</h2>
-                <p class="terms-text">
-                    By using our service, you agree to comply with all applicable laws and regulations. We reserve the right to modify these terms at any time without prior notice.
-                </p>
-                <p class="terms-text">
-                    We are not responsible for any technical issues that may prevent the submission or approval of your work. It is your responsibility to ensure your submissions meet our requirements.
-                </p>
-            </div>
-            
-            <div class="agreement-section">
-                <div class="checkbox-container">
-                    <input type="checkbox" id="agreeCheckbox">
-                    <label for="agreeCheckbox" class="checkbox-label">
-                        I have read, understood, and agree to abide by these Terms of Use. I acknowledge that violating these terms may result in account termination and forfeiture of any earned balance.
-                    </label>
-                </div>
-                
-                <div class="action-buttons">
-                    <button class="action-btn decline-btn" onclick="declineTerms()">Decline</button>
-                    <button class="action-btn accept-btn" onclick="acceptTerms()" id="acceptBtn" disabled>Accept</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom bar -->
-        <div class="bottom-bar">
-            <div class="bottom-icons">
-                <div class="bottom-icon"></div>
-                <div class="bottom-icon"></div>
-            </div>
-            <div class="time-display">
-                <span id="clock">07/10 12:29 PM</span>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Update clock
-        function updateClock() {
-            const now = new Date();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
-            document.getElementById('clock').textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
-        }
-
-        // Toggle accept button based on checkbox
-        document.getElementById('agreeCheckbox').addEventListener('change', function() {
-            document.getElementById('acceptBtn').disabled = !this.checked;
-        });
-
-        // Accept terms function
-        function acceptTerms() {
-            // In a real implementation, you would save the acceptance status
-            alert('Thank you for accepting our Terms of Use. You may now proceed to use our service.');
-            
-            // Redirect to login page or dashboard
-            // window.location.href = 'index.html'; // Uncomment in actual implementation
-        }
-
-        // Decline terms function
-        function declineTerms() {
-            if (confirm('You must accept the Terms of Use to use our service. Are you sure you want to decline?')) {
-                // Redirect away or show message
-                alert('You have declined our Terms of Use. You cannot use our service without accepting the terms.');
-                
-                // In a real implementation, you might redirect to a different page
-                // window.location.href = 'declined.html'; // Uncomment in actual implementation
-            }
-        }
-
-        // Initialize
-        updateClock();
-        setInterval(updateClock, 1000);
-    </script>
-</body>
-</html>
     <script>
         // Google Apps Script Web App URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
@@ -879,6 +834,7 @@
         // Current user data
         let currentUser = null;
         let userSubmissions = [];
+        let userCashouts = [];
 
         // Update clock
         function updateClock() {
@@ -917,6 +873,7 @@
                 if (result.status === 'success') {
                     currentUser = result.user;
                     userSubmissions = result.submissions || [];
+                    userCashouts = result.cashouts || [];
                     showDashboard();
                 } else {
                     showError(result.message || 'Invalid username or password.');
@@ -931,6 +888,7 @@
         function logout() {
             currentUser = null;
             userSubmissions = [];
+            userCashouts = [];
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             document.getElementById('loginForm').style.display = 'block';
@@ -947,7 +905,7 @@
             document.getElementById('displayUsername').textContent = currentUser.username;
             
             // Update stats
-            document.getElementById('balanceValue').textContent = `$${parseFloat(currentUser.balance).toFixed(2)}`;
+            document.getElementById('balanceValue').textContent = currentUser.balance;
             document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
             document.getElementById('workRateValue').textContent = currentUser.workRate;
             document.getElementById('levelValue').textContent = currentUser.level;
@@ -967,6 +925,9 @@
             
             // Update submission status badges
             updateStatusBadges();
+            
+            // Update cashout history
+            updateCashoutHistory();
         }
 
         // Submit work function
@@ -1007,6 +968,7 @@
                     updateStatusBadges();
                     
                     // Show success message
+                    document.getElementById('successMessage').textContent = 'Your work has been submitted successfully!';
                     document.getElementById('successModal').classList.add('active');
                 } else {
                     showError(result.message || 'Failed to submit work.');
@@ -1045,6 +1007,179 @@
             if (userSubmissions.length === 0) {
                 statusBadges.innerHTML = '<div style="color: #2c3c4c; font-style: italic;">No submissions yet</div>';
             }
+        }
+
+        // Toggle accordion sections
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // Navigation between sections
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all nav items and content sections
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked nav item and corresponding section
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Update reward details when selection changes
+        function updateRewardDetails() {
+            const select = document.getElementById('rewardSelect');
+            const details = document.getElementById('rewardDetails');
+            const cashoutBtn = document.getElementById('cashoutBtn');
+            
+            if (select.value) {
+                const selectedOption = select.options[select.selectedIndex];
+                const workRateRequired = selectedOption.getAttribute('data-workrate');
+                const amount = selectedOption.getAttribute('data-amount');
+                
+                document.getElementById('requiredWorkRate').textContent = workRateRequired;
+                document.getElementById('rewardAmount').textContent = `$${amount}`;
+                document.getElementById('userWorkRate').textContent = currentUser.workRate;
+                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
+                
+                details.style.display = 'block';
+                
+                // Enable/disable cashout button based on requirements
+                if (parseInt(currentUser.workRate) >= parseInt(workRateRequired) && 
+                    parseFloat(currentUser.balanceUSD) >= parseFloat(amount)) {
+                    cashoutBtn.disabled = false;
+                } else {
+                    cashoutBtn.disabled = true;
+                }
+            } else {
+                details.style.display = 'none';
+                cashoutBtn.disabled = true;
+            }
+        }
+
+        // Submit cashout request
+        async function submitCashout() {
+            const select = document.getElementById('rewardSelect');
+            const selectedOption = select.options[select.selectedIndex];
+            const rewardName = selectedOption.text;
+            const workRateRequired = selectedOption.getAttribute('data-workrate');
+            const amount = selectedOption.getAttribute('data-amount');
+            
+            try {
+                const formData = new FormData();
+                formData.append('action', 'submitCashout');
+                formData.append('username', currentUser.username);
+                formData.append('reward', rewardName);
+                formData.append('workRateRequired', workRateRequired);
+                formData.append('amount', amount);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Add the new cashout to the list
+                    userCashouts.unshift({
+                        id: Date.now(),
+                        reward: rewardName,
+                        workRateRequired: workRateRequired,
+                        amount: amount,
+                        status: 'UNSENT',
+                        timestamp: new Date().toISOString(),
+                        notes: ''
+                    });
+                    
+                    // Reset form
+                    select.value = '';
+                    document.getElementById('rewardDetails').style.display = 'none';
+                    document.getElementById('cashoutBtn').disabled = true;
+                    
+                    // Update cashout history
+                    updateCashoutHistory();
+                    
+                    // Show success message
+                    document.getElementById('successMessage').textContent = 'Your cashout request has been submitted!';
+                    document.getElementById('successModal').classList.add('active');
+                } else {
+                    showError(result.message || 'Failed to submit cashout request.');
+                }
+            } catch (error) {
+                console.error('Submit cashout error:', error);
+                showError('Network error. Please try again.');
+            }
+        }
+
+        // Update cashout history display
+        function updateCashoutHistory() {
+            const cashoutHistory = document.getElementById('cashoutHistory');
+            cashoutHistory.innerHTML = '';
+            
+            if (userCashouts.length === 0) {
+                cashoutHistory.innerHTML = '<div style="color: #2c3c4c; font-style: italic; text-align: center;">No cashout requests yet</div>';
+                return;
+            }
+            
+            userCashouts.forEach(cashout => {
+                const item = document.createElement('div');
+                item.className = 'cashout-item';
+                
+                const header = document.createElement('div');
+                header.className = 'cashout-header';
+                
+                const reward = document.createElement('div');
+                reward.className = 'cashout-reward';
+                reward.textContent = cashout.reward;
+                
+                const status = document.createElement('div');
+                status.className = `cashout-status ${cashout.status === 'UNSENT' ? 'status-unsent' : 'status-approved'}`;
+                status.textContent = cashout.status;
+                
+                header.appendChild(reward);
+                header.appendChild(status);
+                
+                const details = document.createElement('div');
+                details.className = 'cashout-details';
+                
+                const amount = document.createElement('div');
+                amount.className = 'cashout-detail';
+                amount.textContent = `Amount: $${cashout.amount}`;
+                
+                const workRate = document.createElement('div');
+                workRate.className = 'cashout-detail';
+                workRate.textContent = `Work Rate: ${cashout.workRateRequired}`;
+                
+                const date = document.createElement('div');
+                date.className = 'cashout-detail';
+                date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
+                
+                const statusDetail = document.createElement('div');
+                statusDetail.className = 'cashout-detail';
+                statusDetail.textContent = `Status: ${cashout.status}`;
+                
+                details.appendChild(amount);
+                details.appendChild(workRate);
+                details.appendChild(date);
+                details.appendChild(statusDetail);
+                
+                item.appendChild(header);
+                item.appendChild(details);
+                
+                // Add notes if available
+                if (cashout.notes) {
+                    const notes = document.createElement('div');
+                    notes.className = 'cashout-notes';
+                    notes.textContent = `Admin Notes: ${cashout.notes}`;
+                    item.appendChild(notes);
+                }
+                
+                cashoutHistory.appendChild(item);
+            });
         }
 
         // Show error modal
