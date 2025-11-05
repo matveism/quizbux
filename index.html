@@ -548,7 +548,330 @@
             </div>
         </div>
     </div>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - Work Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 20px;
+            background: linear-gradient(to bottom, #8ca8c8, #7c98b8);
+            min-height: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .terms-title {
+            color: #2c3c4c;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .terms-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #2c3c4c;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(44, 60, 76, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .terms-text {
+            color: #2c3c4c;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #ff1a1a;
+            font-weight: 500;
+        }
+
+        .terms-list {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .terms-list li {
+            color: #2c3c4c;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .agreement-section {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .checkbox-label {
+            color: #2c3c4c;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .accept-btn {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            color: white;
+        }
+
+        .decline-btn {
+            background-color: #e0e0e0;
+            color: #2c3c4c;
+        }
+
+        /* Bottom bar */
+        .bottom-bar {
+            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bottom-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .bottom-icon {
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .time-display {
+            color: #d0d0d0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">Terms of Use</div>
+            <div class="header-icons">
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <h1 class="terms-title">Terms of Use Agreement</h1>
+            
+            <div class="terms-section">
+                <h2 class="section-title">Work Submission Process</h2>
+                <p class="terms-text">
+                    Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
+                </p>
+                <p class="terms-text">
+                    <span class="highlight">Important:</span> If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements. In such cases, you will not see any approval notification.
+                </p>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title">Prohibited Activities</h2>
+                <p class="terms-text">
+                    Spamming the submission form is strictly prohibited. This includes but is not limited to:
+                </p>
+                <ul class="terms-list">
+                    <li>Submitting duplicate or near-identical work</li>
+                    <li>Submitting low-quality or irrelevant content</li>
+                    <li>Attempting to game the system through automated submissions</li>
+                    <li>Any other activity we determine to be spam</li>
+                </ul>
+                <p class="terms-text">
+                    <span class="highlight">Consequences:</span> If we detect spamming activities, your account will be <span class="highlight">permanently deleted</span> and you will <span class="highlight">forfeit your entire balance</span>.
+                </p>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title">Reward System</h2>
+                <p class="terms-text">
+                    Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                </p>
+                <p class="terms-text">
+                    The conversion rate between points and USD may vary based on current valuation. We reserve the right to adjust the point-to-USD conversion rate at our discretion.
+                </p>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title">General Terms</h2>
+                <p class="terms-text">
+                    By using our service, you agree to comply with all applicable laws and regulations. We reserve the right to modify these terms at any time without prior notice.
+                </p>
+                <p class="terms-text">
+                    We are not responsible for any technical issues that may prevent the submission or approval of your work. It is your responsibility to ensure your submissions meet our requirements.
+                </p>
+            </div>
+            
+            <div class="agreement-section">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="agreeCheckbox">
+                    <label for="agreeCheckbox" class="checkbox-label">
+                        I have read, understood, and agree to abide by these Terms of Use. I acknowledge that violating these terms may result in account termination and forfeiture of any earned balance.
+                    </label>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn decline-btn" onclick="declineTerms()">Decline</button>
+                    <button class="action-btn accept-btn" onclick="acceptTerms()" id="acceptBtn" disabled>Accept</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <div class="bottom-icons">
+                <div class="bottom-icon"></div>
+                <div class="bottom-icon"></div>
+            </div>
+            <div class="time-display">
+                <span id="clock">07/10 12:29 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            document.getElementById('clock').textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
+        }
+
+        // Toggle accept button based on checkbox
+        document.getElementById('agreeCheckbox').addEventListener('change', function() {
+            document.getElementById('acceptBtn').disabled = !this.checked;
+        });
+
+        // Accept terms function
+        function acceptTerms() {
+            // In a real implementation, you would save the acceptance status
+            alert('Thank you for accepting our Terms of Use. You may now proceed to use our service.');
+            
+            // Redirect to login page or dashboard
+            // window.location.href = 'index.html'; // Uncomment in actual implementation
+        }
+
+        // Decline terms function
+        function declineTerms() {
+            if (confirm('You must accept the Terms of Use to use our service. Are you sure you want to decline?')) {
+                // Redirect away or show message
+                alert('You have declined our Terms of Use. You cannot use our service without accepting the terms.');
+                
+                // In a real implementation, you might redirect to a different page
+                // window.location.href = 'declined.html'; // Uncomment in actual implementation
+            }
+        }
+
+        // Initialize
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
     <script>
         // Google Apps Script Web App URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
