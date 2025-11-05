@@ -626,15 +626,15 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="usdBalanceValue">$0.00</div>
-                    <div class="stat-label">BalancePTS</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="workRateValue">0</div>
                     <div class="stat-label">Balance USD</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="levelValue">0</div>
+                    <div class="stat-value" id="workRateValue">0</div>
                     <div class="stat-label">WorkRate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="levelValue">0</div>
+                    <div class="stat-label">Level</div>
                 </div>
             </div>
 
@@ -694,12 +694,12 @@
                             <span id="rewardAmount">$0.00</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Balance USD:</span>
+                            <span>Your WorkRate:</span>
                             <span id="userWorkRate">0</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Your BalancePTS:</span>
-                            <span id="userBalance">$0.00</span>
+                            <span>Your Balance USD:</span>
+                            <span id="userBalanceUSD">$0.00</span>
                         </div>
                     </div>
                     
@@ -833,6 +833,28 @@
         let userSubmissions = [];
         let userCashouts = [];
 
+        // Initialize app
+        function init() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Check if user is already logged in
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    userSubmissions = JSON.parse(localStorage.getItem('userSubmissions') || '[]');
+                    userCashouts = JSON.parse(localStorage.getItem('userCashouts') || '[]');
+                    showDashboard();
+                } catch (e) {
+                    console.error('Error loading saved session:', e);
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('userSubmissions');
+                    localStorage.removeItem('userCashouts');
+                }
+            }
+        }
+
         // Update clock
         function updateClock() {
             const now = new Date();
@@ -841,7 +863,7 @@
             const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
-            document.getElementById('clock').textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
+            // You can add a clock element if needed
         }
 
         // Login function
@@ -871,6 +893,12 @@
                     currentUser = result.user;
                     userSubmissions = result.submissions || [];
                     userCashouts = result.cashouts || [];
+                    
+                    // Save to localStorage for session persistence
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    localStorage.setItem('userSubmissions', JSON.stringify(userSubmissions));
+                    localStorage.setItem('userCashouts', JSON.stringify(userCashouts));
+                    
                     showDashboard();
                 } else {
                     showError(result.message || 'Invalid username or password.');
@@ -890,6 +918,11 @@
             document.getElementById('password').value = '';
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('dashboard').style.display = 'none';
+            
+            // Clear localStorage
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('userSubmissions');
+            localStorage.removeItem('userCashouts');
         }
 
         // Show dashboard
@@ -901,7 +934,7 @@
             document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
             document.getElementById('displayUsername').textContent = currentUser.username;
             
-            // Update stats
+            // Update stats - FIXED: Correct labels and values
             document.getElementById('balanceValue').textContent = currentUser.balance;
             document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
             document.getElementById('workRateValue').textContent = currentUser.workRate;
@@ -958,14 +991,28 @@
                         timestamp: new Date().toISOString()
                     });
                     
+                    // Update user balance with 50 points automatically
+                    currentUser.balance = (parseFloat(currentUser.balance) + 50).toString();
+                    currentUser.balanceUSD = (parseFloat(currentUser.balanceUSD) + 0.03).toFixed(2);
+                    currentUser.workRate = (parseInt(currentUser.workRate) + 1).toString();
+                    
+                    // Update localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    localStorage.setItem('userSubmissions', JSON.stringify(userSubmissions));
+                    
                     // Clear input
                     document.getElementById('workInput').value = '';
+                    
+                    // Update dashboard stats
+                    document.getElementById('balanceValue').textContent = currentUser.balance;
+                    document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
+                    document.getElementById('workRateValue').textContent = currentUser.workRate;
                     
                     // Update status badges
                     updateStatusBadges();
                     
                     // Show success message
-                    document.getElementById('successMessage').textContent = 'Your work has been submitted successfully!';
+                    document.getElementById('successMessage').textContent = 'Your work has been submitted successfully! You received 50 points.';
                     document.getElementById('successModal').classList.add('active');
                 } else {
                     showError(result.message || 'Failed to submit work.');
@@ -1040,7 +1087,7 @@
                 document.getElementById('requiredWorkRate').textContent = workRateRequired;
                 document.getElementById('rewardAmount').textContent = `$${amount}`;
                 document.getElementById('userWorkRate').textContent = currentUser.workRate;
-                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
+                document.getElementById('userBalanceUSD').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
                 
                 details.style.display = 'block';
                 
@@ -1092,10 +1139,20 @@
                         notes: ''
                     });
                     
+                    // Update user balance
+                    currentUser.balanceUSD = (parseFloat(currentUser.balanceUSD) - parseFloat(amount)).toFixed(2);
+                    
+                    // Update localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    localStorage.setItem('userCashouts', JSON.stringify(userCashouts));
+                    
                     // Reset form
                     select.value = '';
                     document.getElementById('rewardDetails').style.display = 'none';
                     document.getElementById('cashoutBtn').disabled = true;
+                    
+                    // Update dashboard stats
+                    document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
                     
                     // Update cashout history
                     updateCashoutHistory();
@@ -1190,9 +1247,8 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // Initialize
-        updateClock();
-        setInterval(updateClock, 1000);
+        // Initialize the app
+        init();
     </script>
 </body>
 </html>
