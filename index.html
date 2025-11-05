@@ -621,8 +621,8 @@
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value" id="balanceValue">0.00</div>
-                    <div class="stat-label">BalancePTS</div>
+                    <div class="stat-value" id="balanceValue">0</div>
+                    <div class="stat-label">Balance PTS</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="usdBalanceValue">$0.00</div>
@@ -680,8 +680,11 @@
                     <div class="form-title">Request Cashout</div>
                     <select class="reward-select" id="rewardSelect" onchange="updateRewardDetails()">
                         <option value="">Select a reward</option>
-                        <option value="amazon_1" data-workrate="80" data-amount="5">Amazon UK Voucher 1GBP</option>
-                        
+                        <option value="paypal_5" data-workrate="50" data-amount="5">PayPal $5 - Work Rate 50+</option>
+                        <option value="paypal_10" data-workrate="100" data-amount="10">PayPal $10 - Work Rate 100+</option>
+                        <option value="paypal_20" data-workrate="200" data-amount="20">PayPal $20 - Work Rate 200+</option>
+                        <option value="amazon_5" data-workrate="50" data-amount="5">Amazon $5 - Work Rate 50+</option>
+                        <option value="amazon_10" data-workrate="100" data-amount="10">Amazon $10 - Work Rate 100+</option>
                     </select>
                     
                     <div class="reward-details" id="rewardDetails">
@@ -825,8 +828,8 @@
     </div>
 
     <script>
-        // Google Apps Script Web App URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
+        // Google Apps Script Web App URL - REPLACE WITH YOUR ACTUAL URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
         // Current user data
         let currentUser = null;
@@ -901,14 +904,14 @@
             document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
             document.getElementById('displayUsername').textContent = currentUser.username;
             
-            // Update stats
-            document.getElementById('balanceValue').textContent = currentUser.balance;
-            document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
-            document.getElementById('workRateValue').textContent = currentUser.workRate;
-            document.getElementById('levelValue').textContent = currentUser.level;
+            // Update stats - FIXED: Using correct field names from Google Sheets
+            document.getElementById('balanceValue').textContent = currentUser.balance || '0';
+            document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
+            document.getElementById('workRateValue').textContent = currentUser.workRate || '0';
+            document.getElementById('levelValue').textContent = currentUser.level || '0';
             
             // Update level progress
-            const levelPercent = parseInt(currentUser.level);
+            const levelPercent = parseInt(currentUser.level || 0);
             document.getElementById('levelPercent').textContent = `${levelPercent}%`;
             const progressFill = document.getElementById('levelProgress');
             progressFill.style.width = `${levelPercent}%`;
@@ -1039,14 +1042,14 @@
                 
                 document.getElementById('requiredWorkRate').textContent = workRateRequired;
                 document.getElementById('rewardAmount').textContent = `$${amount}`;
-                document.getElementById('userWorkRate').textContent = currentUser.workRate;
-                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
+                document.getElementById('userWorkRate').textContent = currentUser.workRate || '0';
+                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
                 
                 details.style.display = 'block';
                 
                 // Enable/disable cashout button based on requirements
-                if (parseInt(currentUser.workRate) >= parseInt(workRateRequired) && 
-                    parseFloat(currentUser.balanceUSD) >= parseFloat(amount)) {
+                if (parseInt(currentUser.workRate || 0) >= parseInt(workRateRequired) && 
+                    parseFloat(currentUser.balanceUSD || 0) >= parseFloat(amount)) {
                     cashoutBtn.disabled = false;
                 } else {
                     cashoutBtn.disabled = true;
