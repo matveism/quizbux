@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+            background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,7 +32,7 @@
 
         /* Header */
         .header {
-           background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+           background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -62,7 +61,7 @@
         /* Login Form */
         .login-form {
             padding: 20px;
-            background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+            background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
         }
 
         .form-group {
@@ -71,7 +70,7 @@
 
         .form-label {
             display: block;
-            color: #2c3c4c;
+            color: white;
             font-size: 16px;
             font-weight: 500;
             margin-bottom: 5px;
@@ -88,7 +87,7 @@
         }
 
         .login-button {
-            background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+            background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
             color: white;
             border: none;
             padding: 12px 15px;
@@ -101,14 +100,14 @@
         }
 
         .login-button:active {
-            background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+            background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
         }
 
         /* Dashboard */
         .dashboard {
             display: none;
             padding: 15px;
-            background: linear-gradient(135deg, red 0%, darkorange 25%, darkred 60%, darkred 100%);
+            background: linear-gradient(260deg, darkblue 0%, purple 25%, brown 50%, darkblue 100%);
         }
 
         .user-info {
@@ -138,13 +137,13 @@
         .username {
             font-size: 18px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .logout-btn {
             background: none;
             border: none;
-            color: #2c3c4c;
+            color: white;
             font-size: 14px;
             text-decoration: underline;
             cursor: pointer;
@@ -167,12 +166,12 @@
         .stat-value {
             font-size: 24px;
             font-weight: bold;
-            color: #2c3c4c;
+            color: white;
         }
 
         .stat-label {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .level-section {
@@ -188,13 +187,13 @@
         .level-label {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .level-value {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .progress-bar {
@@ -215,6 +214,14 @@
             background-color: #f44336;
         }
 
+        .progress-fill.medium {
+            background-color: #ffa502;
+        }
+
+        .progress-fill.high {
+            background-color: #2ed573;
+        }
+
         /* Work Form */
         .work-form {
             background-color: rgba(255, 255, 255, 0.3);
@@ -226,7 +233,7 @@
         .form-title {
             font-size: 18px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -273,7 +280,7 @@
         .status-title {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -361,7 +368,7 @@
             padding: 12px 15px;
             background-color: rgba(255, 255, 255, 0.3);
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -390,7 +397,7 @@
         }
 
         .terms-text {
-            color: #2c3c4c;
+            color: white;
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 10px;
@@ -432,7 +439,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-history {
@@ -454,7 +461,7 @@
 
         .cashout-reward {
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-status {
@@ -469,8 +476,18 @@
             color: white;
         }
 
+        .status-pending {
+            background-color: #ffa502;
+            color: white;
+        }
+
         .status-approved {
             background-color: #4CAF50;
+            color: white;
+        }
+
+        .status-rejected {
+            background-color: #ff4757;
             color: white;
         }
 
@@ -483,12 +500,12 @@
 
         .cashout-detail {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-notes {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
             font-style: italic;
             padding-top: 8px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -599,14 +616,25 @@
 
         .eligible {
             background-color: rgba(76, 175, 80, 0.3);
-            color: #2c3c4c;
+            color: white;
             border: 1px solid #4CAF50;
         }
 
         .not-eligible {
             background-color: rgba(244, 67, 54, 0.3);
-            color: #2c3c4c;
+            color: white;
             border: 1px solid #f44336;
+        }
+
+        /* Logo */
+        .quizbux-logo {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-container {
+            text-align: center;
+            padding: 10px 0;
         }
     </style>
 </head>
@@ -614,7 +642,11 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="header-title">Work Dashboard</div>
+            <div class="header-title">
+                <div class="logo-container">
+                    <img src="https://i.postimg.cc/FK5qWX8z/Gemini-Generated-Image-3osxq23osxq23osx-removebg-preview.png" width="250px" height="100px" alt="QuizBux Logo" class="quizbux-logo">
+                </div>
+            </div>
             <div class="header-icons">
                 <div class="header-icon"></div>
                 <div class="header-icon"></div>
@@ -654,15 +686,26 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="usdBalanceValue">$0.00</div>
-                    <div class="stat-label">BalancePTS</div>
+                    <div class="stat-label">PTS</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="workRateValue">0</div>
-                    <div class="stat-label">Balance USD</div>
+                    <div class="stat-label">USD</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="levelValue">0</div>
                     <div class="stat-label">WorkRate</div>
+                </div>
+            </div>
+
+            <!-- Level Progress -->
+            <div class="level-section">
+                <div class="level-header">
+                    <div class="level-label">Performance WorkLevel</div>
+                    <div class="level-value" id="levelPercent">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
                 </div>
             </div>
 
@@ -675,17 +718,6 @@
 
             <!-- Work Section -->
             <div class="content-section active" id="work-section">
-                <!-- Level Progress -->
-                <div class="level-section">
-                    <div class="level-header">
-                        <div class="level-label">Performance Level</div>
-                        <div class="level-value" id="levelPercent">0%</div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
-                    </div>
-                </div>
-
                 <!-- Work Submission Form -->
                 <div class="work-form">
                     <div class="form-title">Submit Work</div>
@@ -708,29 +740,25 @@
                     <div class="form-title">Request Cashout</div>
                     <select class="reward-select" id="rewardSelect" onchange="updateRewardDetails()">
                         <option value="">Select a reward</option>
-                        <option value="amazon_1" data-workrate="1" data-amount="1">Amazon UK Voucher 1GBP</option>
-                        <option value="amazon_5" data-workrate="500" data-amount="5">Amazon UK Voucher 5GBP</option>
-                        <option value="amazon_10" data-workrate="1000" data-amount="10">Amazon UK Voucher 10GBP</option>
-                        <option value="paypal_5" data-workrate="500" data-amount="5">PayPal Cash $5</option>
-                        <option value="paypal_10" data-workrate="1000" data-amount="10">PayPal Cash $10</option>
-                        <option value="paypal_20" data-workrate="2000" data-amount="20">PayPal Cash $20</option>
+                        <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
+                        <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
                     </select>
                     
                     <div class="reward-details" id="rewardDetails">
                         <div class="reward-detail">
-                            <span>Work Rate Required:</span>
+                            <span>USD Required:</span>
                             <span id="requiredWorkRate">0</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Amount:</span>
+                            <span>AmountUSD:</span>
                             <span id="rewardAmount">$0.00</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Balance USD</span>
+                            <span>Your USD Balance:</span>
                             <span id="userWorkRate">0</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Your Balance PTS:</span>
+                            <span>Your PTS:</span>
                             <span id="userBalance">0.00</span>
                         </div>
                     </div>
@@ -814,7 +842,7 @@
                                 Cashout requests are processed manually by our admin team. Processing times may vary.
                             </p>
                             <p class="terms-text">
-                                Each reward has specific Work Rate requirements that must be met before you can request that reward.
+                                Each reward has specific Balance requirements that must be met before you can request that reward.
                             </p>
                             <p class="terms-text">
                                 Cashout requests will initially show as "Unsent" until approved by an admin. Once approved, the status will change to "Approved" and any admin notes will be visible.
@@ -875,194 +903,396 @@
     </div>
 
     <script>
-        // Google Apps Script Web App URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
+    // Google Apps Script Web App URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
 
-        // Current user data
-        let currentUser = null;
-        let userSubmissions = [];
-        let userCashouts = [];
+    // Current user data
+    let currentUser = null;
+    let userSubmissions = [];
+    let userCashouts = [];
 
-        // Update clock
-        function updateClock() {
-            const now = new Date();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
-            document.getElementById('clock').textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
-        }
+    // Session management
+    const SESSION_KEY = 'workRewardSession';
 
-        // Login function
-        async function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (!username || !password) {
-                showError('Please enter both username and password.');
-                return;
-            }
-            
+    // Check for existing session on page load
+    function checkExistingSession() {
+        const savedSession = localStorage.getItem(SESSION_KEY);
+        if (savedSession) {
             try {
-                const formData = new FormData();
-                formData.append('action', 'login');
-                formData.append('username', username);
-                formData.append('password', password);
+                const sessionData = JSON.parse(savedSession);
+                // Check if session is still valid (less than 24 hours old)
+                const sessionAge = Date.now() - sessionData.timestamp;
+                const twentyFourHours = 24 * 60 * 60 * 1000;
                 
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    currentUser = result.user;
-                    userSubmissions = result.submissions || [];
-                    userCashouts = result.cashouts || [];
-                    showDashboard();
+                if (sessionAge < twentyFourHours) {
+                    // Session is valid, attempt to restore
+                    attemptSessionRestore(sessionData.username);
                 } else {
-                    showError(result.message || 'Invalid username or password.');
+                    // Session expired, clear it
+                    clearSession();
                 }
             } catch (error) {
-                console.error('Login error:', error);
-                showError('Network error. Please try again.');
+                console.error('Error parsing saved session:', error);
+                clearSession();
             }
         }
+    }
 
-        // Logout function
-        function logout() {
-            currentUser = null;
-            userSubmissions = [];
-            userCashouts = [];
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('loginForm').style.display = 'block';
-            document.getElementById('dashboard').style.display = 'none';
-        }
-
-        // Show dashboard
-        function showDashboard() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
+    // Attempt to restore user session
+    async function attemptSessionRestore(username) {
+        try {
+            showLoading('Restoring your session...');
             
-            // Update user info
-            document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
-            document.getElementById('displayUsername').textContent = currentUser.username;
+            const formData = new FormData();
+            formData.append('action', 'getUserData');
+            formData.append('username', username);
             
-            // Update stats
-            document.getElementById('balanceValue').textContent = currentUser.balance;
-            document.getElementById('usdBalanceValue').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
-            document.getElementById('workRateValue').textContent = currentUser.workRate;
-            document.getElementById('levelValue').textContent = currentUser.level;
-            
-            // Update level progress
-            const levelPercent = parseInt(currentUser.level);
-            document.getElementById('levelPercent').textContent = `${levelPercent}%`;
-            const progressFill = document.getElementById('levelProgress');
-            progressFill.style.width = `${levelPercent}%`;
-            
-            // Set progress bar color based on level
-            if (levelPercent < 80) {
-                progressFill.classList.add('low');
-            } else {
-                progressFill.classList.remove('low');
-            }
-            
-            // Update submission status badges
-            updateStatusBadges();
-            
-            // Update cashout history
-            updateCashoutHistory();
-        }
-
-        // Submit work function
-        async function submitWork() {
-            const workInput = document.getElementById('workInput').value.trim();
-            
-            if (!workInput) {
-                showError('Please enter your work submission.');
-                return;
-            }
-            
-            try {
-                const formData = new FormData();
-                formData.append('action', 'submitWork');
-                formData.append('username', currentUser.username);
-                formData.append('submission', workInput);
-                
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    // Add the new submission to the list
-                    userSubmissions.unshift({
-                        id: Date.now(),
-                        submission: workInput,
-                        status: 'REVIEW',
-                        timestamp: new Date().toISOString()
-                    });
-                    
-                    // Clear input
-                    document.getElementById('workInput').value = '';
-                    
-                    // Update status badges
-                    updateStatusBadges();
-                    
-                    // Show success message
-                    document.getElementById('successMessage').textContent = 'Your work has been submitted successfully!';
-                    document.getElementById('successModal').classList.add('active');
-                } else {
-                    showError(result.message || 'Failed to submit work.');
-                }
-            } catch (error) {
-                console.error('Submit work error:', error);
-                showError('Network error. Please try again.');
-            }
-        }
-
-        // Update status badges
-        function updateStatusBadges() {
-            const statusBadges = document.getElementById('statusBadges');
-            statusBadges.innerHTML = '';
-            
-            // Show only the 5 most recent submissions
-            const recentSubmissions = userSubmissions.slice(0, 5);
-            
-            recentSubmissions.forEach(submission => {
-                const badge = document.createElement('div');
-                badge.className = `status-badge ${submission.status === 'REVIEW' ? 'status-review' : 'status-approved'}`;
-                
-                const icon = document.createElement('span');
-                icon.className = 'badge-icon';
-                icon.textContent = submission.status === 'REVIEW' ? '⏳' : '✅';
-                
-                const text = document.createElement('span');
-                text.textContent = submission.status === 'REVIEW' ? 'REVIEW' : 'APPROVED';
-                
-                badge.appendChild(icon);
-                badge.appendChild(text);
-                statusBadges.appendChild(badge);
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
             });
             
-            // If no submissions, show message
-            if (userSubmissions.length === 0) {
-                statusBadges.innerHTML = '<div style="color: #2c3c4c; font-style: italic;">No submissions yet</div>';
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                currentUser = result.user;
+                userSubmissions = result.submissions || [];
+                userCashouts = result.cashouts || [];
+                hideLoading();
+                showDashboard();
+            } else {
+                // User data not found or error, clear session
+                hideLoading();
+                clearSession();
+                showError('Session expired. Please login again.');
+            }
+        } catch (error) {
+            console.error('Session restore error:', error);
+            hideLoading();
+            clearSession();
+            showError('Network error during session restore.');
+        }
+    }
+
+    // Save session to localStorage
+    function saveSession(username) {
+        const sessionData = {
+            username: username,
+            timestamp: Date.now()
+        };
+        localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+    }
+
+    // Clear session from localStorage
+    function clearSession() {
+        localStorage.removeItem(SESSION_KEY);
+        currentUser = null;
+        userSubmissions = [];
+        userCashouts = [];
+    }
+
+    // Show loading indicator
+    function showLoading(message = 'Loading...') {
+        let loadingEl = document.getElementById('loadingIndicator');
+        if (!loadingEl) {
+            loadingEl = document.createElement('div');
+            loadingEl.id = 'loadingIndicator';
+            loadingEl.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-size: 18px;
+                z-index: 10000;
+                flex-direction: column;
+            `;
+            loadingEl.innerHTML = `
+                <div style="margin-bottom: 20px;">${message}</div>
+                <div class="spinner"></div>
+            `;
+            document.body.appendChild(loadingEl);
+        }
+        loadingEl.style.display = 'flex';
+    }
+
+    // Hide loading indicator
+    function hideLoading() {
+        const loadingEl = document.getElementById('loadingIndicator');
+        if (loadingEl) {
+            loadingEl.style.display = 'none';
+        }
+    }
+
+    // Update clock
+    function updateClock() {
+        const now = new Date();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+        const clockEl = document.getElementById('clock');
+        if (clockEl) {
+            clockEl.textContent = `${month}/${day} ${hours}:${minutes} ${ampm}`;
+        }
+    }
+
+    // Login function
+    async function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        if (!username || !password) {
+            showError('Please enter both username and password.');
+            return;
+        }
+        
+        try {
+            showLoading('Signing in...');
+            
+            const formData = new FormData();
+            formData.append('action', 'login');
+            formData.append('username', username);
+            formData.append('password', password);
+            
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                currentUser = result.user;
+                userSubmissions = result.submissions || [];
+                userCashouts = result.cashouts || [];
+                
+                // Save session
+                saveSession(username);
+                hideLoading();
+                showDashboard();
+            } else {
+                hideLoading();
+                showError(result.message || 'Invalid username or password.');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            hideLoading();
+            showError('Network error. Please try again.');
+        }
+    }
+
+    // Logout function
+    function logout() {
+        clearSession();
+        
+        // Reset forms
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const workInput = document.getElementById('workInput');
+        const rewardSelect = document.getElementById('rewardSelect');
+        
+        if (usernameInput) usernameInput.value = '';
+        if (passwordInput) passwordInput.value = '';
+        if (workInput) workInput.value = '';
+        if (rewardSelect) rewardSelect.value = '';
+        
+        // Show login form
+        const loginForm = document.getElementById('loginForm');
+        const dashboard = document.getElementById('dashboard');
+        
+        if (loginForm) loginForm.style.display = 'block';
+        if (dashboard) dashboard.style.display = 'none';
+        
+        // Hide any modals
+        closeAllModals();
+    }
+
+    // Show dashboard
+    function showDashboard() {
+        const loginForm = document.getElementById('loginForm');
+        const dashboard = document.getElementById('dashboard');
+        
+        if (loginForm) loginForm.style.display = 'none';
+        if (dashboard) dashboard.style.display = 'block';
+        
+        if (!currentUser) {
+            showError('No user data available.');
+            return;
+        }
+        
+        // Update user info
+        const userAvatar = document.getElementById('userAvatar');
+        const displayUsername = document.getElementById('displayUsername');
+        
+        if (userAvatar) userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+        if (displayUsername) displayUsername.textContent = currentUser.username;
+        
+        // Update stats
+        const balanceValue = document.getElementById('balanceValue');
+        const usdBalanceValue = document.getElementById('usdBalanceValue');
+        const workRateValue = document.getElementById('workRateValue');
+        const levelValue = document.getElementById('levelValue');
+        
+        if (balanceValue) balanceValue.textContent = currentUser.balance || 0;
+        if (usdBalanceValue) usdBalanceValue.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
+        if (workRateValue) workRateValue.textContent = currentUser.workRate || 0;
+        if (levelValue) levelValue.textContent = currentUser.level || 0;
+        
+        // Update level progress
+        const levelPercent = parseInt(currentUser.level || 0);
+        const levelPercentEl = document.getElementById('levelPercent');
+        const progressFill = document.getElementById('levelProgress');
+        
+        if (levelPercentEl) levelPercentEl.textContent = `${levelPercent}%`;
+        if (progressFill) {
+            progressFill.style.width = `${Math.min(levelPercent, 100)}%`;
+            // Set progress bar color based on level
+            if (levelPercent < 50) {
+                progressFill.className = 'progress-fill low';
+            } else if (levelPercent < 80) {
+                progressFill.className = 'progress-fill medium';
+            } else {
+                progressFill.className = 'progress-fill high';
             }
         }
+        
+        // Update submission status badges
+        updateStatusBadges();
+        
+        // Update cashout history
+        updateCashoutHistory();
+        
+        // Reset reward selection
+        const rewardSelect = document.getElementById('rewardSelect');
+        const rewardDetails = document.getElementById('rewardDetails');
+        const eligibilityStatus = document.getElementById('eligibilityStatus');
+        const cashoutBtn = document.getElementById('cashoutBtn');
+        
+        if (rewardSelect) rewardSelect.value = '';
+        if (rewardDetails) rewardDetails.style.display = 'none';
+        if (eligibilityStatus) eligibilityStatus.style.display = 'none';
+        if (cashoutBtn) cashoutBtn.disabled = true;
+    }
 
-        // Toggle accordion sections
-        function toggleAccordion(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
+    // Submit work function
+    async function submitWork() {
+        if (!currentUser) {
+            showError('Please login first.');
+            return;
         }
+        
+        const workInput = document.getElementById('workInput');
+        const workText = workInput ? workInput.value.trim() : '';
+        
+        if (!workText) {
+            showError('Please enter your work submission.');
+            return;
+        }
+        
+        try {
+            showLoading('Submitting your work...');
+            
+            const formData = new FormData();
+            formData.append('action', 'submitWork');
+            formData.append('username', currentUser.username);
+            formData.append('submission', workText);
+            
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                // Refresh user data to get updated balances
+                await refreshUserData();
+                
+                // Clear input
+                if (workInput) workInput.value = '';
+                hideLoading();
+                
+                // Show success message
+                showSuccess('Your work has been submitted successfully!');
+            } else {
+                hideLoading();
+                showError(result.message || 'Failed to submit work.');
+            }
+        } catch (error) {
+            console.error('Submit work error:', error);
+            hideLoading();
+            showError('Network error. Please try again.');
+        }
+    }
 
-        // Navigation between sections
+    // Refresh user data from server
+    async function refreshUserData() {
+        if (!currentUser) return;
+        
+        try {
+            const formData = new FormData();
+            formData.append('action', 'getUserData');
+            formData.append('username', currentUser.username);
+            
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                currentUser = result.user;
+                userSubmissions = result.submissions || [];
+                userCashouts = result.cashouts || [];
+                showDashboard(); // Refresh the display
+            }
+        } catch (error) {
+            console.error('Refresh user data error:', error);
+        }
+    }
+
+    // Update status badges
+    function updateStatusBadges() {
+        const statusBadges = document.getElementById('statusBadges');
+        if (!statusBadges) return;
+        
+        statusBadges.innerHTML = '';
+        
+        // Show only the 5 most recent submissions
+        const recentSubmissions = userSubmissions.slice(0, 5);
+        
+        if (recentSubmissions.length === 0) {
+            statusBadges.innerHTML = '<div style="color: white; font-style: italic; text-align: center; padding: 10px;">No submissions yet</div>';
+            return;
+        }
+        
+        recentSubmissions.forEach(submission => {
+            const badge = document.createElement('div');
+            badge.className = `status-badge ${submission.status === 'REVIEW' ? 'status-review' : 'status-approved'}`;
+            
+            const icon = document.createElement('span');
+            icon.className = 'badge-icon';
+            icon.textContent = submission.status === 'REVIEW' ? '⏳' : '✅';
+            
+            const text = document.createElement('span');
+            text.textContent = submission.status === 'REVIEW' ? 'REVIEW' : 'APPROVED';
+            
+            badge.appendChild(icon);
+            badge.appendChild(text);
+            statusBadges.appendChild(badge);
+        });
+    }
+
+    // Navigation between sections
+    function setupNavigation() {
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
                 // Remove active class from all nav items and content sections
@@ -1072,209 +1302,300 @@
                 // Add active class to clicked nav item and corresponding section
                 this.classList.add('active');
                 const targetId = this.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
             });
         });
+    }
 
-        // Update reward details when selection changes
-        function updateRewardDetails() {
-            const select = document.getElementById('rewardSelect');
-            const details = document.getElementById('rewardDetails');
-            const cashoutBtn = document.getElementById('cashoutBtn');
-            const eligibilityStatus = document.getElementById('eligibilityStatus');
-            
-            if (select.value) {
-                const selectedOption = select.options[select.selectedIndex];
-                const workRateRequired = selectedOption.getAttribute('data-workrate');
-                const amount = selectedOption.getAttribute('data-amount');
-                
-                document.getElementById('requiredWorkRate').textContent = workRateRequired;
-                document.getElementById('rewardAmount').textContent = `$${amount}`;
-                document.getElementById('userWorkRate').textContent = currentUser.workRate;
-                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD).toFixed(2)}`;
-                
-                details.style.display = 'block';
-                
-                // Check eligibility
-                const workRateEligible = parseInt(currentUser.workRate) >= parseInt(workRateRequired);
-                const balanceEligible = parseFloat(currentUser.balanceUSD) >= parseFloat(amount);
-                const isEligible = workRateEligible && balanceEligible;
-                
-                // Update eligibility status
-                if (isEligible) {
-                    eligibilityStatus.textContent = "✓ You are eligible for this reward!";
-                    eligibilityStatus.className = "eligibility-status eligible";
-                    eligibilityStatus.style.display = "block";
-                } else {
-                    let message = "You are not eligible for this reward. ";
-                    if (!workRateEligible && !balanceEligible) {
-                        message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD).toFixed(2)}).`;
-                    } else if (!workRateEligible) {
-                        message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate}).`;
-                    } else {
-                        message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD).toFixed(2)}).`;
-                    }
-                    eligibilityStatus.textContent = message;
-                    eligibilityStatus.className = "eligibility-status not-eligible";
-                    eligibilityStatus.style.display = "block";
-                }
-                
-                // Enable/disable cashout button based on requirements
-                cashoutBtn.disabled = !isEligible;
-            } else {
-                details.style.display = 'none';
-                eligibilityStatus.style.display = 'none';
-                cashoutBtn.disabled = true;
-            }
-        }
-
-        // Submit cashout request
-        async function submitCashout() {
-            const select = document.getElementById('rewardSelect');
+    // Update reward details when selection changes
+    function updateRewardDetails() {
+        if (!currentUser) return;
+        
+        const select = document.getElementById('rewardSelect');
+        const details = document.getElementById('rewardDetails');
+        const cashoutBtn = document.getElementById('cashoutBtn');
+        const eligibilityStatus = document.getElementById('eligibilityStatus');
+        
+        if (!select || !details || !cashoutBtn || !eligibilityStatus) return;
+        
+        if (select.value) {
             const selectedOption = select.options[select.selectedIndex];
-            const rewardName = selectedOption.text;
             const workRateRequired = selectedOption.getAttribute('data-workrate');
             const amount = selectedOption.getAttribute('data-amount');
             
-            // Show processing modal
-            document.getElementById('cashoutMessage').textContent = 'Submitting your cashout request...';
-            document.getElementById('cashoutModal').classList.add('active');
+            const requiredWorkRate = document.getElementById('requiredWorkRate');
+            const rewardAmount = document.getElementById('rewardAmount');
+            const userWorkRate = document.getElementById('userWorkRate');
+            const userBalance = document.getElementById('userBalance');
             
-            try {
-                const formData = new FormData();
-                formData.append('action', 'submitCashout');
-                formData.append('username', currentUser.username);
-                formData.append('reward', rewardName);
-                formData.append('workRateRequired', workRateRequired);
-                formData.append('amount', amount);
-                formData.append('timestamp', new Date().toISOString());
-                
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                // Close processing modal
-                document.getElementById('cashoutModal').classList.remove('active');
-                
-                if (result.status === 'success') {
-                    // Add the new cashout to the list
-                    userCashouts.unshift({
-                        id: Date.now(),
-                        reward: rewardName,
-                        workRateRequired: workRateRequired,
-                        amount: amount,
-                        status: 'UNSENT',
-                        timestamp: new Date().toISOString(),
-                        notes: ''
-                    });
-                    
-                    // Reset form
-                    select.value = '';
-                    document.getElementById('rewardDetails').style.display = 'none';
-                    document.getElementById('eligibilityStatus').style.display = 'none';
-                    document.getElementById('cashoutBtn').disabled = true;
-                    
-                    // Update cashout history
-                    updateCashoutHistory();
-                    
-                    // Show success message
-                    document.getElementById('successMessage').textContent = 'Your cashout request has been submitted successfully!';
-                    document.getElementById('successModal').classList.add('active');
+            if (requiredWorkRate) requiredWorkRate.textContent = workRateRequired;
+            if (rewardAmount) rewardAmount.textContent = `$${amount}`;
+            if (userWorkRate) userWorkRate.textContent = currentUser.workRate || 0;
+            if (userBalance) userBalance.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
+            
+            details.style.display = 'block';
+            
+            // Check eligibility
+            const workRateEligible = parseInt(currentUser.workRate || 0) >= parseInt(workRateRequired);
+            const balanceEligible = parseFloat(currentUser.balanceUSD || 0) >= parseFloat(amount);
+            const isEligible = workRateEligible && balanceEligible;
+            
+            // Update eligibility status
+            if (isEligible) {
+                eligibilityStatus.textContent = "✓ You are eligible for this reward!";
+                eligibilityStatus.className = "eligibility-status eligible";
+                eligibilityStatus.style.display = "block";
+            } else {
+                let message = "You are not eligible for this reward. ";
+                if (!workRateEligible && !balanceEligible) {
+                    message += `You need ${workRateRequired} USD (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
+                } else if (!workRateEligible) {
+                    message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}).`;
                 } else {
-                    showError(result.message || 'Failed to submit cashout request.');
+                    message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
                 }
-            } catch (error) {
-                console.error('Submit cashout error:', error);
-                // Close processing modal
-                document.getElementById('cashoutModal').classList.remove('active');
-                showError('Network error. Please try again.');
+                eligibilityStatus.textContent = message;
+                eligibilityStatus.className = "eligibility-status not-eligible";
+                eligibilityStatus.style.display = "block";
             }
+            
+            // Enable/disable cashout button based on requirements
+            cashoutBtn.disabled = !isEligible;
+        } else {
+            details.style.display = 'none';
+            eligibilityStatus.style.display = 'none';
+            cashoutBtn.disabled = true;
         }
+    }
 
-        // Update cashout history display
-        function updateCashoutHistory() {
-            const cashoutHistory = document.getElementById('cashoutHistory');
-            cashoutHistory.innerHTML = '';
+    // Submit cashout request
+    async function submitCashout() {
+        if (!currentUser) {
+            showError('Please login first.');
+            return;
+        }
+        
+        const select = document.getElementById('rewardSelect');
+        if (!select || !select.value) {
+            showError('Please select a reward first.');
+            return;
+        }
+        
+        const selectedOption = select.options[select.selectedIndex];
+        const rewardName = selectedOption.text;
+        const workRateRequired = selectedOption.getAttribute('data-workrate');
+        const amount = selectedOption.getAttribute('data-amount');
+        
+        try {
+            showLoading('Processing your cashout request...');
             
-            if (userCashouts.length === 0) {
-                cashoutHistory.innerHTML = '<div style="color: #2c3c4c; font-style: italic; text-align: center;">No cashout requests yet</div>';
-                return;
-            }
+            const formData = new FormData();
+            formData.append('action', 'submitCashout');
+            formData.append('username', currentUser.username);
+            formData.append('reward', rewardName);
+            formData.append('workRateRequired', workRateRequired);
+            formData.append('amount', amount);
             
-            userCashouts.forEach(cashout => {
-                const item = document.createElement('div');
-                item.className = 'cashout-item';
-                
-                const header = document.createElement('div');
-                header.className = 'cashout-header';
-                
-                const reward = document.createElement('div');
-                reward.className = 'cashout-reward';
-                reward.textContent = cashout.reward;
-                
-                const status = document.createElement('div');
-                status.className = `cashout-status ${cashout.status === 'UNSENT' ? 'status-unsent' : 'status-approved'}`;
-                status.textContent = cashout.status;
-                
-                header.appendChild(reward);
-                header.appendChild(status);
-                
-                const details = document.createElement('div');
-                details.className = 'cashout-details';
-                
-                const amount = document.createElement('div');
-                amount.className = 'cashout-detail';
-                amount.textContent = `Amount: $${cashout.amount}`;
-                
-                const workRate = document.createElement('div');
-                workRate.className = 'cashout-detail';
-                workRate.textContent = `Work Rate: ${cashout.workRateRequired}`;
-                
-                const date = document.createElement('div');
-                date.className = 'cashout-detail';
-                date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
-                
-                const statusDetail = document.createElement('div');
-                statusDetail.className = 'cashout-detail';
-                statusDetail.textContent = `Status: ${cashout.status}`;
-                
-                details.appendChild(amount);
-                details.appendChild(workRate);
-                details.appendChild(date);
-                details.appendChild(statusDetail);
-                
-                item.appendChild(header);
-                item.appendChild(details);
-                
-                // Add notes if available
-                if (cashout.notes) {
-                    const notes = document.createElement('div');
-                    notes.className = 'cashout-notes';
-                    notes.textContent = `Admin Notes: ${cashout.notes}`;
-                    item.appendChild(notes);
-                }
-                
-                cashoutHistory.appendChild(item);
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
             });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                // Refresh user data to get updated balance
+                await refreshUserData();
+                
+                // Reset form
+                if (select) select.value = '';
+                const rewardDetails = document.getElementById('rewardDetails');
+                const eligibilityStatus = document.getElementById('eligibilityStatus');
+                const cashoutBtn = document.getElementById('cashoutBtn');
+                
+                if (rewardDetails) rewardDetails.style.display = 'none';
+                if (eligibilityStatus) eligibilityStatus.style.display = 'none';
+                if (cashoutBtn) cashoutBtn.disabled = true;
+                
+                hideLoading();
+                showSuccess('Your cashout request has been submitted successfully!');
+            } else {
+                hideLoading();
+                showError(result.message || 'Failed to submit cashout request.');
+            }
+        } catch (error) {
+            console.error('Submit cashout error:', error);
+            hideLoading();
+            showError('Network error. Please try again.');
         }
+    }
 
-        // Show error modal
-        function showError(message) {
-            document.getElementById('errorMessage').textContent = message;
-            document.getElementById('errorModal').classList.add('active');
+    // Update cashout history display
+    function updateCashoutHistory() {
+        const cashoutHistory = document.getElementById('cashoutHistory');
+        if (!cashoutHistory) return;
+        
+        cashoutHistory.innerHTML = '';
+        
+        if (userCashouts.length === 0) {
+            cashoutHistory.innerHTML = '<div style="color: white; font-style: italic; text-align: center; padding: 20px;">No cashout requests yet</div>';
+            return;
         }
+        
+        userCashouts.forEach(cashout => {
+            const item = document.createElement('div');
+            item.className = 'cashout-item';
+            
+            const header = document.createElement('div');
+            header.className = 'cashout-header';
+            
+            const reward = document.createElement('div');
+            reward.className = 'cashout-reward';
+            reward.textContent = cashout.reward;
+            
+            const status = document.createElement('div');
+            status.className = `cashout-status ${cashout.status === 'PENDING' || cashout.status === 'UNSENT' ? 'status-pending' : cashout.status === 'APPROVED' ? 'status-approved' : 'status-rejected'}`;
+            status.textContent = cashout.status;
+            
+            header.appendChild(reward);
+            header.appendChild(status);
+            
+            const details = document.createElement('div');
+            details.className = 'cashout-details';
+            
+            const amount = document.createElement('div');
+            amount.className = 'cashout-detail';
+            amount.textContent = `Amount: $${cashout.amount}`;
+            
+            const workRate = document.createElement('div');
+            workRate.className = 'cashout-detail';
+            workRate.textContent = `Work Rate Required: ${cashout.workRateRequired}`;
+            
+            const date = document.createElement('div');
+            date.className = 'cashout-detail';
+            date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
+            
+            details.appendChild(amount);
+            details.appendChild(workRate);
+            details.appendChild(date);
+            
+            item.appendChild(header);
+            item.appendChild(details);
+            
+            // Add notes if available
+            if (cashout.notes) {
+                const notes = document.createElement('div');
+                notes.className = 'cashout-notes';
+                notes.textContent = `Admin Notes: ${cashout.notes}`;
+                item.appendChild(notes);
+            }
+            
+            cashoutHistory.appendChild(item);
+        });
+    }
 
-        // Close modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
+    // Toggle accordion for terms section
+    function toggleAccordion(header) {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+    }
+
+    // Show success modal
+    function showSuccess(message) {
+        const successMessage = document.getElementById('successMessage');
+        const successModal = document.getElementById('successModal');
+        
+        if (successMessage) successMessage.textContent = message;
+        if (successModal) successModal.classList.add('active');
+    }
+
+    // Show error modal
+    function showError(message) {
+        const errorMessage = document.getElementById('errorMessage');
+        const errorModal = document.getElementById('errorModal');
+        
+        if (errorMessage) errorMessage.textContent = message;
+        if (errorModal) errorModal.classList.add('active');
+    }
+
+    // Close modal
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('active');
         }
+    }
 
-        // Initialize
+    // Close all modals
+    function closeAllModals() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.classList.remove('active');
+        });
+    }
+
+    // Initialize the application
+    function initApp() {
+        // Set up navigation
+        setupNavigation();
+        
+        // Set up modal close buttons
+        document.querySelectorAll('.modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+        
+        // Set up enter key for login
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        
+        function handleEnterKey(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        }
+        
+        if (usernameInput) {
+            usernameInput.addEventListener('keypress', handleEnterKey);
+        }
+        if (passwordInput) {
+            passwordInput.addEventListener('keypress', handleEnterKey);
+        }
+        
+        // Start clock
         updateClock();
         setInterval(updateClock, 1000);
+        
+        // Check for existing session
+        checkExistingSession();
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initApp);
     </script>
+
+    <!-- Add CSS for loading spinner -->
+    <style>
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #ffffff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
