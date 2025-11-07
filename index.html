@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,8 @@
         }
 
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,7 +35,7 @@
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -64,7 +64,7 @@
         /* Login Form */
         .login-form {
             padding: 20px;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
         }
 
         .form-group {
@@ -73,7 +73,7 @@
 
         .form-label {
             display: block;
-            color: #2c3c4c;
+            color: white;
             font-size: 16px;
             font-weight: 500;
             margin-bottom: 5px;
@@ -84,13 +84,13 @@
             padding: 12px;
             border: 2px solid #6c8ca8;
             border-radius: 4px;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.7);
             font-size: 16px;
-            color: #1a1a1a;
+            color: white;
         }
 
         .login-button {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             color: white;
             border: none;
             padding: 12px 15px;
@@ -102,21 +102,17 @@
             border-radius: 4px;
         }
 
-        .login-button:active {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-        }
-
         /* Dashboard */
         .dashboard {
             display: none;
-            padding: 15px;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .user-avatar {
@@ -140,13 +136,13 @@
         .username {
             font-size: 18px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .logout-btn {
             background: none;
             border: none;
-            color: #2c3c4c;
+            color: white;
             font-size: 14px;
             text-decoration: underline;
             cursor: pointer;
@@ -156,11 +152,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-bottom: 20px;
+            padding: 15px;
         }
 
         .stat-card {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             padding: 12px;
             text-align: center;
@@ -169,16 +165,16 @@
         .stat-value {
             font-size: 24px;
             font-weight: bold;
-            color: #2c3c4c;
+            color: white;
         }
 
         .stat-label {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .level-section {
-            margin-bottom: 20px;
+            padding: 0 15px 15px;
         }
 
         .level-header {
@@ -190,45 +186,41 @@
         .level-label {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .level-value {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .progress-bar {
             height: 20px;
-            background-color: #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             border-radius: 10px;
             transition: width 0.3s;
         }
 
-        .progress-fill.low {
-            background-color: #f44336;
-        }
-
         /* Work Form */
         .work-form {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             padding: 15px;
-            margin-bottom: 15px;
+            margin: 15px;
         }
 
         .form-title {
             font-size: 18px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -237,16 +229,16 @@
             padding: 10px;
             border: 2px solid #6c8ca8;
             border-radius: 4px;
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.7);
             font-size: 16px;
-            color: black;
+            color: white;
             margin-bottom: 10px;
             resize: vertical;
             min-height: 80px;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             color: white;
             border: none;
             padding: 10px 15px;
@@ -258,19 +250,15 @@
             border-radius: 4px;
         }
 
-        .submit-btn:active {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
-        }
-
         /* Status Badges */
         .submission-status {
-            margin-top: 15px;
+            margin: 15px;
         }
 
         .status-title {
             font-size: 16px;
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -291,7 +279,7 @@
         }
 
         .status-review {
-            background-color: #f44336;
+            background-color: #ff9800;
             color: white;
         }
 
@@ -307,7 +295,7 @@
         /* Bottom Navigation */
         .bottom-nav {
             display: flex;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             padding: 0;
         }
 
@@ -334,7 +322,7 @@
         .content-section {
             display: none;
             padding: 15px;
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             min-height: 400px;
         }
 
@@ -358,7 +346,7 @@
             padding: 12px 15px;
             background-color: rgba(255, 255, 255, 0.3);
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -387,7 +375,7 @@
         }
 
         .terms-text {
-            color: #2c3c4c;
+            color: white;
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 10px;
@@ -400,7 +388,7 @@
 
         /* Cashout System */
         .cashout-form {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 15px;
@@ -411,9 +399,9 @@
             padding: 10px;
             border: 2px solid #6c8ca8;
             border-radius: 4px;
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.7);
             font-size: 16px;
-            color: #1a1a1a;
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -429,7 +417,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-history {
@@ -437,7 +425,7 @@
         }
 
         .cashout-item {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             padding: 12px;
             margin-bottom: 10px;
@@ -451,7 +439,7 @@
 
         .cashout-reward {
             font-weight: 500;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-status {
@@ -480,12 +468,12 @@
 
         .cashout-detail {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
         }
 
         .cashout-notes {
             font-size: 14px;
-            color: #2c3c4c;
+            color: white;
             font-style: italic;
             padding-top: 8px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -520,7 +508,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, pink 0%, darkorange 25%, purple 60%, #ff1a1a 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -543,7 +531,7 @@
 
         .modal-body {
             padding: 20px;
-            background: linear-gradient(to bottom, #8ca8c8, #7c98b8);
+            background: rgba(0, 0, 0, 0.7);
             min-height: 100px;
         }
 
@@ -554,18 +542,14 @@
         }
 
         .modal-btn {
-            background: linear-gradient(to bottom, #6a8aaa, #5a7a9a);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff8c00 25%, #800080 60%, #ff1a1a 100%);
             color: white;
             font-size: 20px;
             font-weight: 500;
             padding: 15px;
-            border: 1px solid #4a6a8a;
+            border: none;
             cursor: pointer;
             text-align: center;
-        }
-
-        .modal-btn:active {
-            background: linear-gradient(to bottom, #5a7a9a, #4a6a8a);
         }
 
         /* Loading spinner */
@@ -583,236 +567,218 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Debug panel */
+        .debug-panel {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 300px;
+            display: none;
+            z-index: 1001;
+        }
     </style>
 </head>
-<body class="gradient-bg min-h-screen flex items-center justify-center p-4 font-sans">
-    <div class="w-full max-w-md">
+<body>
+    <div class="container">
         <!-- Header -->
-        <div class="bg-white/10 backdrop-blur-md rounded-t-xl p-4 border-b border-white/20">
-            <div class="flex justify-between items-center">
-                <div>
-                    <img src="https://i.postimg.cc/d0dqqtpv/Gemini-Generated-Image-dryvjmdryvjmdryv-removebg-preview.png" 
-                         width="180" height="70" alt="QuizBux Logo" class="mx-auto">
-                </div>
-                <div class="flex space-x-2">
-                    <div class="w-6 h-6 bg-white/20 rounded"></div>
-                    <div class="w-6 h-6 bg-white/20 rounded"></div>
-                    <div class="w-6 h-6 bg-white/20 rounded"></div>
-                </div>
+        <div class="header">
+            <div class="header-title">WorkReward System</div>
+            <div class="header-icons">
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
             </div>
         </div>
 
-        <!-- Main Container -->
-        <div class="bg-dark-800 rounded-b-xl shadow-xl overflow-hidden">
-            <!-- Login Form (Initially Visible) -->
-            <div id="loginForm" class="p-6">
-                <div class="mb-5">
-                    <label class="block text-white text-sm font-medium mb-2" for="username">Username</label>
-                    <input type="text" id="username" 
-                           class="w-full px-4 py-3 bg--700 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
-                           placeholder="Enter your username">
+        <!-- Login Form (Initially Visible) -->
+        <div id="loginForm" class="login-form">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" id="username" class="form-input" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-input" placeholder="Enter your password">
+            </div>
+            <button class="login-button" onclick="login()">Login</button>
+        </div>
+
+        <!-- Dashboard (Initially Hidden) -->
+        <div id="dashboard" class="dashboard">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <div class="username" id="displayUsername">Username</div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
                 </div>
-                <div class="mb-6">
-                    <label class="block text-white text-sm font-medium mb-2" for="password">Password</label>
-                    <input type="password" id="password" 
-                           class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
-                           placeholder="Enter your password">
-                </div>
-                <button onclick="login()" 
-                        class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 transform hover:-translate-y-1">
-                    Login
-                </button>
             </div>
 
-            <!-- Dashboard (Initially Hidden) -->
-            <div id="dashboard" class="hidden">
-                <!-- User Info -->
-                <div class="p-4 flex items-center border-b border--700">
-                    <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                        <span id="userAvatar">U</span>
-                    </div>
-                    <div class="flex-1">
-                        <div class="text-white font-medium" id="displayUsername">Username</div>
-                        <button onclick="logout()" class="text-primary-400 text-sm hover:text-primary-300 transition-colors">Logout</button>
-                    </div>
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="balanceValue">0.00</div>
+                    <div class="stat-label">Balance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="usdBalanceValue">$0.00</div>
+                    <div class="stat-label">USD Balance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="workRateValue">0</div>
+                    <div class="stat-label">Work Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="levelValue">0</div>
+                    <div class="stat-label">Level</div>
+                </div>
+            </div>
+
+            <!-- Level Progress -->
+            <div class="level-section">
+                <div class="level-header">
+                    <div class="level-label">Performance Level</div>
+                    <div class="level-value" id="levelPercent">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div id="levelProgress" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item active" data-target="work-section">Work</div>
+                <div class="nav-item" data-target="cashout-section">Cashout</div>
+                <div class="nav-item" data-target="terms-section">Terms</div>
+            </div>
+
+            <!-- Content Sections -->
+            <!-- Work Section -->
+            <div class="content-section active" id="work-section">
+                <!-- Work Submission Form -->
+                <div class="work-form">
+                    <div class="form-title">Submit Work</div>
+                    <textarea id="workInput" class="work-input" placeholder="Enter your work submission here..."></textarea>
+                    <button class="submit-btn" onclick="submitWork()">Submit Work</button>
                 </div>
 
-                <!-- Stats Grid -->
-                <div class="p-4 grid grid-cols-2 gap-3">
-                    <div class="card-gradient rounded-xl p-4 border border-white/10">
-                        <div class="text-white font-bold text-xl" id="balanceValue">0.00</div>
-                        <div class="text-primary-300 text-sm">WorkRate</div>
-                    </div>
-                    <div class="card-gradient rounded-xl p-4 border border-white/10">
-                        <div class="text-white font-bold text-xl" id="usdBalanceValue">$0.00</div>
-                        <div class="text-primary-300 text-sm">PTS</div>
-                    </div>
-                    <div class="card-gradient rounded-xl p-4 border border-white/10">
-                        <div class="text-white font-bold text-xl" id="workRateValue">0</div>
-                        <div class="text-primary-300 text-sm">USD</div>
-                    </div>
-                    <div class="card-gradient rounded-xl p-4 border border-white/10">
-                        <div class="text-white font-bold text-xl" id="levelValue">0</div>
-                        <div class="text-primary-300 text-sm">WorkLevel</div>
-                    </div>
-                </div>
-
-                <!-- Level Progress -->
-                <div class="px-4 pb-4">
-                    <div class="flex justify-between mb-2">
-                        <div class="text-white text-sm font-medium">Performance Level</div>
-                        <div class="text-white text-sm font-medium" id="levelPercent">0%</div>
-                    </div>
-                    <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
-                        <div id="levelProgress" class="h-full bg-gradient-to-r from-primary-500 to-primary-600 progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <!-- Bottom Navigation -->
-                <div class="flex border-t border-dark-700">
-                    <div class="nav-item flex-1 text-center py-3 text-white font-medium cursor-pointer transition-colors border-b-2 border-primary-500" 
-                         data-target="work-section">Work</div>
-                    <div class="nav-item flex-1 text-center py-3 text-dark-400 font-medium cursor-pointer transition-colors hover:text-white" 
-                         data-target="cashout-section">Cashout</div>
-                    <div class="nav-item flex-1 text-center py-3 text-dark-400 font-medium cursor-pointer transition-colors hover:text-white" 
-                         data-target="terms-section">Terms</div>
-                </div>
-
-                <!-- Content Sections -->
-                <div class="p-4">
-                    <!-- Work Section -->
-                    <div class="content-section active fade-in" id="work-section">
-                        <!-- Work Submission Form -->
-                        <div class="card-gradient rounded-xl p-4 mb-4 border border-white/10">
-                            <div class="text-white font-medium mb-3">Submit Work</div>
-                            <textarea id="workInput" 
-                                      class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 mb-3 resize-none"
-                                      rows="4" placeholder="Enter your work submission here..."></textarea>
-                            <button onclick="submitWork()" 
-                                    class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
-                                Submit Work
-                            </button>
-                        </div>
-
-                        <!-- Submission Status -->
-                        <div>
-                            <div class="text-white font-medium mb-3">Submission Status</div>
-                            <div class="space-y-2 max-h-60 overflow-y-auto" id="statusBadges">
-                                <!-- Status badges will be added here dynamically -->
-                                <div class="text-center text-white text-sm py-2 rounded bg-dark-700/50">No submissions yet</div>
-                            </div>
+                <!-- Submission Status -->
+                <div class="submission-status">
+                    <div class="status-title">Submission Status</div>
+                    <div class="status-badges" id="statusBadges">
+                        <!-- Status badges will be added here dynamically -->
+                        <div class="status-badge status-review">
+                            <span class="badge-icon">⏳</span>
+                            Under Review
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Cashout Section -->
-                    <div class="content-section hidden fade-in" id="cashout-section">
-                        <div class="card-gradient rounded-xl p-4 mb-4 border border-white/10">
-                            <div class="text-white font-medium mb-3">Request Cashout</div>
-                            <select id="rewardSelect" onchange="updateRewardDetails()"
-                                    class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 mb-3">
-                                <option value="">Select a reward</option>
-                                <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
-                                <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
-                            </select>
-                            
-                            <div class="hidden bg-dark-700/50 rounded-lg p-3 mb-3" id="rewardDetails">
-                                <div class="flex justify-between text-white text-sm mb-1">
-                                    <span>USD Required:</span>
-                                    <span id="requiredWorkRate">0</span>
-                                </div>
-                                <div class="flex justify-between text-white text-sm mb-1">
-                                    <span>Amount USD:</span>
-                                    <span id="rewardAmount">$0.00</span>
-                                </div>
-                                <div class="flex justify-between text-white text-sm mb-1">
-                                    <span>Your USD Balance:</span>
-                                    <span id="userWorkRate">0</span>
-                                </div>
-                                <div class="flex justify-between text-white text-sm">
-                                    <span>Your PTS:</span>
-                                    <span id="userBalance">0.00</span>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden text-center py-2 rounded-lg text-sm mb-3" id="eligibilityStatus"></div>
-                            
-                            <button onclick="submitCashout()" id="cashoutBtn" disabled
-                                    class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                                Request Cashout
-                            </button>
+            <!-- Cashout Section -->
+            <div class="content-section" id="cashout-section">
+                <div class="cashout-form">
+                    <div class="form-title">Request Cashout</div>
+                    <select id="rewardSelect" class="reward-select" onchange="updateRewardDetails()">
+                        <option value="">Select a reward</option>
+                        <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
+                        <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
+                    </select>
+                    
+                    <div class="reward-details" id="rewardDetails">
+                        <div class="reward-detail">
+                            <span>Work Rate Required:</span>
+                            <span id="requiredWorkRate">0</span>
                         </div>
+                        <div class="reward-detail">
+                            <span>Amount USD:</span>
+                            <span id="rewardAmount">$0.00</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your Work Rate:</span>
+                            <span id="userWorkRate">0</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your USD Balance:</span>
+                            <span id="userBalance">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="eligibility-status" id="eligibilityStatus"></div>
+                    
+                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>Request Cashout</button>
+                </div>
 
-                        <div>
-                            <div class="text-white font-medium mb-3">Cashout History</div>
-                            <div id="cashoutHistory" class="space-y-3 max-h-60 overflow-y-auto">
-                                <!-- Cashout history will be added here dynamically -->
-                                <div class="text-center text-white text-sm py-4 rounded bg-dark-700/50">No cashout requests yet</div>
+                <div class="cashout-history">
+                    <div class="status-title">Cashout History</div>
+                    <div id="cashoutHistory">
+                        <!-- Cashout history will be added here dynamically -->
+                        <div class="cashout-item">
+                            <div class="cashout-header">
+                                <div class="cashout-reward">No cashout requests yet</div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Terms Section -->
-                    <div class="content-section hidden fade-in" id="terms-section">
-                        <div class="text-white font-medium mb-4">Terms of Use</div>
-                        
-                        <div class="space-y-3">
-                            <div class="accordion-item bg-dark-700/50 rounded-lg overflow-hidden">
-                                <div class="accordion-header p-4 text-white font-medium cursor-pointer flex justify-between items-center">
-                                    Work Submission Process
-                                    <span class="accordion-icon transform transition-transform">▼</span>
-                                </div>
-                                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                    <div class="p-4 pt-0 text-white/80 text-sm space-y-2">
-                                        <p>Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.</p>
-                                        <p class="text-primary-300 font-medium">Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements. In such cases, you will not see any approval notification.</p>
-                                    </div>
-                                </div>
+            <!-- Terms Section -->
+            <div class="content-section" id="terms-section">
+                <div class="status-title">Terms of Use</div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Work Submission Process
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
                             </div>
-                            
-                            <div class="accordion-item bg-dark-700/50 rounded-lg overflow-hidden">
-                                <div class="accordion-header p-4 text-white font-medium cursor-pointer flex justify-between items-center">
-                                    Prohibited Activities
-                                    <span class="accordion-icon transform transition-transform">▼</span>
-                                </div>
-                                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                    <div class="p-4 pt-0 text-white/80 text-sm space-y-2">
-                                        <p>Spamming the submission form is strictly prohibited. This includes but is not limited to:</p>
-                                        <ul class="list-disc pl-5 space-y-1">
-                                            <li>Submitting duplicate or near-identical work</li>
-                                            <li>Submitting low-quality or irrelevant content</li>
-                                            <li>Attempting to game the system through automated submissions</li>
-                                            <li>Any other activity we determine to be spam</li>
-                                        </ul>
-                                        <p class="text-primary-300 font-medium">Consequences: If we detect spamming activities, your account will be permanently deleted and you will forfeit your entire balance.</p>
-                                    </div>
-                                </div>
+                            <div class="terms-text highlight">
+                                Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
                             </div>
-                            
-                            <div class="accordion-item bg-dark-700/50 rounded-lg overflow-hidden">
-                                <div class="accordion-header p-4 text-white font-medium cursor-pointer flex justify-between items-center">
-                                    Reward System
-                                    <span class="accordion-icon transform transition-transform">▼</span>
-                                </div>
-                                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                    <div class="p-4 pt-0 text-white/80 text-sm space-y-2">
-                                        <p>Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.</p>
-                                        <p>The conversion rate between points and USD may vary based on current valuation. We reserve the right to adjust the point-to-USD conversion rate at our discretion.</p>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Prohibited Activities
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Spamming the submission form is strictly prohibited. This includes but is not limited to:
                             </div>
-                            
-                            <div class="accordion-item bg-dark-700/50 rounded-lg overflow-hidden">
-                                <div class="accordion-header p-4 text-white font-medium cursor-pointer flex justify-between items-center">
-                                    Cashout Policy
-                                    <span class="accordion-icon transform transition-transform">▼</span>
-                                </div>
-                                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                    <div class="p-4 pt-0 text-white/80 text-sm space-y-2">
-                                        <p>Cashout requests are processed manually by our admin team. Processing times may vary.</p>
-                                        <p>Each reward has specific Balance requirements that must be met before you can request that reward.</p>
-                                        <p>Cashout requests will initially show as "Unsent" until approved by an admin. Once approved, the status will change to "Approved" and any admin notes will be visible.</p>
-                                    </div>
-                                </div>
+                            <ul style="color: white; margin-left: 20px; margin-bottom: 10px;">
+                                <li>Submitting duplicate or near-identical work</li>
+                                <li>Submitting low-quality or irrelevant content</li>
+                                <li>Attempting to game the system through automated submissions</li>
+                            </ul>
+                            <div class="terms-text highlight">
+                                Consequences: If we detect spamming activities, your account will be permanently deleted.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Reward System
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                            </div>
+                            <div class="terms-text">
+                                The conversion rate between points and USD may vary based on current valuation.
                             </div>
                         </div>
                     </div>
@@ -822,50 +788,56 @@
     </div>
 
     <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div class="modal-overlay absolute inset-0"></div>
-        <div class="relative bg-dark-800 rounded-xl shadow-xl w-full max-w-sm mx-4 overflow-hidden transform transition-all">
-            <div class="bg-gradient-to-r from-primary-500 to-primary-600 p-4">
-                <div class="text-white font-medium text-lg">Success</div>
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Success</div>
+                <button class="modal-close" onclick="closeModal('successModal')">×</button>
             </div>
-            <div class="p-6">
-                <p id="successMessage" class="text-white">Your work has been submitted successfully!</p>
+            <div class="modal-body">
+                <p id="successMessage">Your work has been submitted successfully!</p>
             </div>
-            <div class="grid grid-cols-1 border-t border-dark-700">
-                <button onclick="closeModal('successModal')" class="py-4 text-primary-400 font-medium hover:text-primary-300 transition-colors">OK</button>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('successModal')">OK</button>
             </div>
         </div>
     </div>
 
     <!-- Error Modal -->
-    <div id="errorModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div class="modal-overlay absolute inset-0"></div>
-        <div class="relative bg-dark-800 rounded-xl shadow-xl w-full max-w-sm mx-4 overflow-hidden transform transition-all">
-            <div class="bg-gradient-to-r from-red-500 to-red-600 p-4">
-                <div class="text-white font-medium text-lg">Error</div>
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Error</div>
+                <button class="modal-close" onclick="closeModal('errorModal')">×</button>
             </div>
-            <div class="p-6">
-                <p id="errorMessage" class="text-white">Invalid username or password.</p>
+            <div class="modal-body">
+                <p id="errorMessage">An error occurred. Please try again.</p>
             </div>
-            <div class="grid grid-cols-1 border-t border-dark-700">
-                <button onclick="closeModal('errorModal')" class="py-4 text-primary-400 font-medium hover:text-primary-300 transition-colors">OK</button>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('errorModal')">OK</button>
             </div>
         </div>
     </div>
 
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div class="modal-overlay absolute inset-0"></div>
-        <div class="relative bg-dark-800 rounded-xl shadow-xl w-full max-w-sm mx-4 overflow-hidden transform transition-all">
-            <div class="p-6 flex flex-col items-center">
-                <div class="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-                <p id="loadingMessage" class="text-white">Loading...</p>
+    <div id="loadingOverlay" class="modal">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <div class="loading"></div>
+                <p id="loadingMessage" style="color: white;">Loading...</p>
             </div>
         </div>
     </div>
 
+    <!-- Debug Panel (Hidden by default) -->
+    <div id="debugPanel" class="debug-panel">
+        <div><strong>Debug Information</strong></div>
+        <div id="debugContent"></div>
+        <button onclick="toggleDebug()" style="margin-top: 5px; background: #555; color: white; border: none; padding: 3px 8px; border-radius: 3px;">Hide</button>
+    </div>
+
     <script>
-    // Google Apps Script Web App URL
+    // Google Apps Script Web App URL - MAKE SURE THIS IS CORRECT
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
 
     // Current user data
@@ -875,6 +847,24 @@
 
     // Session management
     const SESSION_KEY = 'workRewardSession';
+
+    // Debug function
+    function debugLog(message) {
+        console.log(message);
+        const debugContent = document.getElementById('debugContent');
+        if (debugContent) {
+            debugContent.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${message}</div>`;
+        }
+    }
+
+    function toggleDebug() {
+        const debugPanel = document.getElementById('debugPanel');
+        if (debugPanel.style.display === 'none' || debugPanel.style.display === '') {
+            debugPanel.style.display = 'block';
+        } else {
+            debugPanel.style.display = 'none';
+        }
+    }
 
     // Check for existing session on page load
     function checkExistingSession() {
@@ -904,17 +894,21 @@
     async function attemptSessionRestore(username) {
         try {
             showLoading('Restoring your session...');
+            debugLog(`Attempting to restore session for: ${username}`);
             
             const formData = new FormData();
             formData.append('action', 'getUserData');
             formData.append('username', username);
             
+            debugLog(`Sending request to: ${SCRIPT_URL}`);
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: formData
             });
             
+            debugLog(`Response status: ${response.status}`);
             const result = await response.json();
+            debugLog(`Response data: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 currentUser = result.user;
@@ -922,17 +916,20 @@
                 userCashouts = result.cashouts || [];
                 hideLoading();
                 showDashboard();
+                debugLog('Session restored successfully');
             } else {
                 // User data not found or error, clear session
                 hideLoading();
                 clearSession();
                 showError('Session expired. Please login again.');
+                debugLog('Session restore failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Session restore error:', error);
             hideLoading();
             clearSession();
             showError('Network error during session restore.');
+            debugLog('Session restore error: ' + error.message);
         }
     }
 
@@ -960,7 +957,7 @@
         
         if (loadingOverlay && loadingMessage) {
             loadingMessage.textContent = message;
-            loadingOverlay.classList.remove('hidden');
+            loadingOverlay.classList.add('active');
         }
     }
 
@@ -968,14 +965,14 @@
     function hideLoading() {
         const loadingOverlay = document.getElementById('loadingOverlay');
         if (loadingOverlay) {
-            loadingOverlay.classList.add('hidden');
+            loadingOverlay.classList.remove('active');
         }
     }
 
-    // Login function
+    // Login function with improved error handling
     async function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
         
         if (!username || !password) {
             showError('Please enter both username and password.');
@@ -984,18 +981,35 @@
         
         try {
             showLoading('Signing in...');
+            debugLog(`Attempting login for user: ${username}`);
             
             const formData = new FormData();
             formData.append('action', 'login');
             formData.append('username', username);
             formData.append('password', password);
             
+            debugLog(`Sending login request to: ${SCRIPT_URL}`);
+            
+            // Add timeout to fetch request
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+            
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
             
+            clearTimeout(timeoutId);
+            
+            debugLog(`Login response status: ${response.status}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const result = await response.json();
+            debugLog(`Login response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 currentUser = result.user;
@@ -1006,14 +1020,23 @@
                 saveSession(username);
                 hideLoading();
                 showDashboard();
+                debugLog('Login successful');
             } else {
                 hideLoading();
                 showError(result.message || 'Invalid username or password.');
+                debugLog('Login failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Login error:', error);
             hideLoading();
-            showError('Network error. Please try again.');
+            
+            if (error.name === 'AbortError') {
+                showError('Request timeout. Please check your connection and try again.');
+                debugLog('Login timeout');
+            } else {
+                showError('Network error. Please check your connection and try again.');
+                debugLog('Login network error: ' + error.message);
+            }
         }
     }
 
@@ -1036,11 +1059,13 @@
         const loginForm = document.getElementById('loginForm');
         const dashboard = document.getElementById('dashboard');
         
-        if (loginForm) loginForm.classList.remove('hidden');
-        if (dashboard) dashboard.classList.add('hidden');
+        if (loginForm) loginForm.style.display = 'block';
+        if (dashboard) dashboard.style.display = 'none';
         
         // Hide any modals
         closeAllModals();
+        
+        debugLog('User logged out');
     }
 
     // Show dashboard
@@ -1048,8 +1073,8 @@
         const loginForm = document.getElementById('loginForm');
         const dashboard = document.getElementById('dashboard');
         
-        if (loginForm) loginForm.classList.add('hidden');
-        if (dashboard) dashboard.classList.remove('hidden');
+        if (loginForm) loginForm.style.display = 'none';
+        if (dashboard) dashboard.style.display = 'block';
         
         if (!currentUser) {
             showError('No user data available.');
@@ -1069,10 +1094,10 @@
         const workRateValue = document.getElementById('workRateValue');
         const levelValue = document.getElementById('levelValue');
         
-        if (balanceValue) balanceValue.textContent = currentUser.balance || 0;
+        if (balanceValue) balanceValue.textContent = currentUser.balance || '0.00';
         if (usdBalanceValue) usdBalanceValue.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
-        if (workRateValue) workRateValue.textContent = currentUser.workRate || 0;
-        if (levelValue) levelValue.textContent = currentUser.level || 0;
+        if (workRateValue) workRateValue.textContent = currentUser.workRate || '0';
+        if (levelValue) levelValue.textContent = currentUser.level || '0';
         
         // Update level progress
         const levelPercent = parseInt(currentUser.level || 0);
@@ -1097,9 +1122,14 @@
         const cashoutBtn = document.getElementById('cashoutBtn');
         
         if (rewardSelect) rewardSelect.value = '';
-        if (rewardDetails) rewardDetails.classList.add('hidden');
-        if (eligibilityStatus) eligibilityStatus.classList.add('hidden');
+        if (rewardDetails) rewardDetails.style.display = 'none';
+        if (eligibilityStatus) {
+            eligibilityStatus.textContent = '';
+            eligibilityStatus.className = 'eligibility-status';
+        }
         if (cashoutBtn) cashoutBtn.disabled = true;
+        
+        debugLog('Dashboard shown for user: ' + currentUser.username);
     }
 
     // Submit work function
@@ -1119,18 +1149,27 @@
         
         try {
             showLoading('Submitting your work...');
+            debugLog(`Submitting work for user: ${currentUser.username}`);
             
             const formData = new FormData();
             formData.append('action', 'submitWork');
             formData.append('username', currentUser.username);
             formData.append('submission', workText);
             
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
             
+            clearTimeout(timeoutId);
+            
+            debugLog(`Work submission response status: ${response.status}`);
             const result = await response.json();
+            debugLog(`Work submission response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 // Refresh user data to get updated balances
@@ -1142,14 +1181,23 @@
                 
                 // Show success message
                 showSuccess('Your work has been submitted successfully!');
+                debugLog('Work submitted successfully');
             } else {
                 hideLoading();
                 showError(result.message || 'Failed to submit work.');
+                debugLog('Work submission failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Submit work error:', error);
             hideLoading();
-            showError('Network error. Please try again.');
+            
+            if (error.name === 'AbortError') {
+                showError('Request timeout. Please try again.');
+                debugLog('Work submission timeout');
+            } else {
+                showError('Network error. Please try again.');
+                debugLog('Work submission network error: ' + error.message);
+            }
         }
     }
 
@@ -1158,14 +1206,22 @@
         if (!currentUser) return;
         
         try {
+            debugLog('Refreshing user data');
+            
             const formData = new FormData();
             formData.append('action', 'getUserData');
             formData.append('username', currentUser.username);
             
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
+            
+            clearTimeout(timeoutId);
             
             const result = await response.json();
             
@@ -1174,46 +1230,38 @@
                 userSubmissions = result.submissions || [];
                 userCashouts = result.cashouts || [];
                 showDashboard(); // Refresh the display
+                debugLog('User data refreshed successfully');
+            } else {
+                debugLog('User data refresh failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Refresh user data error:', error);
+            debugLog('User data refresh error: ' + error.message);
         }
     }
 
-    // Update status badges - FIXED TO SHOW ALL SUBMISSIONS
+    // Update status badges
     function updateStatusBadges() {
         const statusBadges = document.getElementById('statusBadges');
         if (!statusBadges) return;
         
         statusBadges.innerHTML = '';
         
-        // Show ALL submissions instead of just the first 5
         if (userSubmissions.length === 0) {
-            statusBadges.innerHTML = '<div class="text-center text-white text-sm py-2 rounded bg-dark-700/50">No submissions yet</div>';
+            statusBadges.innerHTML = '<div class="status-badge status-review"><span class="badge-icon">⏳</span> No submissions yet</div>';
             return;
         }
         
         userSubmissions.forEach(submission => {
             const badge = document.createElement('div');
-            badge.className = `submission-item p-3 mb-2 rounded-lg ${
-                submission.status === 'REVIEW' 
-                    ? 'bg-yellow-500/20 border-yellow-500' 
-                    : 'bg-green-500/20 border-green-500'
-            }`;
+            badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
             
-            const statusIcon = submission.status === 'REVIEW' ? '⏳' : '✅';
-            const statusText = submission.status === 'REVIEW' ? 'Under Review' : 'Approved';
-            
-            // Format the date
-            const submissionDate = new Date(submission.timestamp);
-            const formattedDate = submissionDate.toLocaleDateString() + ' ' + submissionDate.toLocaleTimeString();
+            const statusIcon = submission.status === 'APPROVED' ? '✅' : '⏳';
+            const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
             
             badge.innerHTML = `
-                <div class="flex justify-between items-start mb-1">
-                    <span class="text-white font-medium">${statusIcon} ${statusText}</span>
-                    <span class="text-xs text-white/70">${formattedDate}</span>
-                </div>
-                <div class="text-white/80 text-sm truncate">${submission.submission}</div>
+                <span class="badge-icon">${statusIcon}</span>
+                ${statusText}
             `;
             
             statusBadges.appendChild(badge);
@@ -1226,22 +1274,18 @@
             item.addEventListener('click', function() {
                 // Remove active class from all nav items and content sections
                 document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('border-b-2', 'border-primary-500', 'text-white');
-                    nav.classList.add('text-dark-400');
+                    nav.classList.remove('active');
                 });
                 document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.add('hidden');
                     section.classList.remove('active');
                 });
                 
                 // Add active class to clicked nav item and corresponding section
-                this.classList.add('border-b-2', 'border-primary-500', 'text-white');
-                this.classList.remove('text-dark-400');
+                this.classList.add('active');
                 
                 const targetId = this.getAttribute('data-target');
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
-                    targetSection.classList.remove('hidden');
                     targetSection.classList.add('active');
                 }
             });
@@ -1271,10 +1315,10 @@
             
             if (requiredWorkRate) requiredWorkRate.textContent = workRateRequired;
             if (rewardAmount) rewardAmount.textContent = `$${amount}`;
-            if (userWorkRate) userWorkRate.textContent = currentUser.workRate || 0;
+            if (userWorkRate) userWorkRate.textContent = currentUser.workRate || '0';
             if (userBalance) userBalance.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
             
-            details.classList.remove('hidden');
+            details.style.display = 'block';
             
             // Check eligibility
             const workRateEligible = parseInt(currentUser.workRate || 0) >= parseInt(workRateRequired);
@@ -1284,27 +1328,26 @@
             // Update eligibility status
             if (isEligible) {
                 eligibilityStatus.textContent = "✓ You are eligible for this reward!";
-                eligibilityStatus.className = "bg-green-500/20 text-green-300 text-center py-2 rounded-lg text-sm mb-3";
-                eligibilityStatus.classList.remove('hidden');
+                eligibilityStatus.className = "eligibility-status eligible";
             } else {
                 let message = "You are not eligible for this reward. ";
                 if (!workRateEligible && !balanceEligible) {
-                    message += `You need ${workRateRequired} USD (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
+                    message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
                 } else if (!workRateEligible) {
                     message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}).`;
                 } else {
                     message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
                 }
                 eligibilityStatus.textContent = message;
-                eligibilityStatus.className = "bg-red-500/20 text-red-300 text-center py-2 rounded-lg text-sm mb-3";
-                eligibilityStatus.classList.remove('hidden');
+                eligibilityStatus.className = "eligibility-status not-eligible";
             }
             
             // Enable/disable cashout button based on requirements
             cashoutBtn.disabled = !isEligible;
         } else {
-            details.classList.add('hidden');
-            eligibilityStatus.classList.add('hidden');
+            details.style.display = 'none';
+            eligibilityStatus.textContent = '';
+            eligibilityStatus.className = 'eligibility-status';
             cashoutBtn.disabled = true;
         }
     }
@@ -1329,6 +1372,7 @@
         
         try {
             showLoading('Processing your cashout request...');
+            debugLog(`Submitting cashout for user: ${currentUser.username}, reward: ${rewardName}`);
             
             const formData = new FormData();
             formData.append('action', 'submitCashout');
@@ -1337,12 +1381,20 @@
             formData.append('workRateRequired', workRateRequired);
             formData.append('amount', amount);
             
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
             
+            clearTimeout(timeoutId);
+            
+            debugLog(`Cashout response status: ${response.status}`);
             const result = await response.json();
+            debugLog(`Cashout response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 // Refresh user data to get updated balance
@@ -1354,24 +1406,36 @@
                 const eligibilityStatus = document.getElementById('eligibilityStatus');
                 const cashoutBtn = document.getElementById('cashoutBtn');
                 
-                if (rewardDetails) rewardDetails.classList.add('hidden');
-                if (eligibilityStatus) eligibilityStatus.classList.add('hidden');
+                if (rewardDetails) rewardDetails.style.display = 'none';
+                if (eligibilityStatus) {
+                    eligibilityStatus.textContent = '';
+                    eligibilityStatus.className = 'eligibility-status';
+                }
                 if (cashoutBtn) cashoutBtn.disabled = true;
                 
                 hideLoading();
                 showSuccess('Your cashout request has been submitted successfully!');
+                debugLog('Cashout submitted successfully');
             } else {
                 hideLoading();
                 showError(result.message || 'Failed to submit cashout request.');
+                debugLog('Cashout failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Submit cashout error:', error);
             hideLoading();
-            showError('Network error. Please try again.');
+            
+            if (error.name === 'AbortError') {
+                showError('Request timeout. Please try again.');
+                debugLog('Cashout timeout');
+            } else {
+                showError('Network error. Please try again.');
+                debugLog('Cashout network error: ' + error.message);
+            }
         }
     }
 
-    // Update cashout history display - FIXED TO SHOW ALL CASHOUTS
+    // Update cashout history display
     function updateCashoutHistory() {
         const cashoutHistory = document.getElementById('cashoutHistory');
         if (!cashoutHistory) return;
@@ -1379,48 +1443,41 @@
         cashoutHistory.innerHTML = '';
         
         if (userCashouts.length === 0) {
-            cashoutHistory.innerHTML = '<div class="text-center text-white text-sm py-4 rounded bg-dark-700/50">No cashout requests yet</div>';
+            cashoutHistory.innerHTML = '<div class="cashout-item"><div class="cashout-header"><div class="cashout-reward">No cashout requests yet</div></div></div>';
             return;
         }
         
         userCashouts.forEach(cashout => {
             const item = document.createElement('div');
-            item.className = 'bg-dark-700/50 rounded-lg p-4';
+            item.className = 'cashout-item';
             
             const header = document.createElement('div');
-            header.className = 'flex justify-between items-center mb-2';
+            header.className = 'cashout-header';
             
             const reward = document.createElement('div');
-            reward.className = 'text-white font-medium';
+            reward.className = 'cashout-reward';
             reward.textContent = cashout.reward;
             
             const status = document.createElement('div');
-            let statusClass = 'px-2 py-1 rounded-full text-xs font-medium ';
-            
-            if (cashout.status === 'PENDING' || cashout.status === 'UNSENT') {
-                statusClass += 'bg-yellow-500 text-white';
-            } else if (cashout.status === 'APPROVED') {
-                statusClass += 'bg-green-500 text-white';
-            } else {
-                statusClass += 'bg-red-500 text-white';
-            }
-            
-            status.className = statusClass;
+            status.className = `cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-unsent'}`;
             status.textContent = cashout.status;
             
             header.appendChild(reward);
             header.appendChild(status);
             
             const details = document.createElement('div');
-            details.className = 'grid grid-cols-2 gap-2 text-sm text-white/80 mb-2';
+            details.className = 'cashout-details';
             
             const amount = document.createElement('div');
+            amount.className = 'cashout-detail';
             amount.textContent = `Amount: $${cashout.amount}`;
             
             const workRate = document.createElement('div');
+            workRate.className = 'cashout-detail';
             workRate.textContent = `Work Rate: ${cashout.workRateRequired}`;
             
             const date = document.createElement('div');
+            date.className = 'cashout-detail';
             date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
             
             details.appendChild(amount);
@@ -1433,7 +1490,7 @@
             // Add notes if available
             if (cashout.notes) {
                 const notes = document.createElement('div');
-                notes.className = 'text-sm text-white/60 pt-2 border-t border-white/10';
+                notes.className = 'cashout-notes';
                 notes.textContent = `Admin Notes: ${cashout.notes}`;
                 item.appendChild(notes);
             }
@@ -1469,7 +1526,7 @@
         const successModal = document.getElementById('successModal');
         
         if (successMessage) successMessage.textContent = message;
-        if (successModal) successModal.classList.remove('hidden');
+        if (successModal) successModal.classList.add('active');
     }
 
     // Show error modal
@@ -1478,14 +1535,14 @@
         const errorModal = document.getElementById('errorModal');
         
         if (errorMessage) errorMessage.textContent = message;
-        if (errorModal) errorModal.classList.remove('hidden');
+        if (errorModal) errorModal.classList.add('active');
     }
 
     // Close modal
     function closeModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {
-            modal.classList.add('hidden');
+            modal.classList.remove('active');
         }
     }
 
@@ -1493,7 +1550,7 @@
     function closeAllModals() {
         const modals = document.querySelectorAll('.modal');
         modals.forEach(modal => {
-            modal.classList.add('hidden');
+            modal.classList.remove('active');
         });
     }
 
@@ -1524,6 +1581,14 @@
         
         // Check for existing session
         checkExistingSession();
+        
+        // Show debug panel if URL has debug parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('debug') === 'true') {
+            document.getElementById('debugPanel').style.display = 'block';
+        }
+        
+        debugLog('Application initialized');
     }
 
     // Initialize when DOM is loaded
