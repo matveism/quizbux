@@ -1,4 +1,863 @@
-<script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Gradient - 136° Pink to Dark Red</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        /* Login Form */
+        .login-form {
+            padding: 20px;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 16px;
+            color: white;
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #5a7a9a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .user-details {
+            flex: 1;
+        }
+
+        .username {
+            font-size: 18px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: white;
+        }
+
+        .level-section {
+            padding: 0 15px 15px;
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .level-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .level-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        /* Work Form */
+        .work-form {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .work-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 16px;
+            color: white;
+            margin-bottom: 10px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        /* Status Badges */
+        .submission-status {
+            margin: 15px;
+        }
+
+        .status-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-review {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .status-approved {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .badge-icon {
+            font-size: 12px;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            padding: 0;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item:last-child {
+            border-right: none;
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 15px;
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            min-height: 400px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Terms of Use Accordion */
+        .accordion {
+            margin-top: 15px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .accordion-header {
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item.active .accordion-content {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .terms-text {
+            color: white;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #ff1a1a;
+            font-weight: 500;
+        }
+
+        /* Cashout System */
+        .cashout-form {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .reward-select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6c8ca8;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 16px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .reward-details {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .reward-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .cashout-history {
+            margin-top: 20px;
+        }
+
+        .cashout-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .cashout-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .cashout-reward {
+            font-weight: 500;
+            color: white;
+        }
+
+        .cashout-status {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-unsent {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .status-approved {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cashout-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .cashout-detail {
+            font-size: 14px;
+            color: white;
+        }
+
+        .cashout-notes {
+            font-size: 14px;
+            color: white;
+            font-style: italic;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 95%;
+            max-width: 420px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            min-height: 100px;
+        }
+
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Debug panel */
+        .debug-panel {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 300px;
+            display: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">WorkReward System</div>
+            <div class="header-icons">
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+                <div class="header-icon"></div>
+            </div>
+        </div>
+
+        <!-- Login Form (Initially Visible) -->
+        <div id="loginForm" class="login-form">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" id="username" class="form-input" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-input" placeholder="Enter your password">
+            </div>
+            <button class="login-button" onclick="login()">Login</button>
+        </div>
+
+        <!-- Dashboard (Initially Hidden) -->
+        <div id="dashboard" class="dashboard">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <div class="username" id="displayUsername">Username</div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="balanceValue">0.00</div>
+                    <div class="stat-label">WorkRate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="usdBalanceValue">$0.00</div>
+                    <div class="stat-label">PTS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="workRateValue">0</div>
+                    <div class="stat-label">USD</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="levelValue">0</div>
+                    <div class="stat-label">WorkRate</div>
+                </div>
+            </div>
+
+            <!-- Level Progress -->
+            <div class="level-section">
+                <div class="level-header">
+                    <div class="level-label">Performance Level</div>
+                    <div class="level-value" id="levelPercent">0%</div>
+                </div>
+                <div class="progress-bar">
+                    <div id="levelProgress" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item active" data-target="work-section">Work</div>
+                <div class="nav-item" data-target="cashout-section">Cashout</div>
+                <div class="nav-item" data-target="terms-section">Terms</div>
+            </div>
+
+            <!-- Content Sections -->
+            <!-- Work Section -->
+            <div class="content-section active" id="work-section">
+                <!-- Work Submission Form -->
+                <div class="work-form">
+                    <div class="form-title">Submit Work</div>
+                    <textarea id="workInput" class="work-input" placeholder="Enter your work submission here..."></textarea>
+                    <button class="submit-btn" onclick="submitWork()">Submit Work</button>
+                </div>
+
+                <!-- Submission Status -->
+                <div class="submission-status">
+                    <div class="status-title">Submission Status</div>
+                    <div class="status-badges" id="statusBadges">
+                        <!-- Status badges will be added here dynamically -->
+                        <div class="status-badge status-review">
+                            <span class="badge-icon">⏳</span>
+                            Under Review
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cashout Section -->
+            <div class="content-section" id="cashout-section">
+                <div class="cashout-form">
+                    <div class="form-title">Request Cashout</div>
+                    <select id="rewardSelect" class="reward-select" onchange="updateRewardDetails()">
+                        <option value="">Select a reward</option>
+                        <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
+                        <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
+                    </select>
+                    
+                    <div class="reward-details" id="rewardDetails">
+                        <div class="reward-detail">
+                            <span>Work Rate Required:</span>
+                            <span id="requiredWorkRate">0</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Amount USD:</span>
+                            <span id="rewardAmount">$0.00</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your Work Rate:</span>
+                            <span id="userWorkRate">0</span>
+                        </div>
+                        <div class="reward-detail">
+                            <span>Your USD Balance:</span>
+                            <span id="userBalance">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="eligibility-status" id="eligibilityStatus"></div>
+                    
+                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>Request Cashout</button>
+                </div>
+
+                <div class="cashout-history">
+                    <div class="status-title">Cashout History</div>
+                    <div id="cashoutHistory">
+                        <!-- Cashout history will be added here dynamically -->
+                        <div class="cashout-item">
+                            <div class="cashout-header">
+                                <div class="cashout-reward">No cashout requests yet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms Section -->
+            <div class="content-section" id="terms-section">
+                <div class="status-title">Terms of Use</div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Work Submission Process
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
+                            </div>
+                            <div class="terms-text highlight">
+                                Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Prohibited Activities
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Spamming the submission form is strictly prohibited. This includes but is not limited to:
+                            </div>
+                            <ul style="color: white; margin-left: 20px; margin-bottom: 10px;">
+                                <li>Submitting duplicate or near-identical work</li>
+                                <li>Submitting low-quality or irrelevant content</li>
+                                <li>Attempting to game the system through automated submissions</li>
+                            </ul>
+                            <div class="terms-text highlight">
+                                Consequences: If we detect spamming activities, your account will be permanently deleted.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            PTS Increase Eligibility
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Here is the rule when you are eligibile to receive instead of 50pts = 100pts. This include:
+                            </div>
+                            <ul style="color: white; margin-left: 20px; margin-bottom: 10px;">
+                                <li>Earned at least $1 </li>
+                                <li>Maintain PTS Increasemnt Level (At 100 ONLY)</li>
+                                <li>Less reviews more chances receiving 100pts</li>
+                            </ul>
+                            <div class="terms-text highlight">
+                                Consequences: If you getting more reviews and not getting approved you might not be eligible to reciveve any 100pts if you fall lower than 80%.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Reward System
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="terms-text">
+                                Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                            </div>
+                            <div class="terms-text">
+                                The conversion rate between points and USD may vary based on current valuation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Success</div>
+                <button class="modal-close" onclick="closeModal('successModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">Your work has been submitted successfully!</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('successModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Error</div>
+                <button class="modal-close" onclick="closeModal('errorModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">An error occurred. Please try again.</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal('errorModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="modal">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <div class="loading"></div>
+                <p id="loadingMessage" style="color: white;">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debug Panel (Hidden by default) -->
+    <div id="debugPanel" class="debug-panel">
+        <div><strong>Debug Information</strong></div>
+        <div id="debugContent"></div>
+        <button onclick="toggleDebug()" style="margin-top: 5px; background: #555; color: white; border: none; padding: 3px 8px; border-radius: 3px;">Hide</button>
+    </div>
+
+    <script>
     // Google Apps Script Web App URL - MAKE SURE THIS IS CORRECT
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
 
