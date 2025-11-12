@@ -726,7 +726,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="levelValue">0</div>
-                    <div class="stat-label">WorkRate</div>
+                    <div class="stat-label">Level</div>
                 </div>
             </div>
 
@@ -983,7 +983,7 @@
     </div>
 
     <script>
-    // Google Apps Script Web App URL - MAKE SURE THIS IS CORRECT
+    // Google Apps Script Web App URL - REPLACE WITH YOUR ACTUAL SCRIPT URL
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
 
     // Current user data
@@ -994,19 +994,16 @@
     // Session management
     const SESSION_KEY = 'workRewardSession';
 
-       // Offerwall URLs
+    // Offerwall URLs
     const offerwallUrls = {
-        'CPX': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
+        'cpx': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
         'excentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
-        'openOfferWallwannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
-        'openOfferWallmc': (accountNumber) => `https://sdk.mychips.io/content?content_id=16cbcd08-387a-498f-b4bd-9f4d2c6883a7&user_id=${accountNumber}&ad_unit_id=${adUnit}`,
-        'openOfferWallSPARKWALL': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
-        'openOfferWallowm': (accountNumber) => `https://offerwallmedia.com/offerwall/vfox4w1tpz3gflta3gblkkqp8b2aoj/${accountNumber}`,
-        'openOfferWalltw': (accountNumber) => `https://timewall.io/users/login?oid=0d54afcf2e6ff561&uid=${accountNumber}`,
-        'openOfferWallprimewall': (accountNumber) => `https://primewall.io/offer/Yz3Uj8/${accountNumber}`,
-        'openOfferWallrevtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`,
-        'openOfferWallbuxiq': (accountNumber) => `https://bux-iq.wasmer.app/cashout.html`,
-        'openOfferWallnotik': (accountNumber) => `https://notik.me/coins?api_key=eQpYGMydTs5GP0DfFPQrJotOwKo6V0Hy&pub_id=LJ2g&app_id=GxEBh1Hn3m&user_id=${accountNumber}`
+        'wannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
+        'sparkwall': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
+        'offerwallmedia': (accountNumber) => `https://offerwallmedia.com/offerwall/vfox4w1tpz3gflta3gblkkqp8b2aoj/${accountNumber}`,
+        'timewall': (accountNumber) => `https://timewall.io/users/login?oid=0d54afcf2e6ff561&uid=${accountNumber}`,
+        'primewall': (accountNumber) => `https://primewall.io/offer/Yz3Uj8/${accountNumber}`,
+        'revtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`
     };
 
     // Debug function
@@ -1735,16 +1732,7 @@
         
         // Use the username as the account number for offerwalls
         const accountNumber = currentUser.username;
-        let url = offerwallUrls[offerwall];
-        
-        // Add user ID to URL if needed (some offerwalls require it)
-        if (offerwall === 'cpx') {
-            url = `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}`;
-        } else if (offerwall === 'excentiv') {
-            url = `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`;
-        } else if (offerwall === 'wannads') {
-            url = `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`;
-        }
+        const url = offerwallUrls[offerwall](accountNumber);
         
         dashboardIframe.src = url;
         iframeContainer.style.display = 'flex';
