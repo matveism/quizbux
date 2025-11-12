@@ -994,10 +994,10 @@
     // Session management
     const SESSION_KEY = 'workRewardSession';
 
-       // Object with offerwall URLs and open functions
-    const offerwallButtons = {
-        'openOfferWallCPX': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
-        'openOfferWallexcentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
+       // Offerwall URLs
+    const offerwallUrls = {
+        'CPX': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
+        'excentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
         'openOfferWallwannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
         'openOfferWallmc': (accountNumber) => `https://sdk.mychips.io/content?content_id=16cbcd08-387a-498f-b4bd-9f4d2c6883a7&user_id=${accountNumber}&ad_unit_id=${adUnit}`,
         'openOfferWallSPARKWALL': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
