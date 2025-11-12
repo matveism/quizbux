@@ -994,16 +994,19 @@
     // Session management
     const SESSION_KEY = 'workRewardSession';
 
-    // Offerwall URLs
-    const offerwallUrls = {
-        'cpx': 'https://offers.cpx-research.com/',
-        'excentiv': 'https://excentiv.com/',
-        'wannads': 'https://earn.wannads.com/',
-        'sparkwall': 'https://spark-wall.com/',
-        'offerwallmedia': 'https://offerwallmedia.com/',
-        'timewall': 'https://timewall.io/',
-        'primewall': 'https://primewall.io/',
-        'revtoo': 'https://revtoo.com/'
+       // Object with offerwall URLs and open functions
+    const offerwallButtons = {
+        'openOfferWallCPX': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
+        'openOfferWallexcentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
+        'openOfferWallwannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
+        'openOfferWallmc': (accountNumber) => `https://sdk.mychips.io/content?content_id=16cbcd08-387a-498f-b4bd-9f4d2c6883a7&user_id=${accountNumber}&ad_unit_id=${adUnit}`,
+        'openOfferWallSPARKWALL': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
+        'openOfferWallowm': (accountNumber) => `https://offerwallmedia.com/offerwall/vfox4w1tpz3gflta3gblkkqp8b2aoj/${accountNumber}`,
+        'openOfferWalltw': (accountNumber) => `https://timewall.io/users/login?oid=0d54afcf2e6ff561&uid=${accountNumber}`,
+        'openOfferWallprimewall': (accountNumber) => `https://primewall.io/offer/Yz3Uj8/${accountNumber}`,
+        'openOfferWallrevtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`,
+        'openOfferWallbuxiq': (accountNumber) => `https://bux-iq.wasmer.app/cashout.html`,
+        'openOfferWallnotik': (accountNumber) => `https://notik.me/coins?api_key=eQpYGMydTs5GP0DfFPQrJotOwKo6V0Hy&pub_id=LJ2g&app_id=GxEBh1Hn3m&user_id=${accountNumber}`
     };
 
     // Debug function
