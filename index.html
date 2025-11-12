@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Gradient - 136° Pink to Dark Red</title>
+    <title>QuizBux - Work & Earn Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         * {
@@ -16,8 +16,8 @@
         }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            font-family: 'Urbanist', sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,7 +36,7 @@
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -65,7 +65,7 @@
         /* Login Form */
         .login-form {
             padding: 20px;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: #1a1a1a;
         }
 
         .form-group {
@@ -91,7 +91,7 @@
         }
 
         .login-button {
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             color: white;
             border: none;
             padding: 12px 15px;
@@ -106,7 +106,7 @@
         /* Dashboard */
         .dashboard {
             display: none;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: #1a1a1a;
         }
 
         .user-info {
@@ -205,7 +205,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             border-radius: 10px;
             transition: width 0.3s;
         }
@@ -239,7 +239,7 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             color: white;
             border: none;
             padding: 10px 15px;
@@ -296,7 +296,7 @@
         /* Bottom Navigation */
         .bottom-nav {
             display: flex;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: #1a1a1a;
             padding: 0;
         }
 
@@ -323,7 +323,7 @@
         .content-section {
             display: none;
             padding: 15px;
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: #1a1a1a;
             min-height: 400px;
         }
 
@@ -421,6 +421,18 @@
             color: white;
         }
 
+        .eligibility-status.eligible {
+            color: #4CAF50;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .eligibility-status.not-eligible {
+            color: #ff9800;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
         .cashout-history {
             margin-top: 20px;
         }
@@ -509,7 +521,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
@@ -543,7 +555,7 @@
         }
 
         .modal-btn {
-            background: linear-gradient(135deg, #021225 0%, #1D6EB7 25%, #09D1E6 60%, #021225 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
             color: white;
             font-size: 20px;
             font-weight: 500;
@@ -583,13 +595,90 @@
             display: none;
             z-index: 1001;
         }
+
+        /* CPX Survey Styles */
+        .cpx-container {
+            margin: 15px 0;
+        }
+
+        /* Offerwall Buttons */
+        .offerwall-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px;
+        }
+
+        .offerwall-btn {
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
+            color: white;
+            border: none;
+            padding: 12px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .offerwall-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Iframe Container */
+        .iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .iframe-header {
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .iframe-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .iframe-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .iframe-content {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .dashboard-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="header-title">WorkReward System</div>
+            <div class="header-title">QuizBux</div>
             <div class="header-icons">
                 <div class="header-icon"></div>
                 <div class="header-icon"></div>
@@ -656,6 +745,7 @@
             <div class="bottom-nav">
                 <div class="nav-item active" data-target="work-section">Work</div>
                 <div class="nav-item" data-target="cashout-section">Cashout</div>
+                <div class="nav-item" data-target="earn-section">Earn</div>
                 <div class="nav-item" data-target="terms-section">Terms</div>
             </div>
 
@@ -676,7 +766,7 @@
                         <!-- Status badges will be added here dynamically -->
                         <div class="status-badge status-review">
                             <span class="badge-icon">⏳</span>
-                            Under Review
+                            No submissions yet
                         </div>
                     </div>
                 </div>
@@ -726,6 +816,30 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Earn Section -->
+            <div class="content-section" id="earn-section">
+                <div class="status-title">Earn More Points</div>
+                <p style="color: white; margin: 15px; text-align: center;">
+                    Complete offers from our partners to earn additional points
+                </p>
+                
+                <div class="offerwall-buttons">
+                    <button class="offerwall-btn" onclick="openOfferWall('cpx')">CPX Surveys</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('excentiv')">Excentiv</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('wannads')">Wannads</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('sparkwall')">Spark Wall</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('offerwallmedia')">Offerwall Media</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('timewall')">Time Wall</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('primewall')">Prime Wall</button>
+                    <button class="offerwall-btn" onclick="openOfferWall('revtoo')">RevToo</button>
+                </div>
+
+                <!-- CPX Survey Integration -->
+                <div class="cpx-container">
+                    <div id="onerow"></div>
                 </div>
             </div>
 
@@ -808,6 +922,17 @@
         </div>
     </div>
 
+    <!-- Iframe Container for Offerwalls -->
+    <div id="iframeContainer" class="iframe-container">
+        <div class="iframe-header">
+            <div class="iframe-title">Offerwall</div>
+            <button class="iframe-close" onclick="closeIframe()">×</button>
+        </div>
+        <div class="iframe-content">
+            <iframe id="dashboardIframe" class="dashboard-iframe" src=""></iframe>
+        </div>
+    </div>
+
     <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
@@ -868,6 +993,18 @@
 
     // Session management
     const SESSION_KEY = 'workRewardSession';
+
+    // Offerwall URLs
+    const offerwallUrls = {
+        'cpx': 'https://offers.cpx-research.com/',
+        'excentiv': 'https://excentiv.com/',
+        'wannads': 'https://earn.wannads.com/',
+        'sparkwall': 'https://spark-wall.com/',
+        'offerwallmedia': 'https://offerwallmedia.com/',
+        'timewall': 'https://timewall.io/',
+        'primewall': 'https://primewall.io/',
+        'revtoo': 'https://revtoo.com/'
+    };
 
     // Debug function
     function debugLog(message) {
@@ -1149,6 +1286,9 @@
             eligibilityStatus.className = 'eligibility-status';
         }
         if (cashoutBtn) cashoutBtn.disabled = true;
+        
+        // Initialize CPX Survey if user is logged in
+        initializeCPXSurvey();
         
         debugLog('Dashboard shown for user: ' + currentUser.username);
     }
@@ -1573,6 +1713,96 @@
         modals.forEach(modal => {
             modal.classList.remove('active');
         });
+    }
+
+    // Open offerwall in iframe
+    function openOfferWall(offerwall) {
+        if (!currentUser) {
+            showError('Please login first to access offerwalls');
+            return;
+        }
+        
+        const iframeContainer = document.getElementById('iframeContainer');
+        const dashboardIframe = document.getElementById('dashboardIframe');
+        
+        if (!iframeContainer || !dashboardIframe) {
+            console.error('Iframe elements not found');
+            return;
+        }
+        
+        // Use the username as the account number for offerwalls
+        const accountNumber = currentUser.username;
+        let url = offerwallUrls[offerwall];
+        
+        // Add user ID to URL if needed (some offerwalls require it)
+        if (offerwall === 'cpx') {
+            url = `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}`;
+        } else if (offerwall === 'excentiv') {
+            url = `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`;
+        } else if (offerwall === 'wannads') {
+            url = `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`;
+        }
+        
+        dashboardIframe.src = url;
+        iframeContainer.style.display = 'flex';
+    }
+
+    // Close iframe
+    function closeIframe() {
+        const iframeContainer = document.getElementById('iframeContainer');
+        const dashboardIframe = document.getElementById('dashboardIframe');
+        
+        if (iframeContainer && dashboardIframe) {
+            iframeContainer.style.display = 'none';
+            dashboardIframe.src = '';
+        }
+    }
+
+    // Initialize CPX Survey
+    function initializeCPXSurvey() {
+        if (!currentUser) return;
+        
+        const script1 = {
+            div_id: "onerow",
+            theme_style: 7,
+            order_by: 1,
+            display_mode: 3,
+            limit_surveys: 8
+        };
+         
+        const config = {
+            general_config: {
+                app_id: 8619,
+                ext_user_id: currentUser.username,
+                subid_1: "",
+                subid_2: "",
+            },
+            style_config: {
+                text_color: "#2b2b2b",
+                survey_box: {
+                    topbar_background_color: "#1DA05E",
+                    box_background_color: "white",
+                    rounded_borders: true,
+                    stars_filled: "#ffaf20",
+                    stars_empty: "rgb(221 221 221)",
+                    accent_color_small_box: "#1DA05E",
+                    place_stars_bottom_small_box: true
+                },  
+            },
+            script_config: [script1],
+            debug: false,
+            useIFrame: true,
+            iFramePosition: 3
+        };
+         
+        window.config = config;
+        
+        // Load CPX script if not already loaded
+        if (!document.querySelector('script[src="https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js"]')) {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js';
+            document.head.appendChild(script);
+        }
     }
 
     // Initialize the application
