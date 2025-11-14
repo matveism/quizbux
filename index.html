@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizBux - Work & Earn Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>QuizBux - Professional Work & Earn Platform</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -15,484 +19,953 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Urbanist', sans-serif;
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #13f1fc 0%, #0470dc 100%);
+            --warning-gradient: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: #1a1a2e;
+            --card-hover: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --text-muted: #64748b;
+            --border-color: #2a2a4a;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --glow-primary: 0 0 20px rgba(102, 126, 234, 0.5);
+            --glow-secondary: 0 0 20px rgba(240, 147, 251, 0.5);
         }
 
-        .container {
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
             width: 100%;
-            max-width: 420px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f0f23, #1a1a2e, #0f0f23);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            bottom: -50%;
+            right: -50%;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite reverse;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            padding: 12px 15px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .header-title {
-            color: white;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .header-icons {
+        .logo {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 12px;
         }
 
-        .header-icon {
-            width: 24px;
-            height: 24px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: var(--glow-primary);
         }
 
-        /* Login Form */
-        .login-form {
-            padding: 20px;
-            background: #1a1a1a;
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Login Section */
+        .login-section {
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            justify-content: center;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 380px;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 24px;
         }
 
         .form-label {
             display: block;
-            color: white;
-            font-size: 16px;
+            margin-bottom: 8px;
+            font-size: 14px;
             font-weight: 500;
-            margin-bottom: 5px;
+            color: var(--text-secondary);
         }
 
         .form-input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #6c8ca8;
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.7);
+            padding: 16px 20px;
+            background: rgba(15, 15, 35, 0.6);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
             font-size: 16px;
-            color: white;
+            transition: all 0.3s ease;
+            outline: none;
         }
 
-        .login-button {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            color: white;
-            border: none;
-            padding: 12px 15px;
-            font-size: 18px;
-            font-weight: 500;
-            cursor: pointer;
+        .form-input:focus {
+            border-color: #667eea;
+            background: rgba(15, 15, 35, 0.8);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .login-btn {
             width: 100%;
-            text-align: center;
-            border-radius: 4px;
+            padding: 18px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
-        /* Dashboard */
-        .dashboard {
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Dashboard Section */
+        .dashboard-section {
             display: none;
-            background: #1a1a1a;
+            min-height: 100vh;
+            background: rgba(26, 26, 46, 0.4);
         }
 
-        .user-info {
+        /* User Profile Card */
+        .user-profile {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 24px 20px;
+        }
+
+        .profile-header {
             display: flex;
             align-items: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #5a7a9a;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: var(--primary-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 24px;
-            font-weight: bold;
-            margin-right: 15px;
+            font-weight: 700;
+            box-shadow: var(--glow-primary);
+            position: relative;
         }
 
-        .user-details {
+        .user-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 20px;
+            height: 20px;
+            background: var(--success-color);
+            border-radius: 50%;
+            border: 3px solid var(--card-bg);
+        }
+
+        .user-info {
             flex: 1;
         }
 
         .username {
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .user-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 500;
-            color: white;
         }
 
         .logout-btn {
-            background: none;
-            border: none;
-            color: white;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
             font-size: 14px;
-            text-decoration: underline;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error-color);
+            border-color: var(--error-color);
+        }
+
+        /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            padding: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .stat-card {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-value {
             font-size: 24px;
-            font-weight: bold;
-            color: white;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .stat-label {
-            font-size: 14px;
-            color: white;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
-        .level-section {
-            padding: 0 15px 15px;
+        /* Level Progress */
+        .level-progress {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 12px;
         }
 
         .level-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .level-label {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
-            color: white;
+            color: var(--text-secondary);
         }
 
         .level-value {
             font-size: 16px;
-            font-weight: 500;
-            color: white;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .progress-bar {
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
             overflow: hidden;
+            position: relative;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            border-radius: 10px;
-            transition: width 0.3s;
+            background: var(--primary-gradient);
+            border-radius: 100px;
+            transition: width 0.6s ease;
+            position: relative;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
         }
 
-        /* Work Form */
-        .work-form {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            padding: 15px;
-            margin: 15px;
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
         }
 
-        .form-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: white;
-            margin-bottom: 10px;
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
-        .work-input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #6c8ca8;
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.7);
-            font-size: 16px;
-            color: white;
-            margin-bottom: 10px;
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-            border-radius: 4px;
-        }
-
-        /* Status Badges */
-        .submission-status {
-            margin: 15px;
-        }
-
-        .status-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .status-badges {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .status-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .status-review {
-            background-color: #ff9800;
-            color: white;
-        }
-
-        .status-approved {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .badge-icon {
-            font-size: 12px;
-        }
-
-        /* Bottom Navigation */
+        /* Navigation */
         .bottom-nav {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
             display: flex;
-            background: #1a1a1a;
-            padding: 0;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
         }
 
         .nav-item {
             flex: 1;
+            padding: 16px 8px;
             text-align: center;
-            padding: 12px 0;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
             cursor: pointer;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            border-right: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
 
         .nav-item:last-child {
             border-right: none;
         }
 
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
         .nav-item.active {
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .nav-item.active .nav-icon {
+            color: #667eea;
+        }
+
+        .nav-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item.active .nav-text {
+            color: var(--text-primary);
         }
 
         /* Content Sections */
         .content-section {
             display: none;
-            padding: 15px;
-            background: #1a1a1a;
-            min-height: 400px;
+            padding: 24px 20px;
+            min-height: calc(100vh - 300px);
         }
 
         .content-section.active {
             display: block;
         }
 
-        /* Terms of Use Accordion */
-        .accordion {
-            margin-top: 15px;
+        /* Section Cards */
+        .section-card {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .accordion-item {
-            margin-bottom: 10px;
-            border-radius: 6px;
-            overflow: hidden;
-            background-color: rgba(255, 255, 255, 0.2);
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .accordion-header {
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.3);
-            font-weight: 500;
-            color: white;
-            cursor: pointer;
+        .section-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .accordion-content {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.1);
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
-        .accordion-item.active .accordion-content {
-            padding: 15px;
-            max-height: 500px;
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .accordion-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        .terms-text {
-            color: white;
+        /* Work Form */
+        .work-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 16px;
+            background: rgba(15, 15, 35, 0.6);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
             font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            resize: vertical;
+            transition: all 0.3s ease;
+            outline: none;
+            margin-bottom: 16px;
         }
 
-        .highlight {
-            color: #ff1a1a;
+        .work-textarea:focus {
+            border-color: #667eea;
+            background: rgba(15, 15, 35, 0.8);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Status Badges */
+        .status-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        /* Cashout System */
-        .cashout-form {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 15px;
+        .status-badge.status-review {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
 
+        .status-badge.status-approved {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-badge.status-pending {
+            background: rgba(148, 163, 184, 0.2);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* Cashout Section */
         .reward-select {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #6c8ca8;
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.7);
-            font-size: 16px;
-            color: white;
-            margin-bottom: 10px;
+            padding: 16px;
+            background: rgba(15, 15, 35, 0.6);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 16px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reward-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
         }
 
         .reward-details {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
             display: none;
         }
 
         .reward-detail {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
-            color: white;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .reward-detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .eligibility-status {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            text-align: center;
         }
 
         .eligibility-status.eligible {
-            color: #4CAF50;
-            font-weight: 500;
-            margin-bottom: 10px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .eligibility-status.not-eligible {
-            color: #ff9800;
-            font-weight: 500;
-            margin-bottom: 10px;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
 
-        .cashout-history {
-            margin-top: 20px;
+        /* Cashout History */
+        .cashout-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .cashout-item {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            padding: 12px;
-            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .cashout-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
         }
 
         .cashout-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .cashout-reward {
-            font-weight: 500;
-            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .cashout-status {
-            padding: 3px 8px;
-            border-radius: 12px;
+            padding: 4px 12px;
+            border-radius: 100px;
             font-size: 12px;
             font-weight: 500;
         }
 
-        .status-unsent {
-            background-color: #ff9800;
-            color: white;
+        .cashout-status.status-approved {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
         }
 
-        .status-approved {
-            background-color: #4CAF50;
-            color: white;
+        .cashout-status.status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
         }
 
-        .cashout-details {
+        .cashout-meta {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Earn Section */
+        .offerwall-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .offerwall-btn {
+            padding: 20px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offerwall-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .offerwall-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .offerwall-btn:hover::before {
+            opacity: 0.1;
+        }
+
+        .offerwall-icon {
+            font-size: 24px;
             margin-bottom: 8px;
+            display: block;
         }
 
-        .cashout-detail {
+        .offerwall-name {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Terms Section */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item.active {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #667eea;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: #667eea;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 0 20px 20px;
+        }
+
+        .terms-text {
+            color: var(--text-secondary);
             font-size: 14px;
-            color: white;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
-        .cashout-notes {
-            font-size: 14px;
-            color: white;
-            font-style: italic;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        .terms-text:last-child {
+            margin-bottom: 0;
         }
 
-        /* Modal styles */
+        .terms-highlight {
+            color: var(--warning-color);
+            font-weight: 500;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -501,10 +974,11 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .modal.active {
@@ -512,118 +986,122 @@
         }
 
         .modal-content {
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 95%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            width: 100%;
             max-width: 420px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            padding: 12px 15px;
+            background: var(--primary-gradient);
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .modal-title {
-            color: white;
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            color: white;
         }
 
         .modal-close {
-            background: none;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
+            border-radius: 8px;
             color: white;
-            font-size: 24px;
+            font-size: 18px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .modal-body {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            min-height: 100px;
+            padding: 24px;
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        .modal-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 12px;
         }
 
         .modal-btn {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            color: white;
-            font-size: 20px;
-            font-weight: 500;
-            padding: 15px;
+            flex: 1;
+            padding: 12px;
             border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        /* Loading spinner */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Debug panel */
-        .debug-panel {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            max-width: 300px;
-            display: none;
-            z-index: 1001;
-        }
-
-        /* CPX Survey Styles */
-        .cpx-container {
-            margin: 15px 0;
-        }
-
-        /* Offerwall Buttons */
-        .offerwall-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 15px;
-        }
-
-        .offerwall-btn {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            color: white;
-            border: none;
-            padding: 12px 8px;
-            border-radius: 6px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            text-align: center;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
 
-        .offerwall-btn:hover {
+        .modal-btn.primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .modal-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: 14px;
         }
 
         /* Iframe Container */
@@ -636,34 +1114,48 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
+        }
+
+        .iframe-container.active {
+            display: flex;
             flex-direction: column;
         }
 
         .iframe-header {
-            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 25%, #00008b 60%, #8b0000 100%);
-            padding: 12px 15px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .iframe-title {
-            color: white;
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .iframe-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
+            width: 36px;
+            height: 36px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid var(--error-color);
+            border-radius: 10px;
+            color: var(--error-color);
+            font-size: 18px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .iframe-close:hover {
+            background: rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
         }
 
         .iframe-content {
             flex: 1;
-            padding: 0;
             overflow: hidden;
         }
 
@@ -672,100 +1164,238 @@
             height: 100%;
             border: none;
         }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .main-container {
+                max-width: 100%;
+            }
+
+            .login-card {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            .offerwall-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: calc(100% + 8px);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
     </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <div class="container">
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
         <!-- Header -->
-        <div class="header">
-            <div class="header-title">QuizBux</div>
-            <div class="header-icons">
-                <div class="header-icon"></div>
-                <div class="header-icon"></div>
-                <div class="header-icon"></div>
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">Q</div>
+                    <div class="logo-text">QuizBux</div>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn tooltip" data-tooltip="Notifications" onclick="showNotifications()">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="header-btn tooltip" data-tooltip="Settings" onclick="showSettings()">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="header-btn tooltip" data-tooltip="Help" onclick="showHelp()">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Login Form (Initially Visible) -->
-        <div id="loginForm" class="login-form">
-            <div class="form-group">
-                <label class="form-label" for="username">Username</label>
-                <input type="text" id="username" class="form-input" placeholder="Enter your username">
+        <!-- Login Section -->
+        <section id="loginSection" class="login-section">
+            <div class="login-card fade-in">
+                <div class="login-header">
+                    <h1 class="login-title">Welcome Back</h1>
+                    <p class="login-subtitle">Sign in to continue earning</p>
+                </div>
+                <form id="loginForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <button type="button" class="login-btn" onclick="login()">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
             </div>
-            <div class="form-group">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" class="form-input" placeholder="Enter your password">
-            </div>
-            <button class="login-button" onclick="login()">Login</button>
-        </div>
+        </section>
 
-        <!-- Dashboard (Initially Hidden) -->
-        <div id="dashboard" class="dashboard">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="user-avatar" id="userAvatar">U</div>
-                <div class="user-details">
-                    <div class="username" id="displayUsername">Username</div>
-                    <button class="logout-btn" onclick="logout()">Logout</button>
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" class="dashboard-section">
+            <!-- User Profile -->
+            <div class="user-profile">
+                <div class="profile-header">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <div class="username" id="displayUsername">Username</div>
+                        <div class="user-status">
+                            <i class="fas fa-check-circle"></i>
+                            Active Member
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
                 </div>
-            </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="balanceValue">0.00</div>
-                    <div class="stat-label">WorkRate</div>
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-coins stat-icon"></i>
+                        <div class="stat-value" id="balanceValue">0.00</div>
+                        <div class="stat-label">WorkRate</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star stat-icon"></i>
+                        <div class="stat-value" id="usdBalanceValue">$0.00</div>
+                        <div class="stat-label">PTS</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line stat-icon"></i>
+                        <div class="stat-value" id="workRateValue">0</div>
+                        <div class="stat-label">USD</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy stat-icon"></i>
+                        <div class="stat-value" id="levelValue">0</div>
+                        <div class="stat-label">Level</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="usdBalanceValue">$0.00</div>
-                    <div class="stat-label">PTS</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="workRateValue">0</div>
-                    <div class="stat-label">USD</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="levelValue">0</div>
-                    <div class="stat-label">Level</div>
-                </div>
-            </div>
 
-            <!-- Level Progress -->
-            <div class="level-section">
-                <div class="level-header">
-                    <div class="level-label">Performance Level</div>
-                    <div class="level-value" id="levelPercent">0%</div>
-                </div>
-                <div class="progress-bar">
-                    <div id="levelProgress" class="progress-fill" style="width: 0%"></div>
+                <!-- Level Progress -->
+                <div class="level-progress">
+                    <div class="level-header">
+                        <span class="level-label">Performance Level</span>
+                        <span class="level-value" id="levelPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="levelProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Bottom Navigation -->
-            <div class="bottom-nav">
-                <div class="nav-item active" data-target="work-section">Work</div>
-                <div class="nav-item" data-target="cashout-section">Cashout</div>
-                <div class="nav-item" data-target="earn-section">Earn</div>
-                <div class="nav-item" data-target="terms-section">Terms</div>
-            </div>
+            <nav class="bottom-nav">
+                <div class="nav-item active" data-target="work-section" onclick="navigateToSection('work-section', this)">
+                    <i class="fas fa-briefcase nav-icon"></i>
+                    <span class="nav-text">Work</span>
+                </div>
+                <div class="nav-item" data-target="cashout-section" onclick="navigateToSection('cashout-section', this)">
+                    <i class="fas fa-wallet nav-icon"></i>
+                    <span class="nav-text">Cashout</span>
+                </div>
+                <div class="nav-item" data-target="earn-section" onclick="navigateToSection('earn-section', this)">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    <span class="nav-text">Earn</span>
+                </div>
+                <div class="nav-item" data-target="terms-section" onclick="navigateToSection('terms-section', this)">
+                    <i class="fas fa-file-contract nav-icon"></i>
+                    <span class="nav-text">Terms</span>
+                </div>
+            </nav>
 
             <!-- Content Sections -->
             <!-- Work Section -->
             <div class="content-section active" id="work-section">
-                <!-- Work Submission Form -->
-                <div class="work-form">
-                    <div class="form-title">Submit Work</div>
-                    <textarea id="workInput" class="work-input" placeholder="Enter your work submission here..."></textarea>
-                    <button class="submit-btn" onclick="submitWork()">Submit Work</button>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="section-title">Submit Your Work</h3>
+                    </div>
+                    <textarea id="workInput" class="work-textarea" placeholder="Describe your work submission in detail..."></textarea>
+                    <button class="submit-btn" onclick="submitWork()">
+                        <i class="fas fa-paper-plane"></i> Submit Work
+                    </button>
                 </div>
 
-                <!-- Submission Status -->
-                <div class="submission-status">
-                    <div class="status-title">Submission Status</div>
-                    <div class="status-badges" id="statusBadges">
-                        <!-- Status badges will be added here dynamically -->
-                        <div class="status-badge status-review">
-                            <span class="badge-icon">⏳</span>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="section-title">Submission History</h3>
+                    </div>
+                    <div class="status-container" id="statusBadges">
+                        <div class="status-badge status-pending">
+                            <i class="fas fa-clock"></i>
                             No submissions yet
                         </div>
                     </div>
@@ -774,42 +1404,56 @@
 
             <!-- Cashout Section -->
             <div class="content-section" id="cashout-section">
-                <div class="cashout-form">
-                    <div class="form-title">Request Cashout</div>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="section-title">Request Cashout</h3>
+                    </div>
                     <select id="rewardSelect" class="reward-select" onchange="updateRewardDetails()">
                         <option value="">Select a reward</option>
                         <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
                         <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
+                        <option value="paypal_5" data-workrate="5.00" data-amount="5.00">PayPal Cash $5</option>
+                        <option value="paypal_10" data-workrate="10.00" data-amount="10.00">PayPal Cash $10</option>
+                        <option value="steam_5" data-workrate="5.00" data-amount="5.00">Steam Gift Card $5</option>
                     </select>
                     
                     <div class="reward-details" id="rewardDetails">
                         <div class="reward-detail">
-                            <span>Work Rate Required:</span>
-                            <span id="requiredWorkRate">0</span>
+                            <span class="detail-label">Work Rate Required:</span>
+                            <span class="detail-value" id="requiredWorkRate">0</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Amount USD:</span>
-                            <span id="rewardAmount">$0.00</span>
+                            <span class="detail-label">Amount USD:</span>
+                            <span class="detail-value" id="rewardAmount">$0.00</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Your Work Rate:</span>
-                            <span id="userWorkRate">0</span>
+                            <span class="detail-label">Your Work Rate:</span>
+                            <span class="detail-value" id="userWorkRate">0</span>
                         </div>
                         <div class="reward-detail">
-                            <span>Your USD Balance:</span>
-                            <span id="userBalance">$0.00</span>
+                            <span class="detail-label">Your USD Balance:</span>
+                            <span class="detail-value" id="userBalance">$0.00</span>
                         </div>
                     </div>
                     
                     <div class="eligibility-status" id="eligibilityStatus"></div>
                     
-                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>Request Cashout</button>
+                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>
+                        <i class="fas fa-gift"></i> Request Cashout
+                    </button>
                 </div>
 
-                <div class="cashout-history">
-                    <div class="status-title">Cashout History</div>
-                    <div id="cashoutHistory">
-                        <!-- Cashout history will be added here dynamically -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="section-title">Cashout History</h3>
+                    </div>
+                    <div class="cashout-list" id="cashoutHistory">
                         <div class="cashout-item">
                             <div class="cashout-header">
                                 <div class="cashout-reward">No cashout requests yet</div>
@@ -821,130 +1465,165 @@
 
             <!-- Earn Section -->
             <div class="content-section" id="earn-section">
-                <div class="status-title">Earn More Points</div>
-                <p style="color: white; margin: 15px; text-align: center;">
-                    Complete offers from our partners to earn additional points
-                </p>
-                
-                <div class="offerwall-buttons">
-                    <button class="offerwall-btn" onclick="openOfferWall('cpx')">CPX Surveys</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('excentiv')">Excentiv</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('wannads')">Wannads</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('sparkwall')">Spark Wall</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('offerwallmedia')">Offerwall Media</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('timewall')">Time Wall</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('primewall')">Prime Wall</button>
-                    <button class="offerwall-btn" onclick="openOfferWall('revtoo')">RevToo</button>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="section-title">Earn More Points</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; text-align: center;">
+                        Complete offers from our trusted partners to boost your earnings
+                    </p>
+                    
+                    <div class="offerwall-grid">
+                        <button class="offerwall-btn" onclick="openOfferWall('cpx')">
+                            <i class="fas fa-poll offerwall-icon"></i>
+                            <span class="offerwall-name">CPX Surveys</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('excentiv')">
+                            <i class="fas fa-coins offerwall-icon"></i>
+                            <span class="offerwall-name">Excentiv</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('wannads')">
+                            <i class="fas fa-star offerwall-icon"></i>
+                            <span class="offerwall-name">Wannads</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('sparkwall')">
+                            <i class="fas fa-fire offerwall-icon"></i>
+                            <span class="offerwall-name">Spark Wall</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('offerwallmedia')">
+                            <i class="fas fa-tv offerwall-icon"></i>
+                            <span class="offerwall-name">Offerwall Media</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('timewall')">
+                            <i class="fas fa-clock offerwall-icon"></i>
+                            <span class="offerwall-name">Time Wall</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('primewall')">
+                            <i class="fas fa-crown offerwall-icon"></i>
+                            <span class="offerwall-name">Prime Wall</span>
+                        </button>
+                        <button class="offerwall-btn" onclick="openOfferWall('revtoo')">
+                            <i class="fas fa-gem offerwall-icon"></i>
+                            <span class="offerwall-name">RevToo</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- CPX Survey Integration -->
-                <div class="cpx-container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="section-title">Available Surveys</h3>
+                    </div>
                     <div id="onerow"></div>
                 </div>
             </div>
 
             <!-- Terms Section -->
             <div class="content-section" id="terms-section">
-                <div class="status-title">Terms of Use</div>
-                
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            Work Submission Process
-                            <span class="accordion-icon">▼</span>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="accordion-content">
-                            <div class="terms-text">
-                                Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
-                            </div>
-                            <div class="terms-text highlight">
-                                Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
-                            </div>
-                        </div>
+                        <h3 class="section-title">Terms of Use</h3>
                     </div>
                     
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            Prohibited Activities
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="terms-text">
-                                Spamming the submission form is strictly prohibited. This includes but is not limited to:
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-title">Work Submission Process</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
                             </div>
-                            <ul style="color: white; margin-left: 20px; margin-bottom: 10px;">
-                                <li>Submitting duplicate or near-identical work</li>
-                                <li>Submitting low-quality or irrelevant content</li>
-                                <li>Attempting to game the system through automated submissions</li>
-                            </ul>
-                            <div class="terms-text highlight">
-                                Consequences: If we detect spamming activities, your account will be permanently deleted.
+                            <div class="accordion-content">
+                                <p class="terms-text">
+                                    Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
+                                </p>
+                                <p class="terms-text terms-highlight">
+                                    Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
+                                </p>
                             </div>
                         </div>
-                    </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-title">Prohibited Activities</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p class="terms-text">
+                                    Spamming the submission form is strictly prohibited. This includes but is not limited to:
+                                </p>
+                                <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
+                                    <li>Submitting duplicate or near-identical work</li>
+                                    <li>Submitting low-quality or irrelevant content</li>
+                                    <li>Attempting to game the system through automated submissions</li>
+                                </ul>
+                                <p class="terms-text terms-highlight">
+                                    Consequences: If we detect spamming activities, your account will be permanently deleted.
+                                </p>
+                            </div>
+                        </div>
 
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            PTS Increase Eligibility
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="terms-text">
-                                Here is the rule when you are eligibile to receive instead of 50pts = 100pts. This include:
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-title">PTS Increase Eligibility</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
                             </div>
-                            <ul style="color: white; margin-left: 20px; margin-bottom: 10px;">
-                                <li>Earned at least $1 </li>
-                                <li>Maintain PTS Increasemnt Level (At 100 ONLY)</li>
-                                <li>Less reviews more chances receiving 100pts</li>
-                            </ul>
-                            <div class="terms-text highlight">
-                                Consequences: If you getting more reviews and not getting approved you might not be eligible to reciveve any 100pts if you fall lower than 80%.
+                            <div class="accordion-content">
+                                <p class="terms-text">
+                                    Here is the rule when you are eligible to receive 100pts instead of 50pts:
+                                </p>
+                                <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
+                                    <li>Earned at least $1</li>
+                                    <li>Maintain PTS Increase Level (At 100 ONLY)</li>
+                                    <li>Less reviews more chances receiving 100pts</li>
+                                </ul>
+                                <p class="terms-text terms-highlight">
+                                    Consequences: If you get more reviews and not getting approved, you might not be eligible to receive any 100pts if you fall lower than 80%.
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            Reward System
-                            <span class="accordion-icon">▼</span>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="terms-text">
-                                Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-title">Reward System</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
                             </div>
-                            <div class="terms-text">
-                                The conversion rate between points and USD may vary based on current valuation.
+                            <div class="accordion-content">
+                                <p class="terms-text">
+                                    Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
+                                </p>
+                                <p class="terms-text">
+                                    The conversion rate between points and USD may vary based on current valuation.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Iframe Container for Offerwalls -->
-    <div id="iframeContainer" class="iframe-container">
-        <div class="iframe-header">
-            <div class="iframe-title">Offerwall</div>
-            <button class="iframe-close" onclick="closeIframe()">×</button>
-        </div>
-        <div class="iframe-content">
-            <iframe id="dashboardIframe" class="dashboard-iframe" src=""></iframe>
-        </div>
+        </section>
     </div>
 
     <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Success</div>
-                <button class="modal-close" onclick="closeModal('successModal')">×</button>
+                <h3 class="modal-title">Success</h3>
+                <button class="modal-close" onclick="closeModal('successModal')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <div class="modal-body">
-                <p id="successMessage">Your work has been submitted successfully!</p>
+                <p id="successMessage">Operation completed successfully!</p>
             </div>
-            <div class="modal-buttons">
-                <button class="modal-btn" onclick="closeModal('successModal')">OK</button>
+            <div class="modal-footer">
+                <button class="modal-btn primary" onclick="closeModal('successModal')">OK</button>
             </div>
         </div>
     </div>
@@ -953,33 +1632,41 @@
     <div id="errorModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Error</div>
-                <button class="modal-close" onclick="closeModal('errorModal')">×</button>
+                <h3 class="modal-title">Error</h3>
+                <button class="modal-close" onclick="closeModal('errorModal')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <div class="modal-body">
                 <p id="errorMessage">An error occurred. Please try again.</p>
             </div>
-            <div class="modal-buttons">
-                <button class="modal-btn" onclick="closeModal('errorModal')">OK</button>
+            <div class="modal-footer">
+                <button class="modal-btn primary" onclick="closeModal('errorModal')">OK</button>
             </div>
         </div>
     </div>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="modal">
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
         <div class="modal-content">
-            <div class="modal-body" style="text-align: center;">
-                <div class="loading"></div>
-                <p id="loadingMessage" style="color: white;">Loading...</p>
+            <div class="modal-body loading-overlay">
+                <div class="loading-spinner"></div>
+                <p class="loading-text" id="loadingMessage">Loading...</p>
             </div>
         </div>
     </div>
 
-    <!-- Debug Panel (Hidden by default) -->
-    <div id="debugPanel" class="debug-panel">
-        <div><strong>Debug Information</strong></div>
-        <div id="debugContent"></div>
-        <button onclick="toggleDebug()" style="margin-top: 5px; background: #555; color: white; border: none; padding: 3px 8px; border-radius: 3px;">Hide</button>
+    <!-- Iframe Container for Offerwalls -->
+    <div id="iframeContainer" class="iframe-container">
+        <div class="iframe-header">
+            <h3 class="iframe-title">Offerwall</h3>
+            <button class="iframe-close" onclick="closeIframe()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="iframe-content">
+            <iframe id="dashboardIframe" class="dashboard-iframe" src=""></iframe>
+        </div>
     </div>
 
     <script>
@@ -1006,22 +1693,77 @@
         'revtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`
     };
 
-    // Debug function
-    function debugLog(message) {
-        console.log(message);
-        const debugContent = document.getElementById('debugContent');
-        if (debugContent) {
-            debugContent.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${message}</div>`;
+    // Navigation function
+    function navigateToSection(targetId, navElement) {
+        // Remove active class from all nav items and sections
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Add active class to clicked nav item and target section
+        navElement.classList.add('active');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active');
         }
     }
 
-    function toggleDebug() {
-        const debugPanel = document.getElementById('debugPanel');
-        if (debugPanel.style.display === 'none' || debugPanel.style.display === '') {
-            debugPanel.style.display = 'block';
-        } else {
-            debugPanel.style.display = 'none';
+    // Accordion toggle
+    function toggleAccordion(header) {
+        const item = header.parentElement;
+        const wasActive = item.classList.contains('active');
+        
+        // Close all accordion items
+        document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!wasActive) {
+            item.classList.add('active');
         }
+    }
+
+    // Show loading modal
+    function showLoading(message = 'Loading...') {
+        const loadingModal = document.getElementById('loadingModal');
+        const loadingMessage = document.getElementById('loadingMessage');
+        
+        if (loadingMessage) loadingMessage.textContent = message;
+        if (loadingModal) loadingModal.classList.add('active');
+    }
+
+    // Hide loading modal
+    function hideLoading() {
+        const loadingModal = document.getElementById('loadingModal');
+        if (loadingModal) loadingModal.classList.remove('active');
+    }
+
+    // Show success modal
+    function showSuccess(message) {
+        const successMessage = document.getElementById('successMessage');
+        const successModal = document.getElementById('successModal');
+        
+        if (successMessage) successMessage.textContent = message;
+        if (successModal) successModal.classList.add('active');
+    }
+
+    // Show error modal
+    function showError(message) {
+        const errorMessage = document.getElementById('errorMessage');
+        const errorModal = document.getElementById('errorModal');
+        
+        if (errorMessage) errorMessage.textContent = message;
+        if (errorModal) errorModal.classList.add('active');
+    }
+
+    // Close modal
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.remove('active');
     }
 
     // Check for existing session on page load
@@ -1030,15 +1772,12 @@
         if (savedSession) {
             try {
                 const sessionData = JSON.parse(savedSession);
-                // Check if session is still valid (less than 24 hours old)
                 const sessionAge = Date.now() - sessionData.timestamp;
                 const twentyFourHours = 24 * 60 * 60 * 1000;
                 
                 if (sessionAge < twentyFourHours) {
-                    // Session is valid, attempt to restore
                     attemptSessionRestore(sessionData.username);
                 } else {
-                    // Session expired, clear it
                     clearSession();
                 }
             } catch (error) {
@@ -1052,21 +1791,17 @@
     async function attemptSessionRestore(username) {
         try {
             showLoading('Restoring your session...');
-            debugLog(`Attempting to restore session for: ${username}`);
             
             const formData = new FormData();
             formData.append('action', 'getUserData');
             formData.append('username', username);
             
-            debugLog(`Sending request to: ${SCRIPT_URL}`);
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: formData
             });
             
-            debugLog(`Response status: ${response.status}`);
             const result = await response.json();
-            debugLog(`Response data: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 currentUser = result.user;
@@ -1074,20 +1809,16 @@
                 userCashouts = result.cashouts || [];
                 hideLoading();
                 showDashboard();
-                debugLog('Session restored successfully');
             } else {
-                // User data not found or error, clear session
                 hideLoading();
                 clearSession();
                 showError('Session expired. Please login again.');
-                debugLog('Session restore failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Session restore error:', error);
             hideLoading();
             clearSession();
             showError('Network error during session restore.');
-            debugLog('Session restore error: ' + error.message);
         }
     }
 
@@ -1108,26 +1839,7 @@
         userCashouts = [];
     }
 
-    // Show loading indicator
-    function showLoading(message = 'Loading...') {
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const loadingMessage = document.getElementById('loadingMessage');
-        
-        if (loadingOverlay && loadingMessage) {
-            loadingMessage.textContent = message;
-            loadingOverlay.classList.add('active');
-        }
-    }
-
-    // Hide loading indicator
-    function hideLoading() {
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        if (loadingOverlay) {
-            loadingOverlay.classList.remove('active');
-        }
-    }
-
-    // Login function with improved error handling
+    // Login function
     async function login() {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -1139,18 +1851,14 @@
         
         try {
             showLoading('Signing in...');
-            debugLog(`Attempting login for user: ${username}`);
             
             const formData = new FormData();
             formData.append('action', 'login');
             formData.append('username', username);
             formData.append('password', password);
             
-            debugLog(`Sending login request to: ${SCRIPT_URL}`);
-            
-            // Add timeout to fetch request
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
             
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
@@ -1160,29 +1868,23 @@
             
             clearTimeout(timeoutId);
             
-            debugLog(`Login response status: ${response.status}`);
-            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const result = await response.json();
-            debugLog(`Login response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
                 currentUser = result.user;
                 userSubmissions = result.submissions || [];
                 userCashouts = result.cashouts || [];
                 
-                // Save session
                 saveSession(username);
                 hideLoading();
                 showDashboard();
-                debugLog('Login successful');
             } else {
                 hideLoading();
                 showError(result.message || 'Invalid username or password.');
-                debugLog('Login failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -1190,10 +1892,8 @@
             
             if (error.name === 'AbortError') {
                 showError('Request timeout. Please check your connection and try again.');
-                debugLog('Login timeout');
             } else {
                 showError('Network error. Please check your connection and try again.');
-                debugLog('Login network error: ' + error.message);
             }
         }
     }
@@ -1203,36 +1903,25 @@
         clearSession();
         
         // Reset forms
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const workInput = document.getElementById('workInput');
-        const rewardSelect = document.getElementById('rewardSelect');
-        
-        if (usernameInput) usernameInput.value = '';
-        if (passwordInput) passwordInput.value = '';
-        if (workInput) workInput.value = '';
-        if (rewardSelect) rewardSelect.value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('workInput').value = '';
+        document.getElementById('rewardSelect').value = '';
         
         // Show login form
-        const loginForm = document.getElementById('loginForm');
-        const dashboard = document.getElementById('dashboard');
+        document.getElementById('loginSection').style.display = 'flex';
+        document.getElementById('dashboardSection').style.display = 'none';
         
-        if (loginForm) loginForm.style.display = 'block';
-        if (dashboard) dashboard.style.display = 'none';
-        
-        // Hide any modals
-        closeAllModals();
-        
-        debugLog('User logged out');
+        // Close any modals
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
     }
 
     // Show dashboard
     function showDashboard() {
-        const loginForm = document.getElementById('loginForm');
-        const dashboard = document.getElementById('dashboard');
-        
-        if (loginForm) loginForm.style.display = 'none';
-        if (dashboard) dashboard.style.display = 'block';
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('dashboardSection').style.display = 'block';
         
         if (!currentUser) {
             showError('No user data available.');
@@ -1274,23 +1963,14 @@
         updateCashoutHistory();
         
         // Reset reward selection
-        const rewardSelect = document.getElementById('rewardSelect');
-        const rewardDetails = document.getElementById('rewardDetails');
-        const eligibilityStatus = document.getElementById('eligibilityStatus');
-        const cashoutBtn = document.getElementById('cashoutBtn');
-        
-        if (rewardSelect) rewardSelect.value = '';
-        if (rewardDetails) rewardDetails.style.display = 'none';
-        if (eligibilityStatus) {
-            eligibilityStatus.textContent = '';
-            eligibilityStatus.className = 'eligibility-status';
-        }
-        if (cashoutBtn) cashoutBtn.disabled = true;
+        document.getElementById('rewardSelect').value = '';
+        document.getElementById('rewardDetails').style.display = 'none';
+        document.getElementById('eligibilityStatus').textContent = '';
+        document.getElementById('eligibilityStatus').className = 'eligibility-status';
+        document.getElementById('cashoutBtn').disabled = true;
         
         // Initialize CPX Survey if user is logged in
         initializeCPXSurvey();
-        
-        debugLog('Dashboard shown for user: ' + currentUser.username);
     }
 
     // Submit work function
@@ -1310,7 +1990,6 @@
         
         try {
             showLoading('Submitting your work...');
-            debugLog(`Submitting work for user: ${currentUser.username}`);
             
             const formData = new FormData();
             formData.append('action', 'submitWork');
@@ -1328,25 +2007,17 @@
             
             clearTimeout(timeoutId);
             
-            debugLog(`Work submission response status: ${response.status}`);
             const result = await response.json();
-            debugLog(`Work submission response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
-                // Refresh user data to get updated balances
                 await refreshUserData();
                 
-                // Clear input
                 if (workInput) workInput.value = '';
                 hideLoading();
-                
-                // Show success message
                 showSuccess('Your work has been submitted successfully!');
-                debugLog('Work submitted successfully');
             } else {
                 hideLoading();
                 showError(result.message || 'Failed to submit work.');
-                debugLog('Work submission failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Submit work error:', error);
@@ -1354,10 +2025,8 @@
             
             if (error.name === 'AbortError') {
                 showError('Request timeout. Please try again.');
-                debugLog('Work submission timeout');
             } else {
                 showError('Network error. Please try again.');
-                debugLog('Work submission network error: ' + error.message);
             }
         }
     }
@@ -1367,8 +2036,6 @@
         if (!currentUser) return;
         
         try {
-            debugLog('Refreshing user data');
-            
             const formData = new FormData();
             formData.append('action', 'getUserData');
             formData.append('username', currentUser.username);
@@ -1390,14 +2057,10 @@
                 currentUser = result.user;
                 userSubmissions = result.submissions || [];
                 userCashouts = result.cashouts || [];
-                showDashboard(); // Refresh the display
-                debugLog('User data refreshed successfully');
-            } else {
-                debugLog('User data refresh failed: ' + (result.message || 'Unknown error'));
+                showDashboard();
             }
         } catch (error) {
             console.error('Refresh user data error:', error);
-            debugLog('User data refresh error: ' + error.message);
         }
     }
 
@@ -1409,7 +2072,7 @@
         statusBadges.innerHTML = '';
         
         if (userSubmissions.length === 0) {
-            statusBadges.innerHTML = '<div class="status-badge status-review"><span class="badge-icon">⏳</span> No submissions yet</div>';
+            statusBadges.innerHTML = '<div class="status-badge status-pending"><i class="fas fa-clock"></i> No submissions yet</div>';
             return;
         }
         
@@ -1417,11 +2080,11 @@
             const badge = document.createElement('div');
             badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
             
-            const statusIcon = submission.status === 'APPROVED' ? '✅' : '⏳';
+            const statusIcon = submission.status === 'APPROVED' ? 'fas fa-check-circle' : 'fas fa-clock';
             const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
             
             badge.innerHTML = `
-                <span class="badge-icon">${statusIcon}</span>
+                <i class="${statusIcon}"></i>
                 ${statusText}
             `;
             
@@ -1429,31 +2092,7 @@
         });
     }
 
-    // Navigation between sections
-    function setupNavigation() {
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove active class from all nav items and content sections
-                document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Add active class to clicked nav item and corresponding section
-                this.classList.add('active');
-                
-                const targetId = this.getAttribute('data-target');
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-            });
-        });
-    }
-
-    // Update reward details when selection changes
+    // Update reward details
     function updateRewardDetails() {
         if (!currentUser) return;
         
@@ -1469,15 +2108,10 @@
             const workRateRequired = selectedOption.getAttribute('data-workrate');
             const amount = selectedOption.getAttribute('data-amount');
             
-            const requiredWorkRate = document.getElementById('requiredWorkRate');
-            const rewardAmount = document.getElementById('rewardAmount');
-            const userWorkRate = document.getElementById('userWorkRate');
-            const userBalance = document.getElementById('userBalance');
-            
-            if (requiredWorkRate) requiredWorkRate.textContent = workRateRequired;
-            if (rewardAmount) rewardAmount.textContent = `$${amount}`;
-            if (userWorkRate) userWorkRate.textContent = currentUser.workRate || '0';
-            if (userBalance) userBalance.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
+            document.getElementById('requiredWorkRate').textContent = workRateRequired;
+            document.getElementById('rewardAmount').textContent = `$${amount}`;
+            document.getElementById('userWorkRate').textContent = currentUser.workRate || '0';
+            document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
             
             details.style.display = 'block';
             
@@ -1488,10 +2122,10 @@
             
             // Update eligibility status
             if (isEligible) {
-                eligibilityStatus.textContent = "✓ You are eligible for this reward!";
-                eligibilityStatus.className = "eligibility-status eligible";
+                eligibilityStatus.innerHTML = '<i class="fas fa-check-circle"></i> You are eligible for this reward!';
+                eligibilityStatus.className = 'eligibility-status eligible';
             } else {
-                let message = "You are not eligible for this reward. ";
+                let message = 'You are not eligible for this reward. ';
                 if (!workRateEligible && !balanceEligible) {
                     message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
                 } else if (!workRateEligible) {
@@ -1499,11 +2133,10 @@
                 } else {
                     message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
                 }
-                eligibilityStatus.textContent = message;
-                eligibilityStatus.className = "eligibility-status not-eligible";
+                eligibilityStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+                eligibilityStatus.className = 'eligibility-status not-eligible';
             }
             
-            // Enable/disable cashout button based on requirements
             cashoutBtn.disabled = !isEligible;
         } else {
             details.style.display = 'none';
@@ -1533,7 +2166,6 @@
         
         try {
             showLoading('Processing your cashout request...');
-            debugLog(`Submitting cashout for user: ${currentUser.username}, reward: ${rewardName}`);
             
             const formData = new FormData();
             formData.append('action', 'submitCashout');
@@ -1553,34 +2185,22 @@
             
             clearTimeout(timeoutId);
             
-            debugLog(`Cashout response status: ${response.status}`);
             const result = await response.json();
-            debugLog(`Cashout response: ${JSON.stringify(result)}`);
             
             if (result.status === 'success') {
-                // Refresh user data to get updated balance
                 await refreshUserData();
                 
-                // Reset form
-                if (select) select.value = '';
-                const rewardDetails = document.getElementById('rewardDetails');
-                const eligibilityStatus = document.getElementById('eligibilityStatus');
-                const cashoutBtn = document.getElementById('cashoutBtn');
-                
-                if (rewardDetails) rewardDetails.style.display = 'none';
-                if (eligibilityStatus) {
-                    eligibilityStatus.textContent = '';
-                    eligibilityStatus.className = 'eligibility-status';
-                }
-                if (cashoutBtn) cashoutBtn.disabled = true;
+                select.value = '';
+                document.getElementById('rewardDetails').style.display = 'none';
+                document.getElementById('eligibilityStatus').textContent = '';
+                document.getElementById('eligibilityStatus').className = 'eligibility-status';
+                document.getElementById('cashoutBtn').disabled = true;
                 
                 hideLoading();
                 showSuccess('Your cashout request has been submitted successfully!');
-                debugLog('Cashout submitted successfully');
             } else {
                 hideLoading();
                 showError(result.message || 'Failed to submit cashout request.');
-                debugLog('Cashout failed: ' + (result.message || 'Unknown error'));
             }
         } catch (error) {
             console.error('Submit cashout error:', error);
@@ -1588,15 +2208,13 @@
             
             if (error.name === 'AbortError') {
                 showError('Request timeout. Please try again.');
-                debugLog('Cashout timeout');
             } else {
                 showError('Network error. Please try again.');
-                debugLog('Cashout network error: ' + error.message);
             }
         }
     }
 
-    // Update cashout history display
+    // Update cashout history
     function updateCashoutHistory() {
         const cashoutHistory = document.getElementById('cashoutHistory');
         if (!cashoutHistory) return;
@@ -1620,25 +2238,22 @@
             reward.textContent = cashout.reward;
             
             const status = document.createElement('div');
-            status.className = `cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-unsent'}`;
+            status.className = `cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-pending'}`;
             status.textContent = cashout.status;
             
             header.appendChild(reward);
             header.appendChild(status);
             
             const details = document.createElement('div');
-            details.className = 'cashout-details';
+            details.className = 'cashout-meta';
             
             const amount = document.createElement('div');
-            amount.className = 'cashout-detail';
             amount.textContent = `Amount: $${cashout.amount}`;
             
             const workRate = document.createElement('div');
-            workRate.className = 'cashout-detail';
             workRate.textContent = `Work Rate: ${cashout.workRateRequired}`;
             
             const date = document.createElement('div');
-            date.className = 'cashout-detail';
             date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
             
             details.appendChild(amount);
@@ -1648,7 +2263,6 @@
             item.appendChild(header);
             item.appendChild(details);
             
-            // Add notes if available
             if (cashout.notes) {
                 const notes = document.createElement('div');
                 notes.className = 'cashout-notes';
@@ -1657,61 +2271,6 @@
             }
             
             cashoutHistory.appendChild(item);
-        });
-    }
-
-    // Toggle accordion for terms section
-    function setupAccordion() {
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const item = this.parentElement;
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('.accordion-icon');
-                
-                if (item.classList.contains('active')) {
-                    content.style.maxHeight = '0';
-                    icon.style.transform = 'rotate(0deg)';
-                    item.classList.remove('active');
-                } else {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                    icon.style.transform = 'rotate(180deg)';
-                    item.classList.add('active');
-                }
-            });
-        });
-    }
-
-    // Show success modal
-    function showSuccess(message) {
-        const successMessage = document.getElementById('successMessage');
-        const successModal = document.getElementById('successModal');
-        
-        if (successMessage) successMessage.textContent = message;
-        if (successModal) successModal.classList.add('active');
-    }
-
-    // Show error modal
-    function showError(message) {
-        const errorMessage = document.getElementById('errorMessage');
-        const errorModal = document.getElementById('errorModal');
-        
-        if (errorMessage) errorMessage.textContent = message;
-        if (errorModal) errorModal.classList.add('active');
-    }
-
-    // Close modal
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-        }
-    }
-
-    // Close all modals
-    function closeAllModals() {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            modal.classList.remove('active');
         });
     }
 
@@ -1730,12 +2289,11 @@
             return;
         }
         
-        // Use the username as the account number for offerwalls
         const accountNumber = currentUser.username;
         const url = offerwallUrls[offerwall](accountNumber);
         
         dashboardIframe.src = url;
-        iframeContainer.style.display = 'flex';
+        iframeContainer.classList.add('active');
     }
 
     // Close iframe
@@ -1744,7 +2302,7 @@
         const dashboardIframe = document.getElementById('dashboardIframe');
         
         if (iframeContainer && dashboardIframe) {
-            iframeContainer.style.display = 'none';
+            iframeContainer.classList.remove('active');
             dashboardIframe.src = '';
         }
     }
@@ -1788,7 +2346,6 @@
          
         window.config = config;
         
-        // Load CPX script if not already loaded
         if (!document.querySelector('script[src="https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js"]')) {
             const script = document.createElement('script');
             script.src = 'https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js';
@@ -1796,14 +2353,21 @@
         }
     }
 
+    // Header action functions
+    function showNotifications() {
+        showSuccess('No new notifications');
+    }
+
+    function showSettings() {
+        showSuccess('Settings panel coming soon!');
+    }
+
+    function showHelp() {
+        showSuccess('Help center coming soon!');
+    }
+
     // Initialize the application
     function initApp() {
-        // Set up navigation
-        setupNavigation();
-        
-        // Set up accordion
-        setupAccordion();
-        
         // Set up enter key for login
         const usernameInput = document.getElementById('username');
         const passwordInput = document.getElementById('password');
@@ -1824,17 +2388,32 @@
         // Check for existing session
         checkExistingSession();
         
-        // Show debug panel if URL has debug parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('debug') === 'true') {
-            document.getElementById('debugPanel').style.display = 'block';
-        }
-        
-        debugLog('Application initialized');
+        console.log('QuizBux Professional Platform initialized');
     }
 
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', initApp);
+
+    // Add animation classes on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.section-card, .stat-card, .cashout-item').forEach(card => {
+            observer.observe(card);
+        });
+    });
     </script>
 </body>
 </html>
