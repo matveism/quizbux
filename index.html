@@ -4,1629 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizBux - Professional Work & Earn Platform</title>
+    <title id="app-title">QuizBux - Professional Work & Earn Platform</title>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --success-gradient: linear-gradient(135deg, #13f1fc 0%, #0470dc 100%);
-            --warning-gradient: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
-            --dark-bg: #0a0a0f;
-            --card-bg: rgba(26, 26, 46, 0.9);
-            --card-hover: rgba(26, 26, 46, 0.95);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #a8b2d1;
-            --text-muted: #64748b;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --error-color: #ef4444;
-            --shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.4);
-            --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
-            --shadow-inset: inset 0 2px 4px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -2;
-            background: 
-                radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at center, rgba(15, 15, 35, 0.8) 0%, var(--dark-bg) 100%);
-            animation: bgPulse 20s ease-in-out infinite;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 300%;
-            height: 300%;
-            top: -100%;
-            left: -100%;
-            background: 
-                conic-gradient(from 0deg at 50% 50%, 
-                    transparent 0deg, 
-                    rgba(102, 126, 234, 0.1) 60deg, 
-                    transparent 120deg, 
-                    rgba(240, 147, 251, 0.1) 180deg, 
-                    transparent 240deg, 
-                    rgba(102, 126, 234, 0.1) 300deg, 
-                    transparent 360deg);
-            animation: rotate3D 40s linear infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { 
-                background: 
-                    radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at bottom right, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at center, rgba(15, 15, 35, 0.8) 0%, var(--dark-bg) 100%);
-            }
-            50% { 
-                background: 
-                    radial-gradient(ellipse at top right, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at bottom left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at center, rgba(15, 15, 35, 0.9) 0%, var(--dark-bg) 100%);
-            }
-        }
-
-        @keyframes rotate3D {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        /* Main Container */
-        .main-container {
-            max-width: 480px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 15, 35, 0.9) 100%);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-img {
-            height: 40px;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
-            transition: all 0.3s ease;
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 6px 12px rgba(102, 126, 234, 0.5));
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .header-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 16px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .header-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-            color: var(--text-primary);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-
-        .header-btn:hover::before {
-            opacity: 0.1;
-        }
-
-        /* Login Section */
-        .login-section {
-            padding: 60px 20px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: calc(100vh - 80px);
-            justify-content: center;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 380px;
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 15, 35, 0.9) 100%);
-            backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px 32px;
-            box-shadow: var(--shadow-3d);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
-            background-size: 200% 100%;
-            animation: gradientMove 3s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .login-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .login-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .login-subtitle {
-            color: var(--text-secondary);
-            font-size: 16px;
-            font-weight: 400;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 18px 20px;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(10, 10, 15, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--glass-border);
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(10, 10, 15, 0.9) 100%);
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2), 0 10px 30px rgba(102, 126, 234, 0.2);
-            transform: scale(1.02);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 100%;
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .login-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-
-        .login-btn:hover::before {
-            left: 100%;
-        }
-
-        .login-btn:active {
-            transform: translateY(-2px) scale(0.98);
-        }
-
-        /* Dashboard Section */
-        .dashboard-section {
-            display: none;
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.3) 0%, rgba(15, 15, 35, 0.3) 100%);
-        }
-
-        /* User Profile */
-        .user-profile {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 15, 35, 0.9) 100%);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 24px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .user-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 800;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .user-avatar::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-            animation: avatarGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes avatarGlow {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
-        }
-
-        .user-avatar::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            right: -4px;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border-radius: 50%;
-            border: 4px solid var(--card-bg);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-            animation: pulseBadge 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseBadge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .user-info {
-            flex: 1;
-        }
-
-        .username {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #ffffff 0%, #a8b2d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .user-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-        }
-
-        .logout-btn {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.1) 100%);
-            color: var(--error-color);
-            border-color: rgba(239, 68, 68, 0.4);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.2);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-card:hover::before {
-            opacity: 1;
-        }
-
-        .stat-icon {
-            font-size: 24px;
-            margin-bottom: 12px;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 6px;
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #a8b2d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Level Progress */
-        .level-progress {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .level-progress:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .level-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .level-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .level-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            border-radius: 100px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 100%;
-            border-radius: 100px;
-            transition: width 0.8s ease;
-            position: relative;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-            animation: progressGradient 3s ease infinite;
-        }
-
-        @keyframes progressGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Bottom Navigation */
-        .bottom-nav {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 15, 35, 0.9) 100%);
-            backdrop-filter: blur(25px);
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            position: sticky;
-            bottom: 0;
-            z-index: 100;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-item {
-            flex: 1;
-            padding: 18px 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-right: 1px solid var(--glass-border);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-item:last-child {
-            border-right: none;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-item:hover {
-            transform: translateY(-2px);
-        }
-
-        .nav-item:hover::before {
-            opacity: 0.5;
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(240, 147, 251, 0.1) 100%);
-            transform: translateY(-4px);
-        }
-
-        .nav-item.active::before {
-            top: 0;
-            left: 20%;
-            right: 20%;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            border-radius: 0 0 3px 3px;
-            opacity: 1;
-        }
-
-        .nav-icon {
-            font-size: 20px;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .nav-item.active .nav-icon {
-            color: #667eea;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.4));
-        }
-
-        .nav-text {
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-item.active .nav-text {
-            color: var(--text-primary);
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            padding: 28px 20px;
-            min-height: calc(100vh - 340px);
-        }
-
-        .content-section.active {
-            display: block;
-            animation: sectionFadeIn 0.5s ease-out;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Cards */
-        .section-card {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 15, 35, 0.8) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .section-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .section-card:hover::before {
-            opacity: 1;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .section-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .section-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #ffffff 0%, #a8b2d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Form Elements */
-        .work-textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(10, 10, 15, 0.8) 100%);
-            backdrop-filter: blur(15px);
-            border: 2px solid var(--glass-border);
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-size: 14px;
-            resize: vertical;
-            transition: all 0.3s ease;
-            outline: none;
-            margin-bottom: 16px;
-        }
-
-        .work-textarea:focus {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(10, 10, 15, 0.9) 100%);
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2), 0 10px 25px rgba(102, 126, 234, 0.2);
-            transform: scale(1.01);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 100%;
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            animation: none;
-        }
-
-        /* Status Badges */
-        .status-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .status-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .status-badge:hover {
-            transform: translateY(-2px) scale(1.05);
-        }
-
-        .status-badge:hover::before {
-            opacity: 1;
-        }
-
-        .status-badge.status-review {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
-            color: var(--warning-color);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
-        }
-
-        .status-badge.status-approved {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
-        }
-
-        .status-badge.status-pending {
-            background: linear-gradient(135deg, rgba(148, 163, 184, 0.2) 0%, rgba(148, 163, 184, 0.1) 100%);
-            color: var(--text-muted);
-            border: 1px solid rgba(148, 163, 184, 0.3);
-            box-shadow: 0 8px 20px rgba(148, 163, 184, 0.1);
-        }
-
-        /* Reward Select */
-        .reward-select {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(10, 10, 15, 0.8) 100%);
-            backdrop-filter: blur(15px);
-            border: 2px solid var(--glass-border);
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            outline: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .reward-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2), 0 10px 25px rgba(102, 126, 234, 0.2);
-            transform: scale(1.01);
-        }
-
-        .reward-details {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            display: none;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .reward-detail {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .reward-detail:last-child {
-            border-bottom: none;
-        }
-
-        .detail-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .detail-value {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Eligibility Status */
-        .eligibility-status {
-            padding: 14px 16px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .eligibility-status.eligible {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
-        }
-
-        .eligibility-status.not-eligible {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
-            color: var(--warning-color);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
-        }
-
-        /* Cashout History */
-        .cashout-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .cashout-item {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cashout-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .cashout-item:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-            transform: translateX(4px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .cashout-item:hover::before {
-            opacity: 1;
-        }
-
-        .cashout-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .cashout-reward {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .cashout-status {
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-
-        .cashout-status.status-approved {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .cashout-status.status-pending {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
-            color: var(--warning-color);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-
-        .cashout-meta {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        /* Offerwall Grid */
-        .offerwall-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .offerwall-btn {
-            padding: 20px 12px;
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .offerwall-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .offerwall-btn:hover {
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-
-        .offerwall-btn:hover::before {
-            opacity: 0.1;
-        }
-
-        .offerwall-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: block;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-        }
-
-        .offerwall-btn:hover .offerwall-icon {
-            transform: scale(1.2);
-        }
-
-        .offerwall-name {
-            position: relative;
-            z-index: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Accordion */
-        .accordion {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .accordion-item {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-item.active {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-            border-color: rgba(102, 126, 234, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .accordion-header {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-        }
-
-        .accordion-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .accordion-icon {
-            font-size: 18px;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-            color: #667eea;
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 500px;
-            padding: 0 20px 20px;
-        }
-
-        .terms-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .terms-text:last-child {
-            margin-bottom: 0;
-        }
-
-        .terms-highlight {
-            color: var(--warning-color);
-            font-weight: 600;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-            animation: modalFadeIn 0.3s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 15, 35, 0.95) 100%);
-            backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-close {
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1) rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 24px;
-            color: var(--text-primary);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .modal-footer {
-            padding: 20px;
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            gap: 12px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-        }
-
-        .modal-btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-btn.primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .modal-btn.secondary {
-            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.05) 100%);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-        }
-
-        .modal-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Loading Spinner */
-        .loading-overlay {
-            text-align: center;
-        }
-
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
-            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Iframe Container */
-        .iframe-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-        }
-
-        .iframe-container.active {
-            display: flex;
-            flex-direction: column;
-            animation: iframeSlideIn 0.3s ease;
-        }
-
-        @keyframes iframeSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .iframe-header {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 15, 35, 0.95) 100%);
-            backdrop-filter: blur(25px);
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .iframe-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .iframe-close {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.1) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            border-radius: 10px;
-            color: var(--error-color);
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .iframe-close:hover {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.2) 100%);
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
-        }
-
-        .iframe-content {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .dashboard-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 12px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .main-container {
-                max-width: 100%;
-            }
-
-            .login-card {
-                margin: 20px;
-                padding: 32px 24px;
-            }
-
-            .offerwall-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .section-card {
-                padding: 20px;
-            }
-        }
-
-        /* Tooltips */
-        .tooltip {
-            position: relative;
-        }
-
-        .tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-
-        .tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: calc(100% + 8px);
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        /* Enhanced Animations */
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.7;
-                transform: scale(1.05);
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-out;
-        }
+    <!-- Dynamic CSS will be injected here -->
+    <style id="dynamic-styles">
+        /* Initial styles - will be overridden by Google Sheets */
     </style>
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    
+    <!-- External resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation"></div>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" id="loadingText">Initializing platform...</div>
+    </div>
 
     <!-- Main Container -->
-    <div class="main-container">
+    <div class="main-container" id="mainContainer" style="display: none;">
         <!-- Header -->
-        <header class="header">
+        <header class="header" id="header">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://i.postimg.cc/8Cs0zjMq/Screenshot-2025-11-13-at-7-09-50-PM-removebg-preview.png" alt="QuizBux Logo" width="200" class="logo-img">
+                    <img id="logo-img" src="" alt="Platform Logo" class="logo-img">
                 </div>
-                <div class="header-actions">
-                    <button class="header-btn tooltip" data-tooltip="Notifications" onclick="showNotifications()">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <button class="header-btn tooltip" data-tooltip="Settings" onclick="showSettings()">
-                        <i class="fas fa-cog"></i>
-                    </button>
-                    <button class="header-btn tooltip" data-tooltip="Help" onclick="showHelp()">
-                        <i class="fas fa-question-circle"></i>
-                    </button>
+                <div class="header-actions" id="header-actions">
+                    <!-- Dynamic header buttons will be inserted here -->
                 </div>
             </div>
         </header>
 
         <!-- Login Section -->
         <section id="loginSection" class="login-section">
-            <div class="login-card fade-in">
+            <div class="login-card" id="loginCard">
                 <div class="login-header">
-                    <h1 class="login-title">Welcome Back</h1>
-                    <p class="login-subtitle">Enter the future of earning</p>
+                    <h1 class="login-title" id="loginTitle">Welcome Back</h1>
+                    <p class="login-subtitle" id="loginSubtitle">Enter the future of earning</p>
                 </div>
                 <form id="loginForm" onsubmit="return false;">
                     <div class="form-group">
@@ -1637,8 +52,8 @@
                         <label class="form-label" for="password">Password</label>
                         <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
                     </div>
-                    <button type="button" class="login-btn" onclick="login()">
-                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    <button type="button" class="login-btn" id="loginBtn" onclick="login()">
+                        <i class="fas fa-sign-in-alt"></i> <span id="loginBtnText">Sign In</span>
                     </button>
                 </form>
             </div>
@@ -1647,368 +62,60 @@
         <!-- Dashboard Section -->
         <section id="dashboardSection" class="dashboard-section">
             <!-- User Profile -->
-            <div class="user-profile">
+            <div class="user-profile" id="userProfile">
                 <div class="profile-header">
                     <div class="user-avatar" id="userAvatar">U</div>
                     <div class="user-info">
                         <div class="username" id="displayUsername">Username</div>
-                        <div class="user-status">
+                        <div class="user-status" id="userStatus">
                             <i class="fas fa-check-circle"></i>
-                            Active Member
+                            <span id="userStatusText">Active Member</span>
                         </div>
                     </div>
-                    <button class="logout-btn" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                    <button class="logout-btn" id="logoutBtn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> <span id="logoutBtnText">Logout</span>
                     </button>
                 </div>
 
                 <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <i class="fas fa-coins stat-icon"></i>
-                        <div class="stat-value" id="balanceValue">0.00</div>
-                        <div class="stat-label">WorkRate</div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-star stat-icon"></i>
-                        <div class="stat-value" id="usdBalanceValue">$0.00</div>
-                        <div class="stat-label">PTS</div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-chart-line stat-icon"></i>
-                        <div class="stat-value" id="workRateValue">0</div>
-                        <div class="stat-label">USD</div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-trophy stat-icon"></i>
-                        <div class="stat-value" id="levelValue">0</div>
-                        <div class="stat-label">Level</div>
-                    </div>
+                <div class="stats-grid" id="statsGrid">
+                    <!-- Dynamic stat cards will be inserted here -->
                 </div>
 
                 <!-- Level Progress -->
-                <div class="level-progress">
+                <div class="level-progress" id="levelProgress">
                     <div class="level-header">
-                        <span class="level-label">Performance Level</span>
+                        <span class="level-label" id="levelLabel">Performance Level</span>
                         <span class="level-value" id="levelPercent">0%</span>
                     </div>
                     <div class="progress-bar">
-                        <div id="levelProgress" class="progress-fill" style="width: 0%"></div>
+                        <div id="levelProgressBar" class="progress-fill" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Bottom Navigation -->
-            <nav class="bottom-nav">
-                <div class="nav-item active" data-target="work-section" onclick="navigateToSection('work-section', this)">
-                    <i class="fas fa-briefcase nav-icon"></i>
-                    <span class="nav-text">Work</span>
-                </div>
-                <div class="nav-item" data-target="cashout-section" onclick="navigateToSection('cashout-section', this)">
-                    <i class="fas fa-wallet nav-icon"></i>
-                    <span class="nav-text">Cashout</span>
-                </div>
-                <div class="nav-item" data-target="earn-section" onclick="navigateToSection('earn-section', this)">
-                    <i class="fas fa-chart-line nav-icon"></i>
-                    <span class="nav-text">Earn</span>
-                </div>
-                <div class="nav-item" data-target="terms-section" onclick="navigateToSection('terms-section', this)">
-                    <i class="fas fa-file-contract nav-icon"></i>
-                    <span class="nav-text">Terms</span>
-                </div>
+            <nav class="bottom-nav" id="bottomNav">
+                <!-- Dynamic navigation items will be inserted here -->
             </nav>
 
-            <!-- Content Sections -->
-            <!-- Work Section -->
-            <div class="content-section active" id="work-section">
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="section-title">Submit Your Work</h3>
-                    </div>
-                    <textarea id="workInput" class="work-textarea" placeholder="Describe your work submission in detail..."></textarea>
-                    <button class="submit-btn" onclick="submitWork()">
-                        <i class="fas fa-paper-plane"></i> Submit Work
-                    </button>
-                </div>
-
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3 class="section-title">Submission History</h3>
-                    </div>
-                    <div class="status-container" id="statusBadges">
-                        <div class="status-badge status-pending">
-                            <i class="fas fa-clock"></i>
-                            No submissions yet
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cashout Section -->
-            <div class="content-section" id="cashout-section">
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <h3 class="section-title">Request Cashout</h3>
-                    </div>
-                    <select id="rewardSelect" class="reward-select" onchange="updateRewardDetails()">
-                        <option value="">Select a reward</option>
-                        <option value="amazon_1" data-workrate="1.39" data-amount="1.39">Amazon UK Voucher 1GBP</option>
-                        <option value="amazon_2" data-workrate="2.80" data-amount="2.80">Amazon UK Voucher 2GBP</option>
-                        <option value="paypal_5" data-workrate="5.00" data-amount="5.00">PayPal Cash $5</option>
-                        <option value="paypal_10" data-workrate="10.00" data-amount="10.00">PayPal Cash $10</option>
-                        <option value="steam_5" data-workrate="5.00" data-amount="5.00">Steam Gift Card $5</option>
-                    </select>
-                    
-                    <div class="reward-details" id="rewardDetails">
-                        <div class="reward-detail">
-                            <span class="detail-label">Work Rate Required:</span>
-                            <span class="detail-value" id="requiredWorkRate">0</span>
-                        </div>
-                        <div class="reward-detail">
-                            <span class="detail-label">Amount USD:</span>
-                            <span class="detail-value" id="rewardAmount">$0.00</span>
-                        </div>
-                        <div class="reward-detail">
-                            <span class="detail-label">Your Work Rate:</span>
-                            <span class="detail-value" id="userWorkRate">0</span>
-                        </div>
-                        <div class="reward-detail">
-                            <span class="detail-label">Your USD Balance:</span>
-                            <span class="detail-value" id="userBalance">$0.00</span>
-                        </div>
-                    </div>
-                    
-                    <div class="eligibility-status" id="eligibilityStatus"></div>
-                    
-                    <button class="submit-btn" onclick="submitCashout()" id="cashoutBtn" disabled>
-                        <i class="fas fa-gift"></i> Request Cashout
-                    </button>
-                </div>
-
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3 class="section-title">Cashout History</h3>
-                    </div>
-                    <div class="cashout-list" id="cashoutHistory">
-                        <div class="cashout-item">
-                            <div class="cashout-header">
-                                <div class="cashout-reward">No cashout requests yet</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Earn Section -->
-            <div class="content-section" id="earn-section">
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3 class="section-title">Earn More Points</h3>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px; text-align: center;">
-                        Complete offers from our trusted partners to boost your earnings
-                    </p>
-                    
-                    <div class="offerwall-grid">
-                        <button class="offerwall-btn" onclick="openOfferWall('cpx')">
-                            <i class="fas fa-poll offerwall-icon"></i>
-                            <span class="offerwall-name">CPX Surveys</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('excentiv')">
-                            <i class="fas fa-coins offerwall-icon"></i>
-                            <span class="offerwall-name">Excentiv</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('wannads')">
-                            <i class="fas fa-star offerwall-icon"></i>
-                            <span class="offerwall-name">Wannads</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('sparkwall')">
-                            <i class="fas fa-fire offerwall-icon"></i>
-                            <span class="offerwall-name">Spark Wall</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('offerwallmedia')">
-                            <i class="fas fa-tv offerwall-icon"></i>
-                            <span class="offerwall-name">Offerwall Media</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('timewall')">
-                            <i class="fas fa-clock offerwall-icon"></i>
-                            <span class="offerwall-name">Time Wall</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('primewall')">
-                            <i class="fas fa-crown offerwall-icon"></i>
-                            <span class="offerwall-name">Prime Wall</span>
-                        </button>
-                        <button class="offerwall-btn" onclick="openOfferWall('revtoo')">
-                            <i class="fas fa-gem offerwall-icon"></i>
-                            <span class="offerwall-name">RevToo</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- CPX Survey Integration -->
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h3 class="section-title">Available Surveys</h3>
-                    </div>
-                    <div id="onerow"></div>
-                </div>
-            </div>
-
-            <!-- Terms Section -->
-            <div class="content-section" id="terms-section">
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="section-title">Terms of Use</h3>
-                    </div>
-                    
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span class="accordion-title">Work Submission Process</span>
-                                <i class="fas fa-chevron-down accordion-icon"></i>
-                            </div>
-                            <div class="accordion-content">
-                                <p class="terms-text">
-                                    Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
-                                </p>
-                                <p class="terms-text terms-highlight">
-                                    Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span class="accordion-title">Prohibited Activities</span>
-                                <i class="fas fa-chevron-down accordion-icon"></i>
-                            </div>
-                            <div class="accordion-content">
-                                <p class="terms-text">
-                                    Spamming the submission form is strictly prohibited. This includes but is not limited to:
-                                </p>
-                                <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
-                                    <li>Submitting duplicate or near-identical work</li>
-                                    <li>Submitting low-quality or irrelevant content</li>
-                                    <li>Attempting to game the system through automated submissions</li>
-                                </ul>
-                                <p class="terms-text terms-highlight">
-                                    Consequences: If we detect spamming activities, your account will be permanently deleted.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span class="accordion-title">PTS Increase Eligibility</span>
-                                <i class="fas fa-chevron-down accordion-icon"></i>
-                            </div>
-                            <div class="accordion-content">
-                                <p class="terms-text">
-                                    Here is the rule when you are eligible to receive 100pts instead of 50pts:
-                                </p>
-                                <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
-                                    <li>Earned at least $1</li>
-                                    <li>Maintain PTS Increase Level (At 100 ONLY)</li>
-                                    <li>Less reviews more chances receiving 100pts</li>
-                                </ul>
-                                <p class="terms-text terms-highlight">
-                                    Consequences: If you get more reviews and not getting approved, you might not be eligible to receive any 100pts if you fall lower than 80%.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span class="accordion-title">Reward System</span>
-                                <i class="fas fa-chevron-down accordion-icon"></i>
-                            </div>
-                            <div class="accordion-content">
-                                <p class="terms-text">
-                                    Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
-                                </p>
-                                <p class="terms-text">
-                                    The conversion rate between points and USD may vary based on current valuation.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Content Sections Container -->
+            <div class="content-container" id="contentContainer">
+                <!-- Dynamic content sections will be inserted here -->
             </div>
         </section>
     </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Success</h3>
-                <button class="modal-close" onclick="closeModal('successModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="successMessage">Operation completed successfully!</p>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn primary" onclick="closeModal('successModal')">OK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Error Modal -->
-    <div id="errorModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Error</h3>
-                <button class="modal-close" onclick="closeModal('errorModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="errorMessage">An error occurred. Please try again.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn primary" onclick="closeModal('errorModal')">OK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Modal -->
-    <div id="loadingModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-body loading-overlay">
-                <div class="loading-spinner"></div>
-                <p class="loading-text" id="loadingMessage">Loading...</p>
-            </div>
-        </div>
+    <!-- Dynamic Modals Container -->
+    <div id="modalsContainer">
+        <!-- Dynamic modals will be inserted here -->
     </div>
 
     <!-- Iframe Container for Offerwalls -->
     <div id="iframeContainer" class="iframe-container">
         <div class="iframe-header">
-            <h3 class="iframe-title">Offerwall</h3>
-            <button class="iframe-close" onclick="closeIframe()">
+            <h3 class="iframe-title" id="iframeTitle">Offerwall</h3>
+            <button class="iframe-close" id="iframeCloseBtn" onclick="closeIframe()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -2017,134 +124,65 @@
         </div>
     </div>
 
+    <!-- Dynamic JavaScript -->
+    <script id="dynamic-script"></script>
+    
+    <!-- Core App Script -->
     <script>
-    // Google Apps Script Web App URL - REPLACE WITH YOUR ACTUAL SCRIPT URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrJuI50NO7QyNr0Pc0HyGKQwHn0Bn8yuTAeIhu_pCf4AlIf_NbWmob4lCyGb8yPaeL/exec';
+        // Global configuration object
+        let APP_CONFIG = {};
+        let currentUser = null;
+        let userSubmissions = [];
+        let userCashouts = [];
+        let appInitialized = false;
 
-    // Current user data
-    let currentUser = null;
-    let userSubmissions = [];
-    let userCashouts = [];
+        // Google Apps Script URL - will be set from config
+        let SCRIPT_URL = '';
 
-    // Session management
-    const SESSION_KEY = 'workRewardSession';
+        // Session management
+        const SESSION_KEY = 'workRewardSession';
 
-    // Offerwall URLs
-    const offerwallUrls = {
-        'cpx': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
-        'excentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
-        'wannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
-        'sparkwall': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}&username=${accountNumber}&subid_1=&subid_2`,
-        'offerwallmedia': (accountNumber) => `https://offerwallmedia.com/offerwall/vfox4w1tpz3gflta3gblkkjp8b2aoj/${accountNumber}`,
-        'timewall': (accountNumber) => `https://timewall.io/users/login?oid=0d54afcf2e6ff561&uid=${accountNumber}`,
-        'primewall': (accountNumber) => `https://primewall.io/offer/Yz3Uj8/${accountNumber}`,
-        'revtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`
-    };
-
-    // Navigation function
-    function navigateToSection(targetId, navElement) {
-        // Remove active class from all nav items and sections
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        // Add active class to clicked nav item and target section
-        navElement.classList.add('active');
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        }
-    }
-
-    // Accordion toggle
-    function toggleAccordion(header) {
-        const item = header.parentElement;
-        const wasActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        document.querySelectorAll('.accordion-item').forEach(accordionItem => {
-            accordionItem.classList.remove('active');
-        });
-        
-        // Open clicked item if it wasn't active
-        if (!wasActive) {
-            item.classList.add('active');
-        }
-    }
-
-    // Show loading modal
-    function showLoading(message = 'Loading...') {
-        const loadingModal = document.getElementById('loadingModal');
-        const loadingMessage = document.getElementById('loadingMessage');
-        
-        if (loadingMessage) loadingMessage.textContent = message;
-        if (loadingModal) loadingModal.classList.add('active');
-    }
-
-    // Hide loading modal
-    function hideLoading() {
-        const loadingModal = document.getElementById('loadingModal');
-        if (loadingModal) loadingModal.classList.remove('active');
-    }
-
-    // Show success modal
-    function showSuccess(message) {
-        const successMessage = document.getElementById('successMessage');
-        const successModal = document.getElementById('successModal');
-        
-        if (successMessage) successMessage.textContent = message;
-        if (successModal) successModal.classList.add('active');
-    }
-
-    // Show error modal
-    function showError(message) {
-        const errorMessage = document.getElementById('errorMessage');
-        const errorModal = document.getElementById('errorModal');
-        
-        if (errorMessage) errorMessage.textContent = message;
-        if (errorModal) errorModal.classList.add('active');
-    }
-
-    // Close modal
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.classList.remove('active');
-    }
-
-    // Check for existing session on page load
-    function checkExistingSession() {
-        const savedSession = localStorage.getItem(SESSION_KEY);
-        if (savedSession) {
+        // Initialize app
+        async function initializeApp() {
             try {
-                const sessionData = JSON.parse(savedSession);
-                const sessionAge = Date.now() - sessionData.timestamp;
-                const twentyFourHours = 24 * 60 * 60 * 1000;
+                showLoading('Loading configuration...');
                 
-                if (sessionAge < twentyFourHours) {
-                    attemptSessionRestore(sessionData.username);
-                } else {
-                    clearSession();
-                }
+                // Load configuration from Google Sheets
+                await loadConfiguration();
+                
+                // Apply dynamic styles
+                applyDynamicStyles();
+                
+                // Apply dynamic HTML structure
+                applyDynamicHTML();
+                
+                // Apply dynamic JavaScript
+                applyDynamicJavaScript();
+                
+                // Check for existing session
+                checkExistingSession();
+                
+                // Show main container
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+                
+                appInitialized = true;
+                console.log('QuizBux Platform initialized successfully');
+                
             } catch (error) {
-                console.error('Error parsing saved session:', error);
-                clearSession();
+                console.error('Initialization error:', error);
+                showError('Failed to initialize platform. Please refresh the page.');
             }
         }
-    }
 
-    // Attempt to restore user session
-    async function attemptSessionRestore(username) {
-        try {
-            showLoading('Restoring your session...');
+        // Load configuration from Google Sheets
+        async function loadConfiguration() {
+            const configUrl = SCRIPT_URL || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
             
             const formData = new FormData();
-            formData.append('action', 'getUserData');
-            formData.append('username', username);
+            formData.append('action', 'getConfig');
             
-            const response = await fetch(SCRIPT_URL, {
+            const response = await fetch(configUrl, {
                 method: 'POST',
                 body: formData
             });
@@ -2152,616 +190,379 @@
             const result = await response.json();
             
             if (result.status === 'success') {
-                currentUser = result.user;
-                userSubmissions = result.submissions || [];
-                userCashouts = result.cashouts || [];
-                hideLoading();
-                showDashboard();
+                APP_CONFIG = result.config;
+                SCRIPT_URL = APP_CONFIG.scriptUrl || configUrl;
             } else {
-                hideLoading();
-                clearSession();
-                showError('Session expired. Please login again.');
+                throw new Error('Failed to load configuration');
             }
-        } catch (error) {
-            console.error('Session restore error:', error);
-            hideLoading();
-            clearSession();
-            showError('Network error during session restore.');
         }
-    }
 
-    // Save session to localStorage
-    function saveSession(username) {
-        const sessionData = {
-            username: username,
-            timestamp: Date.now()
-        };
-        localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
-    }
-
-    // Clear session from localStorage
-    function clearSession() {
-        localStorage.removeItem(SESSION_KEY);
-        currentUser = null;
-        userSubmissions = [];
-        userCashouts = [];
-    }
-
-    // Login function
-    async function login() {
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-        
-        if (!username || !password) {
-            showError('Please enter both username and password.');
-            return;
+        // Apply dynamic styles
+        function applyDynamicStyles() {
+            const dynamicStyles = document.getElementById('dynamic-styles');
+            dynamicStyles.textContent = APP_CONFIG.styles || '';
         }
-        
-        try {
-            showLoading('Signing in...');
-            
-            const formData = new FormData();
-            formData.append('action', 'login');
-            formData.append('username', username);
-            formData.append('password', password);
-            
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-            
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
+
+        // Apply dynamic HTML structure
+        function applyDynamicHTML() {
+            // Update logo
+            const logoImg = document.getElementById('logo-img');
+            if (logoImg && APP_CONFIG.logo) {
+                logoImg.src = APP_CONFIG.logo;
+            }
+
+            // Update header actions
+            const headerActions = document.getElementById('header-actions');
+            if (headerActions && APP_CONFIG.headerButtons) {
+                headerActions.innerHTML = APP_CONFIG.headerButtons;
+            }
+
+            // Update stats grid
+            const statsGrid = document.getElementById('statsGrid');
+            if (statsGrid && APP_CONFIG.statsCards) {
+                statsGrid.innerHTML = APP_CONFIG.statsCards;
+            }
+
+            // Update bottom navigation
+            const bottomNav = document.getElementById('bottomNav');
+            if (bottomNav && APP_CONFIG.navigationItems) {
+                bottomNav.innerHTML = APP_CONFIG.navigationItems;
+            }
+
+            // Update content sections
+            const contentContainer = document.getElementById('contentContainer');
+            if (contentContainer && APP_CONFIG.contentSections) {
+                contentContainer.innerHTML = APP_CONFIG.contentSections;
+            }
+
+            // Update modals
+            const modalsContainer = document.getElementById('modalsContainer');
+            if (modalsContainer && APP_CONFIG.modals) {
+                modalsContainer.innerHTML = APP_CONFIG.modals;
+            }
+
+            // Update text content
+            if (APP_CONFIG.texts) {
+                Object.keys(APP_CONFIG.texts).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.textContent = APP_CONFIG.texts[key];
+                    }
+                });
+            }
+        }
+
+        // Apply dynamic JavaScript
+        function applyDynamicJavaScript() {
+            const dynamicScript = document.getElementById('dynamic-script');
+            if (dynamicScript && APP_CONFIG.scripts) {
+                dynamicScript.textContent = APP_CONFIG.scripts;
+            }
+        }
+
+        // Show loading screen
+        function showLoading(message = 'Loading...') {
+            const loadingText = document.getElementById('loadingText');
+            if (loadingText) loadingText.textContent = message;
+            document.getElementById('loadingScreen').style.display = 'flex';
+        }
+
+        // Hide loading screen
+        function hideLoading() {
+            document.getElementById('loadingScreen').style.display = 'none';
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            if (typeof window.showSuccessModal === 'function') {
+                window.showSuccessModal(message);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            if (typeof window.showErrorModal === 'function') {
+                window.showErrorModal(message);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Navigation function
+        function navigateToSection(targetId, navElement) {
+            // Remove active class from all nav items and sections
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
             });
             
-            clearTimeout(timeoutId);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // Add active class to clicked nav item and target section
+            if (navElement) navElement.classList.add('active');
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
             }
-            
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                currentUser = result.user;
-                userSubmissions = result.submissions || [];
-                userCashouts = result.cashouts || [];
+        }
+
+        // Session management functions
+        function checkExistingSession() {
+            const savedSession = localStorage.getItem(SESSION_KEY);
+            if (savedSession) {
+                try {
+                    const sessionData = JSON.parse(savedSession);
+                    const sessionAge = Date.now() - sessionData.timestamp;
+                    const twentyFourHours = 24 * 60 * 60 * 1000;
+                    
+                    if (sessionAge < twentyFourHours) {
+                        attemptSessionRestore(sessionData.username);
+                    } else {
+                        clearSession();
+                    }
+                } catch (error) {
+                    console.error('Error parsing saved session:', error);
+                    clearSession();
+                }
+            }
+        }
+
+        async function attemptSessionRestore(username) {
+            try {
+                showLoading('Restoring your session...');
                 
-                saveSession(username);
+                const formData = new FormData();
+                formData.append('action', 'getUserData');
+                formData.append('username', username);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentUser = result.user;
+                    userSubmissions = result.submissions || [];
+                    userCashouts = result.cashouts || [];
+                    hideLoading();
+                    showDashboard();
+                } else {
+                    hideLoading();
+                    clearSession();
+                    showError('Session expired. Please login again.');
+                }
+            } catch (error) {
+                console.error('Session restore error:', error);
                 hideLoading();
-                showDashboard();
-            } else {
-                hideLoading();
-                showError(result.message || 'Invalid username or password.');
+                clearSession();
+                showError('Network error during session restore.');
             }
-        } catch (error) {
-            console.error('Login error:', error);
-            hideLoading();
+        }
+
+        function saveSession(username) {
+            const sessionData = {
+                username: username,
+                timestamp: Date.now()
+            };
+            localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+        }
+
+        function clearSession() {
+            localStorage.removeItem(SESSION_KEY);
+            currentUser = null;
+            userSubmissions = [];
+            userCashouts = [];
+        }
+
+        // Core functions (will be overridden by dynamic script if needed)
+        async function login() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
             
-            if (error.name === 'AbortError') {
-                showError('Request timeout. Please check your connection and try again.');
-            } else {
+            if (!username || !password) {
+                showError('Please enter both username and password.');
+                return;
+            }
+            
+            try {
+                showLoading('Signing in...');
+                
+                const formData = new FormData();
+                formData.append('action', 'login');
+                formData.append('username', username);
+                formData.append('password', password);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentUser = result.user;
+                    userSubmissions = result.submissions || [];
+                    userCashouts = result.cashouts || [];
+                    
+                    saveSession(username);
+                    hideLoading();
+                    showDashboard();
+                } else {
+                    hideLoading();
+                    showError(result.message || 'Invalid username or password.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                hideLoading();
                 showError('Network error. Please check your connection and try again.');
             }
         }
-    }
 
-    // Logout function
-    function logout() {
-        clearSession();
-        
-        // Reset forms
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-        document.getElementById('workInput').value = '';
-        document.getElementById('rewardSelect').value = '';
-        
-        // Show login form
-        document.getElementById('loginSection').style.display = 'flex';
-        document.getElementById('dashboardSection').style.display = 'none';
-        
-        // Close any modals
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.classList.remove('active');
-        });
-    }
+        function logout() {
+            clearSession();
+            
+            // Reset forms
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            // Show login form
+            document.getElementById('loginSection').style.display = 'flex';
+            document.getElementById('dashboardSection').style.display = 'none';
+            
+            // Close any modals
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
 
-    // Show dashboard
-    function showDashboard() {
-        document.getElementById('loginSection').style.display = 'none';
-        document.getElementById('dashboardSection').style.display = 'block';
-        
-        if (!currentUser) {
-            showError('No user data available.');
-            return;
+        function showDashboard() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboardSection').style.display = 'block';
+            
+            if (!currentUser) {
+                showError('No user data available.');
+                return;
+            }
+            
+            // Update user info
+            const userAvatar = document.getElementById('userAvatar');
+            const displayUsername = document.getElementById('displayUsername');
+            
+            if (userAvatar) userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+            if (displayUsername) displayUsername.textContent = currentUser.username;
+            
+            // Update dashboard with user data
+            updateDashboardStats();
+            updateSubmissionHistory();
+            updateCashoutHistory();
+            
+            // Initialize any dynamic components
+            if (typeof window.initializeDynamicComponents === 'function') {
+                window.initializeDynamicComponents();
+            }
         }
-        
-        // Update user info
-        const userAvatar = document.getElementById('userAvatar');
-        const displayUsername = document.getElementById('displayUsername');
-        
-        if (userAvatar) userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
-        if (displayUsername) displayUsername.textContent = currentUser.username;
-        
-        // Update stats
-        const balanceValue = document.getElementById('balanceValue');
-        const usdBalanceValue = document.getElementById('usdBalanceValue');
-        const workRateValue = document.getElementById('workRateValue');
-        const levelValue = document.getElementById('levelValue');
-        
-        if (balanceValue) balanceValue.textContent = currentUser.balance || '0.00';
-        if (usdBalanceValue) usdBalanceValue.textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
-        if (workRateValue) workRateValue.textContent = currentUser.workRate || '0';
-        if (levelValue) levelValue.textContent = currentUser.level || '0';
-        
-        // Update level progress
-        const levelPercent = parseInt(currentUser.level || 0);
-        const levelPercentEl = document.getElementById('levelPercent');
-        const progressFill = document.getElementById('levelProgress');
-        
-        if (levelPercentEl) levelPercentEl.textContent = `${levelPercent}%`;
-        if (progressFill) {
-            progressFill.style.width = `${Math.min(levelPercent, 100)}%`;
-        }
-        
-        // Update submission status badges
-        updateStatusBadges();
-        
-        // Update cashout history
-        updateCashoutHistory();
-        
-        // Reset reward selection
-        document.getElementById('rewardSelect').value = '';
-        document.getElementById('rewardDetails').style.display = 'none';
-        document.getElementById('eligibilityStatus').textContent = '';
-        document.getElementById('eligibilityStatus').className = 'eligibility-status';
-        document.getElementById('cashoutBtn').disabled = true;
-        
-        // Initialize CPX Survey if user is logged in
-        initializeCPXSurvey();
-    }
 
-    // Submit work function
-    async function submitWork() {
-        if (!currentUser) {
-            showError('Please login first.');
-            return;
-        }
-        
-        const workInput = document.getElementById('workInput');
-        const workText = workInput ? workInput.value.trim() : '';
-        
-        if (!workText) {
-            showError('Please enter your work submission.');
-            return;
-        }
-        
-        try {
-            showLoading('Submitting your work...');
+        function updateDashboardStats() {
+            // Update stats based on currentUser data
+            const statsElements = {
+                'balanceValue': currentUser.balance || '0.00',
+                'usdBalanceValue': `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`,
+                'workRateValue': currentUser.workRate || '0',
+                'levelValue': currentUser.level || '0'
+            };
             
-            const formData = new FormData();
-            formData.append('action', 'submitWork');
-            formData.append('username', currentUser.username);
-            formData.append('submission', workText);
-            
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-            
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
+            Object.keys(statsElements).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = statsElements[id];
             });
             
-            clearTimeout(timeoutId);
+            // Update level progress
+            const levelPercent = parseInt(currentUser.level || 0);
+            const levelPercentEl = document.getElementById('levelPercent');
+            const progressFill = document.getElementById('levelProgressBar');
             
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                await refreshUserData();
-                
-                if (workInput) workInput.value = '';
-                hideLoading();
-                showSuccess('Your work has been submitted successfully!');
-            } else {
-                hideLoading();
-                showError(result.message || 'Failed to submit work.');
-            }
-        } catch (error) {
-            console.error('Submit work error:', error);
-            hideLoading();
-            
-            if (error.name === 'AbortError') {
-                showError('Request timeout. Please try again.');
-            } else {
-                showError('Network error. Please try again.');
+            if (levelPercentEl) levelPercentEl.textContent = `${levelPercent}%`;
+            if (progressFill) {
+                progressFill.style.width = `${Math.min(levelPercent, 100)}%`;
             }
         }
-    }
 
-    // Refresh user data from server
-    async function refreshUserData() {
-        if (!currentUser) return;
-        
-        try {
-            const formData = new FormData();
-            formData.append('action', 'getUserData');
-            formData.append('username', currentUser.username);
+        function updateSubmissionHistory() {
+            // Update submission history based on userSubmissions
+            const statusBadges = document.getElementById('statusBadges');
+            if (!statusBadges) return;
             
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            statusBadges.innerHTML = '';
             
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
+            if (userSubmissions.length === 0) {
+                statusBadges.innerHTML = '<div class="status-badge status-pending"><i class="fas fa-clock"></i> No submissions yet</div>';
+                return;
+            }
+            
+            userSubmissions.forEach(submission => {
+                const badge = document.createElement('div');
+                badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
+                
+                const statusIcon = submission.status === 'APPROVED' ? 'fas fa-check-circle' : 'fas fa-clock';
+                const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
+                
+                badge.innerHTML = `
+                    <i class="${statusIcon}"></i>
+                    ${statusText}
+                `;
+                
+                statusBadges.appendChild(badge);
             });
-            
-            clearTimeout(timeoutId);
-            
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                currentUser = result.user;
-                userSubmissions = result.submissions || [];
-                userCashouts = result.cashouts || [];
-                showDashboard();
-            }
-        } catch (error) {
-            console.error('Refresh user data error:', error);
         }
-    }
 
-    // Update status badges
-    function updateStatusBadges() {
-        const statusBadges = document.getElementById('statusBadges');
-        if (!statusBadges) return;
-        
-        statusBadges.innerHTML = '';
-        
-        if (userSubmissions.length === 0) {
-            statusBadges.innerHTML = '<div class="status-badge status-pending"><i class="fas fa-clock"></i> No submissions yet</div>';
-            return;
-        }
-        
-        userSubmissions.forEach(submission => {
-            const badge = document.createElement('div');
-            badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
+        function updateCashoutHistory() {
+            // Update cashout history based on userCashouts
+            const cashoutHistory = document.getElementById('cashoutHistory');
+            if (!cashoutHistory) return;
             
-            const statusIcon = submission.status === 'APPROVED' ? 'fas fa-check-circle' : 'fas fa-clock';
-            const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
+            cashoutHistory.innerHTML = '';
             
-            badge.innerHTML = `
-                <i class="${statusIcon}"></i>
-                ${statusText}
-            `;
-            
-            statusBadges.appendChild(badge);
-        });
-    }
-
-    // Update reward details
-    function updateRewardDetails() {
-        if (!currentUser) return;
-        
-        const select = document.getElementById('rewardSelect');
-        const details = document.getElementById('rewardDetails');
-        const cashoutBtn = document.getElementById('cashoutBtn');
-        const eligibilityStatus = document.getElementById('eligibilityStatus');
-        
-        if (!select || !details || !cashoutBtn || !eligibilityStatus) return;
-        
-        if (select.value) {
-            const selectedOption = select.options[select.selectedIndex];
-            const workRateRequired = selectedOption.getAttribute('data-workrate');
-            const amount = selectedOption.getAttribute('data-amount');
-            
-            document.getElementById('requiredWorkRate').textContent = workRateRequired;
-            document.getElementById('rewardAmount').textContent = `$${amount}`;
-            document.getElementById('userWorkRate').textContent = currentUser.workRate || '0';
-            document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
-            
-            details.style.display = 'block';
-            
-            // Check eligibility
-            const workRateEligible = parseInt(currentUser.workRate || 0) >= parseInt(workRateRequired);
-            const balanceEligible = parseFloat(currentUser.balanceUSD || 0) >= parseFloat(amount);
-            const isEligible = workRateEligible && balanceEligible;
-            
-            // Update eligibility status
-            if (isEligible) {
-                eligibilityStatus.innerHTML = '<i class="fas fa-check-circle"></i> You are eligible for this reward!';
-                eligibilityStatus.className = 'eligibility-status eligible';
-            } else {
-                let message = 'You are not eligible for this reward. ';
-                if (!workRateEligible && !balanceEligible) {
-                    message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
-                } else if (!workRateEligible) {
-                    message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}).`;
-                } else {
-                    message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
-                }
-                eligibilityStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-                eligibilityStatus.className = 'eligibility-status not-eligible';
+            if (userCashouts.length === 0) {
+                cashoutHistory.innerHTML = '<div class="cashout-item"><div class="cashout-header"><div class="cashout-reward">No cashout requests yet</div></div></div>';
+                return;
             }
             
-            cashoutBtn.disabled = !isEligible;
-        } else {
-            details.style.display = 'none';
-            eligibilityStatus.textContent = '';
-            eligibilityStatus.className = 'eligibility-status';
-            cashoutBtn.disabled = true;
-        }
-    }
-
-    // Submit cashout request
-    async function submitCashout() {
-        if (!currentUser) {
-            showError('Please login first.');
-            return;
-        }
-        
-        const select = document.getElementById('rewardSelect');
-        if (!select || !select.value) {
-            showError('Please select a reward first.');
-            return;
-        }
-        
-        const selectedOption = select.options[select.selectedIndex];
-        const rewardName = selectedOption.text;
-        const workRateRequired = selectedOption.getAttribute('data-workrate');
-        const amount = selectedOption.getAttribute('data-amount');
-        
-        try {
-            showLoading('Processing your cashout request...');
-            
-            const formData = new FormData();
-            formData.append('action', 'submitCashout');
-            formData.append('username', currentUser.username);
-            formData.append('reward', rewardName);
-            formData.append('workRateRequired', workRateRequired);
-            formData.append('amount', amount);
-            
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-            
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
+            userCashouts.forEach(cashout => {
+                const item = document.createElement('div');
+                item.className = 'cashout-item';
+                item.innerHTML = `
+                    <div class="cashout-header">
+                        <div class="cashout-reward">${cashout.reward}</div>
+                        <div class="cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-pending'}">${cashout.status}</div>
+                    </div>
+                    <div class="cashout-meta">
+                        <div>Amount: $${cashout.amount}</div>
+                        <div>Work Rate: ${cashout.workRateRequired}</div>
+                        <div>Date: ${new Date(cashout.timestamp).toLocaleDateString()}</div>
+                    </div>
+                `;
+                
+                cashoutHistory.appendChild(item);
             });
+        }
+
+        // Close iframe function
+        function closeIframe() {
+            const iframeContainer = document.getElementById('iframeContainer');
+            const dashboardIframe = document.getElementById('dashboardIframe');
             
-            clearTimeout(timeoutId);
-            
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                await refreshUserData();
-                
-                select.value = '';
-                document.getElementById('rewardDetails').style.display = 'none';
-                document.getElementById('eligibilityStatus').textContent = '';
-                document.getElementById('eligibilityStatus').className = 'eligibility-status';
-                document.getElementById('cashoutBtn').disabled = true;
-                
-                hideLoading();
-                showSuccess('Your cashout request has been submitted successfully!');
-            } else {
-                hideLoading();
-                showError(result.message || 'Failed to submit cashout request.');
-            }
-        } catch (error) {
-            console.error('Submit cashout error:', error);
-            hideLoading();
-            
-            if (error.name === 'AbortError') {
-                showError('Request timeout. Please try again.');
-            } else {
-                showError('Network error. Please try again.');
+            if (iframeContainer && dashboardIframe) {
+                iframeContainer.classList.remove('active');
+                dashboardIframe.src = '';
             }
         }
-    }
 
-    // Update cashout history
-    function updateCashoutHistory() {
-        const cashoutHistory = document.getElementById('cashoutHistory');
-        if (!cashoutHistory) return;
-        
-        cashoutHistory.innerHTML = '';
-        
-        if (userCashouts.length === 0) {
-            cashoutHistory.innerHTML = '<div class="cashout-item"><div class="cashout-header"><div class="cashout-reward">No cashout requests yet</div></div></div>';
-            return;
-        }
-        
-        userCashouts.forEach(cashout => {
-            const item = document.createElement('div');
-            item.className = 'cashout-item';
-            
-            const header = document.createElement('div');
-            header.className = 'cashout-header';
-            
-            const reward = document.createElement('div');
-            reward.className = 'cashout-reward';
-            reward.textContent = cashout.reward;
-            
-            const status = document.createElement('div');
-            status.className = `cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-pending'}`;
-            status.textContent = cashout.status;
-            
-            header.appendChild(reward);
-            header.appendChild(status);
-            
-            const details = document.createElement('div');
-            details.className = 'cashout-meta';
-            
-            const amount = document.createElement('div');
-            amount.textContent = `Amount: $${cashout.amount}`;
-            
-            const workRate = document.createElement('div');
-            workRate.textContent = `Work Rate: ${cashout.workRateRequired}`;
-            
-            const date = document.createElement('div');
-            date.textContent = `Date: ${new Date(cashout.timestamp).toLocaleDateString()}`;
-            
-            details.appendChild(amount);
-            details.appendChild(workRate);
-            details.appendChild(date);
-            
-            item.appendChild(header);
-            item.appendChild(details);
-            
-            if (cashout.notes) {
-                const notes = document.createElement('div');
-                notes.className = 'cashout-notes';
-                notes.textContent = `Admin Notes: ${cashout.notes}`;
-                item.appendChild(notes);
-            }
-            
-            cashoutHistory.appendChild(item);
-        });
-    }
-
-    // Open offerwall in iframe
-    function openOfferWall(offerwall) {
-        if (!currentUser) {
-            showError('Please login first to access offerwalls');
-            return;
-        }
-        
-        const iframeContainer = document.getElementById('iframeContainer');
-        const dashboardIframe = document.getElementById('dashboardIframe');
-        
-        if (!iframeContainer || !dashboardIframe) {
-            console.error('Iframe elements not found');
-            return;
-        }
-        
-        const accountNumber = currentUser.username;
-        const url = offerwallUrls[offerwall](accountNumber);
-        
-        dashboardIframe.src = url;
-        iframeContainer.classList.add('active');
-    }
-
-    // Close iframe
-    function closeIframe() {
-        const iframeContainer = document.getElementById('iframeContainer');
-        const dashboardIframe = document.getElementById('dashboardIframe');
-        
-        if (iframeContainer && dashboardIframe) {
-            iframeContainer.classList.remove('active');
-            dashboardIframe.src = '';
-        }
-    }
-
-    // Initialize CPX Survey
-    function initializeCPXSurvey() {
-        if (!currentUser) return;
-        
-        const script1 = {
-            div_id: "onerow",
-            theme_style: 7,
-            order_by: 1,
-            display_mode: 3,
-            limit_surveys: 8
-        };
-         
-        const config = {
-            general_config: {
-                app_id: 8619,
-                ext_user_id: currentUser.username,
-                subid_1: "",
-                subid_2: "",
-            },
-            style_config: {
-                text_color: "#2b2b2b",
-                survey_box: {
-                    topbar_background_color: "#1DA05E",
-                    box_background_color: "white",
-                    rounded_borders: true,
-                    stars_filled: "#ffaf20",
-                    stars_empty: "rgb(221 221 221)",
-                    accent_color_small_box: "#1DA05E",
-                    place_stars_bottom_small_box: true
-                },  
-            },
-            script_config: [script1],
-            debug: false,
-            useIFrame: true,
-            iFramePosition: 3
-        };
-         
-        window.config = config;
-        
-        if (!document.querySelector('script[src="https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js"]')) {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js';
-            document.head.appendChild(script);
-        }
-    }
-
-    // Header action functions
-    function showNotifications() {
-        showSuccess('No new notifications');
-    }
-
-    function showSettings() {
-        showSuccess('Settings panel coming soon!');
-    }
-
-    function showHelp() {
-        showSuccess('Help center coming soon!');
-    }
-
-    // Initialize the application
-    function initApp() {
-        // Set up enter key for login
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        
-        function handleEnterKey(e) {
-            if (e.key === 'Enter') {
-                login();
-            }
-        }
-        
-        if (usernameInput) {
-            usernameInput.addEventListener('keypress', handleEnterKey);
-        }
-        if (passwordInput) {
-            passwordInput.addEventListener('keypress', handleEnterKey);
-        }
-        
-        // Check for existing session
-        checkExistingSession();
-        
-        console.log('QuizBux Professional Platform initialized');
-    }
-
-    // Initialize when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initApp);
-
-    // Add animation classes on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all cards for animations
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.section-card, .stat-card, .cashout-item').forEach(card => {
-            observer.observe(card);
-        });
-    });
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
