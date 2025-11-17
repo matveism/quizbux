@@ -1,19 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="app-title">QuizBux - Professional Work & Earn Platform</title>
-    
-    <!-- Dynamic CSS will be injected here -->
-    <style id="dynamic-styles">
-        /* Initial styles - will be overridden by Google Sheets */
-    </style>
+    <title>QuizBux - Professional Work & Earn Platform</title>
     
     <!-- External resources -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    
+    <style>
+        /* Basic loading styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #333;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .main-container {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -22,241 +53,124 @@
         <div class="loading-text" id="loadingText">Initializing platform...</div>
     </div>
 
-    <!-- Main Container -->
-    <div class="main-container" id="mainContainer" style="display: none;">
-        <!-- Header -->
-        <header class="header" id="header">
-            <div class="header-content">
-                <div class="logo">
-                    <img id="logo-img" src="" alt="Platform Logo" class="logo-img">
-                </div>
-                <div class="header-actions" id="header-actions">
-                    <!-- Dynamic header buttons will be inserted here -->
-                </div>
-            </div>
-        </header>
+    <!-- Main content will be dynamically injected here -->
+    <div id="mainContent"></div>
 
-        <!-- Login Section -->
-        <section id="loginSection" class="login-section">
-            <div class="login-card" id="loginCard">
-                <div class="login-header">
-                    <h1 class="login-title" id="loginTitle">Welcome Back</h1>
-                    <p class="login-subtitle" id="loginSubtitle">Enter the future of earning</p>
-                </div>
-                <form id="loginForm" onsubmit="return false;">
-                    <div class="form-group">
-                        <label class="form-label" for="username">Username</label>
-                        <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="password">Password</label>
-                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
-                    </div>
-                    <button type="button" class="login-btn" id="loginBtn" onclick="login()">
-                        <i class="fas fa-sign-in-alt"></i> <span id="loginBtnText">Sign In</span>
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Dashboard Section -->
-        <section id="dashboardSection" class="dashboard-section">
-            <!-- User Profile -->
-            <div class="user-profile" id="userProfile">
-                <div class="profile-header">
-                    <div class="user-avatar" id="userAvatar">U</div>
-                    <div class="user-info">
-                        <div class="username" id="displayUsername">Username</div>
-                        <div class="user-status" id="userStatus">
-                            <i class="fas fa-check-circle"></i>
-                            <span id="userStatusText">Active Member</span>
-                        </div>
-                    </div>
-                    <button class="logout-btn" id="logoutBtn" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i> <span id="logoutBtnText">Logout</span>
-                    </button>
-                </div>
-
-                <!-- Stats Grid -->
-                <div class="stats-grid" id="statsGrid">
-                    <!-- Dynamic stat cards will be inserted here -->
-                </div>
-
-                <!-- Level Progress -->
-                <div class="level-progress" id="levelProgress">
-                    <div class="level-header">
-                        <span class="level-label" id="levelLabel">Performance Level</span>
-                        <span class="level-value" id="levelPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div id="levelProgressBar" class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Navigation -->
-            <nav class="bottom-nav" id="bottomNav">
-                <!-- Dynamic navigation items will be inserted here -->
-            </nav>
-
-            <!-- Content Sections Container -->
-            <div class="content-container" id="contentContainer">
-                <!-- Dynamic content sections will be inserted here -->
-            </div>
-        </section>
-    </div>
-
-    <!-- Dynamic Modals Container -->
-    <div id="modalsContainer">
-        <!-- Dynamic modals will be inserted here -->
-    </div>
-
-    <!-- Iframe Container for Offerwalls -->
-    <div id="iframeContainer" class="iframe-container">
-        <div class="iframe-header">
-            <h3 class="iframe-title" id="iframeTitle">Offerwall</h3>
-            <button class="iframe-close" id="iframeCloseBtn" onclick="closeIframe()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="iframe-content">
-            <iframe id="dashboardIframe" class="dashboard-iframe" src=""></iframe>
-        </div>
-    </div>
-
-    <!-- Dynamic JavaScript -->
-    <script id="dynamic-script"></script>
-    
-    <!-- Core App Script -->
     <script>
-        // Global configuration object
-        let APP_CONFIG = {};
+        // Global variables
+        let SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtCHk1BICJV9PehvwNPQ4kWViIN-er_fg3KZ0Y7PqVz2WF_2eoS2OFwQ1yvCc7I--kAg/exec';
         let currentUser = null;
-        let userSubmissions = [];
-        let userCashouts = [];
-        let appInitialized = false;
-
-        // Google Apps Script URL - will be set from config
-        let SCRIPT_URL = '';
-
-        // Session management
-        const SESSION_KEY = 'workRewardSession';
+        let APP_CONFIG = {};
 
         // Initialize app
         async function initializeApp() {
             try {
-                showLoading('Loading configuration...');
+                showLoading('Loading platform...');
                 
-                // Load configuration from Google Sheets
+                // Load configuration
                 await loadConfiguration();
                 
-                // Apply dynamic styles
-                applyDynamicStyles();
+                // Render the main interface
+                renderMainInterface();
                 
-                // Apply dynamic HTML structure
-                applyDynamicHTML();
-                
-                // Apply dynamic JavaScript
-                applyDynamicJavaScript();
-                
-                // Check for existing session
-                checkExistingSession();
-                
-                // Show main container
+                // Hide loading screen
                 document.getElementById('loadingScreen').style.display = 'none';
-                document.getElementById('mainContainer').style.display = 'block';
                 
-                appInitialized = true;
-                console.log('QuizBux Platform initialized successfully');
+                console.log('Platform initialized successfully');
                 
             } catch (error) {
                 console.error('Initialization error:', error);
-                showError('Failed to initialize platform. Please refresh the page.');
+                showError('Failed to load platform. Please refresh the page.');
             }
         }
 
-        // Load configuration from Google Sheets
+        // Load configuration from Google Apps Script
         async function loadConfiguration() {
-            const configUrl = SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwtCHk1BICJV9PehvwNPQ4kWViIN-er_fg3KZ0Y7PqVz2WF_2eoS2OFwQ1yvCc7I--kAg/exec';
-            
-            const formData = new FormData();
-            formData.append('action', 'getConfig');
-            
-            const response = await fetch(configUrl, {
-                method: 'POST',
-                body: formData
-            });
-            
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                APP_CONFIG = result.config;
-                SCRIPT_URL = APP_CONFIG.scriptUrl || configUrl;
-            } else {
-                throw new Error('Failed to load configuration');
+            try {
+                const response = await fetch(SCRIPT_URL + '?action=getConfig');
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    APP_CONFIG = result.config;
+                    // Inject the HTML content
+                    document.getElementById('mainContent').innerHTML = result.html;
+                } else {
+                    throw new Error('Failed to load configuration');
+                }
+            } catch (error) {
+                console.error('Configuration load error:', error);
+                // Fallback to basic interface
+                renderFallbackInterface();
             }
         }
 
-        // Apply dynamic styles
-        function applyDynamicStyles() {
-            const dynamicStyles = document.getElementById('dynamic-styles');
-            dynamicStyles.textContent = APP_CONFIG.styles || '';
+        // Render fallback interface if config fails
+        function renderFallbackInterface() {
+            const fallbackHTML = `
+                <div class="main-container">
+                    <header class="header">
+                        <div class="header-content">
+                            <div class="logo">
+                                <img src="https://i.postimg.cc/8Cs0zjMq/Screenshot-2025-11-13-at-7-09-50-PM-removebg-preview.png" alt="QuizBux Logo" width="200" class="logo-img">
+                            </div>
+                        </div>
+                    </header>
+
+                    <section id="loginSection" class="login-section">
+                        <div class="login-card">
+                            <div class="login-header">
+                                <h1 class="login-title">Welcome to QuizBux</h1>
+                                <p class="login-subtitle">Professional Work & Earn Platform</p>
+                            </div>
+                            <form id="loginForm" onsubmit="return false;">
+                                <div class="form-group">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                                </div>
+                                <button type="button" class="login-btn" onclick="login()">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In
+                                </button>
+                            </form>
+                            <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                                <p style="margin: 0; font-size: 12px; color: #a8b2d1;">
+                                    <strong>Demo Credentials:</strong><br>
+                                    Username: demo<br>
+                                    Password: demo123
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = fallbackHTML;
         }
 
-        // Apply dynamic HTML structure
-        function applyDynamicHTML() {
-            // Update logo
-            const logoImg = document.getElementById('logo-img');
-            if (logoImg && APP_CONFIG.logo) {
-                logoImg.src = APP_CONFIG.logo;
-            }
+        // Render main interface after config load
+        function renderMainInterface() {
+            // The main interface is already injected from the configuration
+            // Add any additional initialization here
+            setupEventListeners();
+        }
 
-            // Update header actions
-            const headerActions = document.getElementById('header-actions');
-            if (headerActions && APP_CONFIG.headerButtons) {
-                headerActions.innerHTML = APP_CONFIG.headerButtons;
-            }
-
-            // Update stats grid
-            const statsGrid = document.getElementById('statsGrid');
-            if (statsGrid && APP_CONFIG.statsCards) {
-                statsGrid.innerHTML = APP_CONFIG.statsCards;
-            }
-
-            // Update bottom navigation
-            const bottomNav = document.getElementById('bottomNav');
-            if (bottomNav && APP_CONFIG.navigationItems) {
-                bottomNav.innerHTML = APP_CONFIG.navigationItems;
-            }
-
-            // Update content sections
-            const contentContainer = document.getElementById('contentContainer');
-            if (contentContainer && APP_CONFIG.contentSections) {
-                contentContainer.innerHTML = APP_CONFIG.contentSections;
-            }
-
-            // Update modals
-            const modalsContainer = document.getElementById('modalsContainer');
-            if (modalsContainer && APP_CONFIG.modals) {
-                modalsContainer.innerHTML = APP_CONFIG.modals;
-            }
-
-            // Update text content
-            if (APP_CONFIG.texts) {
-                Object.keys(APP_CONFIG.texts).forEach(key => {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        element.textContent = APP_CONFIG.texts[key];
+        // Setup event listeners
+        function setupEventListeners() {
+            // Enter key support for login
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            
+            if (usernameInput && passwordInput) {
+                const handleEnterKey = (e) => {
+                    if (e.key === 'Enter') {
+                        login();
                     }
-                });
-            }
-        }
-
-        // Apply dynamic JavaScript
-        function applyDynamicJavaScript() {
-            const dynamicScript = document.getElementById('dynamic-script');
-            if (dynamicScript && APP_CONFIG.scripts) {
-                dynamicScript.textContent = APP_CONFIG.scripts;
+                };
+                
+                usernameInput.addEventListener('keypress', handleEnterKey);
+                passwordInput.addEventListener('keypress', handleEnterKey);
             }
         }
 
@@ -264,124 +178,22 @@
         function showLoading(message = 'Loading...') {
             const loadingText = document.getElementById('loadingText');
             if (loadingText) loadingText.textContent = message;
-            document.getElementById('loadingScreen').style.display = 'flex';
-        }
-
-        // Hide loading screen
-        function hideLoading() {
-            document.getElementById('loadingScreen').style.display = 'none';
-        }
-
-        // Show success message
-        function showSuccess(message) {
-            if (typeof window.showSuccessModal === 'function') {
-                window.showSuccessModal(message);
-            } else {
-                alert(message);
-            }
         }
 
         // Show error message
         function showError(message) {
-            if (typeof window.showErrorModal === 'function') {
-                window.showErrorModal(message);
-            } else {
-                alert(message);
-            }
+            alert('Error: ' + message);
         }
 
-        // Navigation function
-        function navigateToSection(targetId, navElement) {
-            // Remove active class from all nav items and sections
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Add active class to clicked nav item and target section
-            if (navElement) navElement.classList.add('active');
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+        // Show success message
+        function showSuccess(message) {
+            alert('Success: ' + message);
         }
 
-        // Session management functions
-        function checkExistingSession() {
-            const savedSession = localStorage.getItem(SESSION_KEY);
-            if (savedSession) {
-                try {
-                    const sessionData = JSON.parse(savedSession);
-                    const sessionAge = Date.now() - sessionData.timestamp;
-                    const twentyFourHours = 24 * 60 * 60 * 1000;
-                    
-                    if (sessionAge < twentyFourHours) {
-                        attemptSessionRestore(sessionData.username);
-                    } else {
-                        clearSession();
-                    }
-                } catch (error) {
-                    console.error('Error parsing saved session:', error);
-                    clearSession();
-                }
-            }
-        }
-
-        async function attemptSessionRestore(username) {
-            try {
-                showLoading('Restoring your session...');
-                
-                const formData = new FormData();
-                formData.append('action', 'getUserData');
-                formData.append('username', username);
-                
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    currentUser = result.user;
-                    userSubmissions = result.submissions || [];
-                    userCashouts = result.cashouts || [];
-                    hideLoading();
-                    showDashboard();
-                } else {
-                    hideLoading();
-                    clearSession();
-                    showError('Session expired. Please login again.');
-                }
-            } catch (error) {
-                console.error('Session restore error:', error);
-                hideLoading();
-                clearSession();
-                showError('Network error during session restore.');
-            }
-        }
-
-        function saveSession(username) {
-            const sessionData = {
-                username: username,
-                timestamp: Date.now()
-            };
-            localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
-        }
-
-        function clearSession() {
-            localStorage.removeItem(SESSION_KEY);
-            currentUser = null;
-            userSubmissions = [];
-            userCashouts = [];
-        }
-
-        // Core functions (will be overridden by dynamic script if needed)
+        // Login function
         async function login() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
+            const username = document.getElementById('username')?.value.trim();
+            const password = document.getElementById('password')?.value.trim();
             
             if (!username || !password) {
                 showError('Please enter both username and password.');
@@ -405,12 +217,9 @@
                 
                 if (result.status === 'success') {
                     currentUser = result.user;
-                    userSubmissions = result.submissions || [];
-                    userCashouts = result.cashouts || [];
-                    
-                    saveSession(username);
                     hideLoading();
                     showDashboard();
+                    showSuccess('Login successful!');
                 } else {
                     hideLoading();
                     showError(result.message || 'Invalid username or password.');
@@ -418,30 +227,22 @@
             } catch (error) {
                 console.error('Login error:', error);
                 hideLoading();
-                showError('Network error. Please check your connection and try again.');
+                showError('Network error. Please check your connection.');
             }
         }
 
-        function logout() {
-            clearSession();
-            
-            // Reset forms
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            
-            // Show login form
-            document.getElementById('loginSection').style.display = 'flex';
-            document.getElementById('dashboardSection').style.display = 'none';
-            
-            // Close any modals
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.classList.remove('active');
-            });
+        // Hide loading
+        function hideLoading() {
+            document.getElementById('loadingScreen').style.display = 'none';
         }
 
+        // Show dashboard
         function showDashboard() {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('dashboardSection').style.display = 'block';
+            const loginSection = document.getElementById('loginSection');
+            const dashboardSection = document.getElementById('dashboardSection');
+            
+            if (loginSection) loginSection.style.display = 'none';
+            if (dashboardSection) dashboardSection.style.display = 'block';
             
             if (!currentUser) {
                 showError('No user data available.');
@@ -449,120 +250,151 @@
             }
             
             // Update user info
+            updateUserInfo();
+        }
+
+        // Update user information in dashboard
+        function updateUserInfo() {
+            // Update avatar
             const userAvatar = document.getElementById('userAvatar');
+            if (userAvatar && currentUser.username) {
+                userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+            }
+            
+            // Update username display
             const displayUsername = document.getElementById('displayUsername');
-            
-            if (userAvatar) userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
-            if (displayUsername) displayUsername.textContent = currentUser.username;
-            
-            // Update dashboard with user data
-            updateDashboardStats();
-            updateSubmissionHistory();
-            updateCashoutHistory();
-            
-            // Initialize any dynamic components
-            if (typeof window.initializeDynamicComponents === 'function') {
-                window.initializeDynamicComponents();
+            if (displayUsername) {
+                displayUsername.textContent = currentUser.username;
             }
+            
+            // Update stats
+            const balanceValue = document.getElementById('balanceValue');
+            const usdBalanceValue = document.getElementById('usdBalanceValue');
+            const workRateValue = document.getElementById('workRateValue');
+            const levelValue = document.getElementById('levelValue');
+            
+            if (balanceValue) balanceValue.textContent = currentUser.balance || '0.00';
+            if (usdBalanceValue) usdBalanceValue.textContent = '$' + (parseFloat(currentUser.balanceUSD) || 0).toFixed(2);
+            if (workRateValue) workRateValue.textContent = currentUser.workRate || '0';
+            if (levelValue) levelValue.textContent = currentUser.level || '0';
         }
 
-        function updateDashboardStats() {
-            // Update stats based on currentUser data
-            const statsElements = {
-                'balanceValue': currentUser.balance || '0.00',
-                'usdBalanceValue': `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`,
-                'workRateValue': currentUser.workRate || '0',
-                'levelValue': currentUser.level || '0'
-            };
+        // Logout function
+        function logout() {
+            currentUser = null;
             
-            Object.keys(statsElements).forEach(id => {
-                const element = document.getElementById(id);
-                if (element) element.textContent = statsElements[id];
-            });
+            // Reset forms
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            if (usernameInput) usernameInput.value = '';
+            if (passwordInput) passwordInput.value = '';
             
-            // Update level progress
-            const levelPercent = parseInt(currentUser.level || 0);
-            const levelPercentEl = document.getElementById('levelPercent');
-            const progressFill = document.getElementById('levelProgressBar');
+            // Show login section
+            const loginSection = document.getElementById('loginSection');
+            const dashboardSection = document.getElementById('dashboardSection');
             
-            if (levelPercentEl) levelPercentEl.textContent = `${levelPercent}%`;
-            if (progressFill) {
-                progressFill.style.width = `${Math.min(levelPercent, 100)}%`;
-            }
+            if (loginSection) loginSection.style.display = 'flex';
+            if (dashboardSection) dashboardSection.style.display = 'none';
+            
+            showSuccess('Logged out successfully');
         }
 
-        function updateSubmissionHistory() {
-            // Update submission history based on userSubmissions
-            const statusBadges = document.getElementById('statusBadges');
-            if (!statusBadges) return;
-            
-            statusBadges.innerHTML = '';
-            
-            if (userSubmissions.length === 0) {
-                statusBadges.innerHTML = '<div class="status-badge status-pending"><i class="fas fa-clock"></i> No submissions yet</div>';
+        // Submit work function
+        async function submitWork() {
+            if (!currentUser) {
+                showError('Please login first.');
                 return;
             }
             
-            userSubmissions.forEach(submission => {
-                const badge = document.createElement('div');
-                badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
-                
-                const statusIcon = submission.status === 'APPROVED' ? 'fas fa-check-circle' : 'fas fa-clock';
-                const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
-                
-                badge.innerHTML = `
-                    <i class="${statusIcon}"></i>
-                    ${statusText}
-                `;
-                
-                statusBadges.appendChild(badge);
-            });
-        }
-
-        function updateCashoutHistory() {
-            // Update cashout history based on userCashouts
-            const cashoutHistory = document.getElementById('cashoutHistory');
-            if (!cashoutHistory) return;
+            const workInput = document.getElementById('workInput');
+            const workText = workInput?.value.trim();
             
-            cashoutHistory.innerHTML = '';
-            
-            if (userCashouts.length === 0) {
-                cashoutHistory.innerHTML = '<div class="cashout-item"><div class="cashout-header"><div class="cashout-reward">No cashout requests yet</div></div></div>';
+            if (!workText) {
+                showError('Please enter your work submission.');
                 return;
             }
             
-            userCashouts.forEach(cashout => {
-                const item = document.createElement('div');
-                item.className = 'cashout-item';
-                item.innerHTML = `
-                    <div class="cashout-header">
-                        <div class="cashout-reward">${cashout.reward}</div>
-                        <div class="cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-pending'}">${cashout.status}</div>
-                    </div>
-                    <div class="cashout-meta">
-                        <div>Amount: $${cashout.amount}</div>
-                        <div>Work Rate: ${cashout.workRateRequired}</div>
-                        <div>Date: ${new Date(cashout.timestamp).toLocaleDateString()}</div>
-                    </div>
-                `;
+            try {
+                showLoading('Submitting your work...');
                 
-                cashoutHistory.appendChild(item);
-            });
-        }
-
-        // Close iframe function
-        function closeIframe() {
-            const iframeContainer = document.getElementById('iframeContainer');
-            const dashboardIframe = document.getElementById('dashboardIframe');
-            
-            if (iframeContainer && dashboardIframe) {
-                iframeContainer.classList.remove('active');
-                dashboardIframe.src = '';
+                const formData = new FormData();
+                formData.append('action', 'submitWork');
+                formData.append('username', currentUser.username);
+                formData.append('submission', workText);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    if (workInput) workInput.value = '';
+                    hideLoading();
+                    showSuccess('Work submitted successfully!');
+                } else {
+                    hideLoading();
+                    showError(result.message || 'Failed to submit work.');
+                }
+            } catch (error) {
+                console.error('Submit work error:', error);
+                hideLoading();
+                showError('Network error. Please try again.');
             }
         }
 
-        // Initialize app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializeApp);
+        // Navigation function
+        function navigateToSection(sectionId, element) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Remove active class from all nav items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show target section and activate nav item
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+            
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
+        // Header action functions
+        function showNotifications() {
+            showSuccess('No new notifications');
+        }
+
+        function showSettings() {
+            showSuccess('Settings panel coming soon!');
+        }
+
+        function showHelp() {
+            showSuccess('Help center coming soon!');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        // Make functions globally available
+        window.login = login;
+        window.logout = logout;
+        window.submitWork = submitWork;
+        window.navigateToSection = navigateToSection;
+        window.showNotifications = showNotifications;
+        window.showSettings = showSettings;
+        window.showHelp = showHelp;
     </script>
 </body>
 </html>
