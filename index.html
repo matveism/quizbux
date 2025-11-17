@@ -1,3 +1,6 @@
+provide full completed code 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1123,22 +1126,7 @@
                         <div class="cashout-list" id="cashoutHistory">
                             <div class="cashout-item">
                                 <div class="cashout-header">
-                                    <span class="cashout-reward">Amazon UK Voucher 1GBP</span>
-                                    <span class="cashout-status status-pending">Pending</span>
-                                </div>
-                                <div class="cashout-meta">
-                                    <span>Date: 2023-11-15</span>
-                                    <span>Work Rate: 1.39</span>
-                                </div>
-                            </div>
-                            <div class="cashout-item">
-                                <div class="cashout-header">
-                                    <span class="cashout-reward">PayPal Cash $5</span>
-                                    <span class="cashout-status status-approved">Approved</span>
-                                </div>
-                                <div class="cashout-meta">
-                                    <span>Date: 2023-11-10</span>
-                                    <span>Work Rate: 5.00</span>
+                                    <div class="cashout-reward">No cashout requests yet</div>
                                 </div>
                             </div>
                         </div>
@@ -1150,78 +1138,59 @@
                     <div class="section-card">
                         <div class="section-header">
                             <div class="section-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-rocket"></i>
                             </div>
-                            <h3 class="section-title">Complete Offers</h3>
+                            <h3 class="section-title">Earn More Points</h3>
                         </div>
-                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
-                            Complete offers from our trusted partners to earn additional Work Rate points.
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; text-align: center;">
+                            Complete offers from our trusted partners to boost your earnings
                         </p>
-                        <div class="offerwall-grid" id="offerwallGrid">
-                            <div class="offerwall-btn" onclick="openOfferwall('survey')">
-                                <i class="fas fa-clipboard-list offerwall-icon"></i>
-                                <span class="offerwall-name">Surveys</span>
-                                <span class="offerwall-reward">+0.5-5.0</span>
-                            </div>
-                            <div class="offerwall-btn" onclick="openOfferwall('video')">
-                                <i class="fas fa-play-circle offerwall-icon"></i>
-                                <span class="offerwall-name">Videos</span>
-                                <span class="offerwall-reward">+0.1-1.0</span>
-                            </div>
-                            <div class="offerwall-btn" onclick="openOfferwall('app')">
-                                <i class="fas fa-mobile-alt offerwall-icon"></i>
-                                <span class="offerwall-name">App Installs</span>
-                                <span class="offerwall-reward">+0.5-10.0</span>
-                            </div>
-                            <div class="offerwall-btn" onclick="openOfferwall('quiz')">
-                                <i class="fas fa-question-circle offerwall-icon"></i>
-                                <span class="offerwall-name">Quizzes</span>
-                                <span class="offerwall-reward">+0.2-3.0</span>
-                            </div>
-                            <div class="offerwall-btn" onclick="openOfferwall('signup')">
-                                <i class="fas fa-user-plus offerwall-icon"></i>
-                                <span class="offerwall-name">Sign-ups</span>
-                                <span class="offerwall-reward">+1.0-15.0</span>
-                            </div>
-                            <div class="offerwall-btn" onclick="openOfferwall('game')">
-                                <i class="fas fa-gamepad offerwall-icon"></i>
-                                <span class="offerwall-name">Games</span>
-                                <span class="offerwall-reward">+0.5-8.0</span>
-                            </div>
+                        
+                        <div class="offerwall-grid">
+                            <button class="offerwall-btn" onclick="openOfferWall('cpx')">
+                                <i class="fas fa-poll offerwall-icon"></i>
+                                <span class="offerwall-name">CPX Surveys</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('excentiv')">
+                                <i class="fas fa-coins offerwall-icon"></i>
+                                <span class="offerwall-name">Excentiv</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('wannads')">
+                                <i class="fas fa-star offerwall-icon"></i>
+                                <span class="offerwall-name">Wannads</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('sparkwall')">
+                                <i class="fas fa-fire offerwall-icon"></i>
+                                <span class="offerwall-name">Spark Wall</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('offerwallmedia')">
+                                <i class="fas fa-tv offerwall-icon"></i>
+                                <span class="offerwall-name">Offerwall Media</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('timewall')">
+                                <i class="fas fa-clock offerwall-icon"></i>
+                                <span class="offerwall-name">Time Wall</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('primewall')">
+                                <i class="fas fa-crown offerwall-icon"></i>
+                                <span class="offerwall-name">Prime Wall</span>
+                            </button>
+                            <button class="offerwall-btn" onclick="openOfferWall('revtoo')">
+                                <i class="fas fa-gem offerwall-icon"></i>
+                                <span class="offerwall-name">RevToo</span>
+                            </button>
                         </div>
                     </div>
 
+                    <!-- CPX Survey Integration -->
                     <div class="section-card">
                         <div class="section-header">
                             <div class="section-icon">
-                                <i class="fas fa-trophy"></i>
+                                <i class="fas fa-chart-bar"></i>
                             </div>
-                            <h3 class="section-title">Referral Program</h3>
+                            <h3 class="section-title">Available Surveys</h3>
                         </div>
-                        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">
-                            Invite friends and earn 10% of their Work Rate earnings for their first month!
-                        </p>
-                        <div class="form-group">
-                            <label class="form-label" for="referralLink">Your Referral Link</label>
-                            <div style="display: flex; gap: 8px;">
-                                <input type="text" id="referralLink" class="form-input" value="https://quizbux.com/ref/username123" readonly>
-                                <button class="header-btn" onclick="copyReferralLink()" title="Copy Link">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <i class="fas fa-users stat-icon"></i>
-                                <div class="stat-value" id="referralCount">0</div>
-                                <div class="stat-label">Referrals</div>
-                            </div>
-                            <div class="stat-card">
-                                <i class="fas fa-coins stat-icon"></i>
-                                <div class="stat-value" id="referralEarnings">0.00</div>
-                                <div class="stat-label">Earnings</div>
-                            </div>
-                        </div>
+                        <div id="onerow"></div>
                     </div>
                 </div>
 
@@ -1230,111 +1199,78 @@
                     <div class="section-card">
                         <div class="section-header">
                             <div class="section-icon">
-                                <i class="fas fa-file-contract"></i>
+                                <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h3 class="section-title">Terms & Conditions</h3>
+                            <h3 class="section-title">Terms of Use</h3>
                         </div>
+                        
                         <div class="accordion">
                             <div class="accordion-item">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">General Terms</span>
+                                    <span class="accordion-title">Work Submission Process</span>
                                     <i class="fas fa-chevron-down accordion-icon"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <p class="terms-text">
-                                        By using QuizBux, you agree to these terms and conditions. You must be at least 18 years old to participate.
+                                        Users submit their work via the provided form. Our admin team reviews all submitted work for compliance with our guidelines.
                                     </p>
-                                    <p class="terms-text">
-                                        All work submissions must be original and comply with our quality standards. Repeated low-quality submissions may result in account suspension.
+                                    <p class="terms-text terms-highlight">
+                                        Important: If your work is not approved within 24 hours of submission, this indicates that your submission was incorrect or did not meet our requirements.
                                     </p>
                                 </div>
                             </div>
+                            
                             <div class="accordion-item">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">Payment Policy</span>
+                                    <span class="accordion-title">Prohibited Activities</span>
                                     <i class="fas fa-chevron-down accordion-icon"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <p class="terms-text">
-                                        All cashout requests are processed within 3-7 business days. Payments are made via the selected method.
+                                        Spamming the submission form is strictly prohibited. This includes but is not limited to:
                                     </p>
-                                    <p class="terms-text">
-                                        <span class="terms-highlight">Minimum cashout:</span> $1.00 in Work Rate points.
-                                    </p>
-                                    <p class="terms-text">
-                                        <span class="terms-highlight">Payment methods:</span> PayPal, Amazon Gift Cards, Steam Wallet Codes.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">Account Rules</span>
-                                    <i class="fas fa-chevron-down accordion-icon"></i>
-                                </div>
-                                <div class="accordion-content">
-                                    <p class="terms-text">
-                                        Each user is allowed only one account. Creating multiple accounts will result in permanent suspension.
-                                    </p>
-                                    <p class="terms-text">
-                                        You are responsible for maintaining the security of your account credentials.
+                                    <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
+                                        <li>Submitting duplicate or near-identical work</li>
+                                        <li>Submitting low-quality or irrelevant content</li>
+                                        <li>Attempting to game the system through automated submissions</li>
+                                    </ul>
+                                    <p class="terms-text terms-highlight">
+                                        Consequences: If we detect spamming activities, your account will be permanently deleted.
                                     </p>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">Referral Program</span>
-                                    <i class="fas fa-chevron-down accordion-icon"></i>
-                                </div>
-                                <div class="accordion-content">
-                                    <p class="terms-text">
-                                        You will earn 10% of your referrals' Work Rate earnings for their first 30 days on the platform.
-                                    </p>
-                                    <p class="terms-text">
-                                        Referrals must be real users who actively participate on the platform. Fake or inactive referrals will not count.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="section-card">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fas fa-question-circle"></i>
-                            </div>
-                            <h3 class="section-title">FAQ</h3>
-                        </div>
-                        <div class="accordion">
                             <div class="accordion-item">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">How do I earn Work Rate points?</span>
+                                    <span class="accordion-title">PTS Increase Eligibility</span>
                                     <i class="fas fa-chevron-down accordion-icon"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <p class="terms-text">
-                                        You can earn Work Rate points by submitting quality work, completing offers, and referring friends.
+                                        Here is the rule when you are eligible to receive 100pts instead of 50pts:
+                                    </p>
+                                    <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 12px;">
+                                        <li>Earned at least $1</li>
+                                        <li>Maintain PTS Increase Level (At 100 ONLY)</li>
+                                        <li>Less reviews more chances receiving 100pts</li>
+                                    </ul>
+                                    <p class="terms-text terms-highlight">
+                                        Consequences: If you get more reviews and not getting approved, you might not be eligible to receive any 100pts if you fall lower than 80%.
                                     </p>
                                 </div>
                             </div>
+                            
                             <div class="accordion-item">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">When will my cashout be processed?</span>
+                                    <span class="accordion-title">Reward System</span>
                                     <i class="fas fa-chevron-down accordion-icon"></i>
                                 </div>
                                 <div class="accordion-content">
                                     <p class="terms-text">
-                                        Cashout requests are processed within 3-7 business days. You'll receive a notification once processed.
+                                        Upon approval of your submitted work, you will receive 50 points, which is approximately equivalent to $0.03 USD.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span class="accordion-title">What happens if my work is rejected?</span>
-                                    <i class="fas fa-chevron-down accordion-icon"></i>
-                                </div>
-                                <div class="accordion-content">
                                     <p class="terms-text">
-                                        If your work submission doesn't meet our quality standards, it will be rejected. You'll receive feedback and can resubmit improved work.
+                                        The conversion rate between points and USD may vary based on current valuation.
                                     </p>
                                 </div>
                             </div>
@@ -1345,591 +1281,774 @@
         </section>
     </div>
 
-    <!-- Modal for Notifications -->
-    <div class="modal" id="notificationsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Notifications</h3>
-                <button class="modal-close" onclick="closeModal('notificationsModal')">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- Dynamic Modals Container -->
+    <div id="modalsContainer">
+        <!-- Success Modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Success</h3>
+                    <button class="modal-close" onclick="closeModal('successModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage">Operation completed successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn primary" onclick="closeModal('successModal')">OK</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="loading-overlay">
+        </div>
+
+        <!-- Error Modal -->
+        <div id="errorModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Error</h3>
+                    <button class="modal-close" onclick="closeModal('errorModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage">An error occurred. Please try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn primary" onclick="closeModal('errorModal')">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Modal -->
+        <div id="loadingModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-body loading-overlay">
                     <div class="loading-spinner"></div>
-                    <div class="loading-text">Loading notifications...</div>
+                    <p class="loading-text" id="loadingMessage">Loading...</p>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Settings -->
-    <div class="modal" id="settingsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Settings</h3>
-                <button class="modal-close" onclick="closeModal('settingsModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Theme</label>
-                    <select class="form-input" id="themeSelect">
-                        <option value="dark">Dark Mode</option>
-                        <option value="light">Light Mode</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Language</label>
-                    <select class="form-input" id="languageSelect">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Notifications</label>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <input type="checkbox" id="notificationsToggle" checked>
-                        <span>Enable push notifications</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn" onclick="closeModal('settingsModal')">Cancel</button>
-                <button class="modal-btn primary" onclick="saveSettings()">Save</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Help -->
-    <div class="modal" id="helpModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Help & Support</h3>
-                <button class="modal-close" onclick="closeModal('helpModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p style="margin-bottom: 16px;">If you need assistance, please contact our support team:</p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <div>
-                        <strong>Email:</strong> support@quizbux.com
-                    </div>
-                    <div>
-                        <strong>Response Time:</strong> 24-48 hours
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn primary" onclick="closeModal('helpModal')">Close</button>
             </div>
         </div>
     </div>
 
     <!-- Iframe Container for Offerwalls -->
-    <div class="iframe-container" id="iframeContainer">
+    <div id="iframeContainer" class="iframe-container">
         <div class="iframe-header">
             <h3 class="iframe-title" id="iframeTitle">Offerwall</h3>
-            <button class="iframe-close" onclick="closeIframe()">
+            <button class="iframe-close" id="iframeCloseBtn" onclick="closeIframe()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="iframe-content">
-            <iframe class="dashboard-iframe" id="offerwallIframe" src="about:blank"></iframe>
+            <iframe id="dashboardIframe" class="dashboard-iframe" src=""></iframe>
         </div>
     </div>
 
+    <!-- Dynamic JavaScript -->
+    <script id="dynamic-script"></script>
+    
+    <!-- Core App Script -->
     <script>
-        // Global variables
-        let userData = {
-            username: '',
-            workRate: 0,
-            usdBalance: 0,
-            level: 1,
-            levelProgress: 0,
-            referralCount: 0,
-            referralEarnings: 0
+        // Global configuration object
+        let APP_CONFIG = {};
+        let currentUser = null;
+        let userSubmissions = [];
+        let userCashouts = [];
+        let appInitialized = false;
+
+        // Google Apps Script URL - will be set from config
+        let SCRIPT_URL = '';
+
+        // Session management
+        const SESSION_KEY = 'workRewardSession';
+
+        // Offerwall URLs
+        const offerwallUrls = {
+            'cpx': (accountNumber) => `https://offers.cpx-research.com/index.php?app_id=26219&ext_user_id=${accountNumber}`,
+            'excentiv': (accountNumber) => `https://excentiv.com/offerwall/?userid=${accountNumber}&key=q1v8KGQfCjmNeXnhsHyo`,
+            'wannads': (accountNumber) => `https://earn.wannads.com/surveywall?apiKey=67d3d43d63631681386947&userId=${accountNumber}`,
+            'sparkwall': (accountNumber) => `https://spark-wall.com/offerwall/G2kA8XaPF2jjstApSCZsK6aE6qudMN/${accountNumber}`,
+            'offerwallmedia': (accountNumber) => `https://offerwallmedia.com/offerwall/vfox4w1tpz3gflta3gblkkjp8b2aoj/${accountNumber}`,
+            'timewall': (accountNumber) => `https://timewall.io/users/login?oid=0d54afcf2e6ff561&uid=${accountNumber}`,
+            'primewall': (accountNumber) => `https://primewall.io/offer/Yz3Uj8/${accountNumber}`,
+            'revtoo': (accountNumber) => `https://revtoo.com/offerwall/pmfo7u4ued9x4w5i0tvkrey32rcnwy/${accountNumber}`
         };
 
-        let submissions = [];
-        let cashouts = [];
-
-        // Initialize the application
-        window.onload = function() {
-            // Simulate loading process
-            setTimeout(() => {
+        // Initialize app
+        async function initializeApp() {
+            try {
+                showLoading('Loading configuration...');
+                
+                // Load configuration from Google Sheets
+                await loadConfiguration();
+                
+                // Apply dynamic styles
+                applyDynamicStyles();
+                
+                // Apply dynamic HTML structure
+                applyDynamicHTML();
+                
+                // Apply dynamic JavaScript
+                applyDynamicJavaScript();
+                
+                // Check for existing session
+                checkExistingSession();
+                
+                // Show main container
                 document.getElementById('loadingScreen').style.display = 'none';
                 document.getElementById('mainContainer').style.display = 'block';
                 
-                // Check if user is already logged in
-                checkLoginStatus();
-            }, 2000);
-        };
-
-        // Check if user is logged in
-        function checkLoginStatus() {
-            const savedUser = localStorage.getItem('quizbux_user');
-            if (savedUser) {
-                userData = JSON.parse(savedUser);
-                showDashboard();
-            } else {
-                showLogin();
+                appInitialized = true;
+                console.log('QuizBux Platform initialized successfully');
+                
+            } catch (error) {
+                console.error('Initialization error:', error);
+                showError('Failed to initialize platform. Please refresh the page.');
             }
         }
 
-        // Show login section
-        function showLogin() {
-            document.getElementById('loginSection').style.display = 'flex';
-            document.getElementById('dashboardSection').style.display = 'none';
+        // Load configuration from Google Sheets
+        async function loadConfiguration() {
+            const configUrl = SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzCi4AZozXSQl6Mp6f3beFOvM4sMacBIuu3qKE1EfoLwUs1ViviY50nhbMu6TeOvOt8CQ/exec';
+            
+            const formData = new FormData();
+            formData.append('action', 'getConfig');
+            
+            const response = await fetch(configUrl, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                APP_CONFIG = result.config;
+                SCRIPT_URL = APP_CONFIG.scriptUrl || configUrl;
+            } else {
+                throw new Error('Failed to load configuration');
+            }
         }
 
-        // Show dashboard section
+        // Apply dynamic styles
+        function applyDynamicStyles() {
+            const dynamicStyles = document.getElementById('dynamic-styles');
+            if (APP_CONFIG.styles) {
+                dynamicStyles.textContent = APP_CONFIG.styles;
+            }
+        }
+
+        // Apply dynamic HTML structure
+        function applyDynamicHTML() {
+            // Update logo
+            const logoImg = document.getElementById('logo-img');
+            if (logoImg && APP_CONFIG.logo) {
+                logoImg.src = APP_CONFIG.logo;
+            }
+
+            // Update text content
+            if (APP_CONFIG.texts) {
+                Object.keys(APP_CONFIG.texts).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.textContent = APP_CONFIG.texts[key];
+                    }
+                });
+            }
+        }
+
+        // Apply dynamic JavaScript
+        function applyDynamicJavaScript() {
+            const dynamicScript = document.getElementById('dynamic-script');
+            if (dynamicScript && APP_CONFIG.scripts) {
+                dynamicScript.textContent = APP_CONFIG.scripts;
+            }
+        }
+
+        // Show loading screen
+        function showLoading(message = 'Loading...') {
+            const loadingText = document.getElementById('loadingText');
+            if (loadingText) loadingText.textContent = message;
+            document.getElementById('loadingScreen').style.display = 'flex';
+        }
+
+        // Hide loading screen
+        function hideLoading() {
+            document.getElementById('loadingScreen').style.display = 'none';
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const successMessage = document.getElementById('successMessage');
+            const successModal = document.getElementById('successModal');
+            
+            if (successMessage) successMessage.textContent = message;
+            if (successModal) successModal.classList.add('active');
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            const errorModal = document.getElementById('errorModal');
+            
+            if (errorMessage) errorMessage.textContent = message;
+            if (errorModal) errorModal.classList.add('active');
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('active');
+        }
+
+        // Navigation function
+        function navigateToSection(targetId, navElement) {
+            // Remove active class from all nav items and sections
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Add active class to clicked nav item and target section
+            if (navElement) navElement.classList.add('active');
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+
+        // Accordion toggle
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+                accordionItem.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Session management functions
+        function checkExistingSession() {
+            const savedSession = localStorage.getItem(SESSION_KEY);
+            if (savedSession) {
+                try {
+                    const sessionData = JSON.parse(savedSession);
+                    const sessionAge = Date.now() - sessionData.timestamp;
+                    const twentyFourHours = 24 * 60 * 60 * 1000;
+                    
+                    if (sessionAge < twentyFourHours) {
+                        attemptSessionRestore(sessionData.username);
+                    } else {
+                        clearSession();
+                    }
+                } catch (error) {
+                    console.error('Error parsing saved session:', error);
+                    clearSession();
+                }
+            }
+        }
+
+        async function attemptSessionRestore(username) {
+            try {
+                showLoading('Restoring your session...');
+                
+                const formData = new FormData();
+                formData.append('action', 'getUserData');
+                formData.append('username', username);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentUser = result.user;
+                    userSubmissions = result.submissions || [];
+                    userCashouts = result.cashouts || [];
+                    hideLoading();
+                    showDashboard();
+                } else {
+                    hideLoading();
+                    clearSession();
+                    showError('Session expired. Please login again.');
+                }
+            } catch (error) {
+                console.error('Session restore error:', error);
+                hideLoading();
+                clearSession();
+                showError('Network error during session restore.');
+            }
+        }
+
+        function saveSession(username) {
+            const sessionData = {
+                username: username,
+                timestamp: Date.now()
+            };
+            localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+        }
+
+        function clearSession() {
+            localStorage.removeItem(SESSION_KEY);
+            currentUser = null;
+            userSubmissions = [];
+            userCashouts = [];
+        }
+
+        // Core functions
+        async function login() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            if (!username || !password) {
+                showError('Please enter both username and password.');
+                return;
+            }
+            
+            try {
+                showLoading('Signing in...');
+                
+                const formData = new FormData();
+                formData.append('action', 'login');
+                formData.append('username', username);
+                formData.append('password', password);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    currentUser = result.user;
+                    userSubmissions = result.submissions || [];
+                    userCashouts = result.cashouts || [];
+                    
+                    saveSession(username);
+                    hideLoading();
+                    showDashboard();
+                } else {
+                    hideLoading();
+                    showError(result.message || 'Invalid username or password.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                hideLoading();
+                showError('Network error. Please check your connection and try again.');
+            }
+        }
+
+        function logout() {
+            clearSession();
+            
+            // Reset forms
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            // Show login form
+            document.getElementById('loginSection').style.display = 'flex';
+            document.getElementById('dashboardSection').style.display = 'none';
+            
+            // Close any modals
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
+
         function showDashboard() {
             document.getElementById('loginSection').style.display = 'none';
             document.getElementById('dashboardSection').style.display = 'block';
             
-            // Update user data in the UI
-            updateUserData();
-        }
-
-        // Login function
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (!username || !password) {
-                alert('Please enter both username and password');
+            if (!currentUser) {
+                showError('No user data available.');
                 return;
             }
             
-            // Show loading state
-            const loginBtn = document.getElementById('loginBtn');
-            const originalText = loginBtn.innerHTML;
-            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
-            loginBtn.disabled = true;
+            // Update user info
+            const userAvatar = document.getElementById('userAvatar');
+            const displayUsername = document.getElementById('displayUsername');
             
-            // Simulate login process
-            setTimeout(() => {
-                // In a real app, this would be an API call
-                userData.username = username;
-                userData.workRate = 15.75;
-                userData.usdBalance = 8.50;
-                userData.level = 3;
-                userData.levelProgress = 65;
-                
-                // Save user data to localStorage
-                localStorage.setItem('quizbux_user', JSON.stringify(userData));
-                
-                // Show dashboard
-                showDashboard();
-                
-                // Reset login button
-                loginBtn.innerHTML = originalText;
-                loginBtn.disabled = false;
-            }, 1500);
+            if (userAvatar) userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+            if (displayUsername) displayUsername.textContent = currentUser.username;
+            
+            // Update dashboard with user data
+            updateDashboardStats();
+            updateSubmissionHistory();
+            updateCashoutHistory();
+            
+            // Initialize CPX Survey
+            initializeCPXSurvey();
         }
 
-        // Logout function
-        function logout() {
-            localStorage.removeItem('quizbux_user');
-            userData = {
-                username: '',
-                workRate: 0,
-                usdBalance: 0,
-                level: 1,
-                levelProgress: 0,
-                referralCount: 0,
-                referralEarnings: 0
+        function updateDashboardStats() {
+            // Update stats based on currentUser data
+            const statsElements = {
+                'balanceValue': currentUser.balance || '0.00',
+                'usdBalanceValue': `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`,
+                'workRateValue': currentUser.workRate || '0',
+                'levelValue': currentUser.level || '0'
             };
             
-            // Clear form fields
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
+            Object.keys(statsElements).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = statsElements[id];
+            });
             
-            showLogin();
+            // Update level progress
+            const levelPercent = parseInt(currentUser.level || 0);
+            const levelPercentEl = document.getElementById('levelPercent');
+            const progressFill = document.getElementById('levelProgressBar');
+            
+            if (levelPercentEl) levelPercentEl.textContent = `${levelPercent}%`;
+            if (progressFill) {
+                progressFill.style.width = `${Math.min(levelPercent, 100)}%`;
+            }
         }
 
-        // Update user data in the UI
-        function updateUserData() {
-            document.getElementById('displayUsername').textContent = userData.username;
-            document.getElementById('userAvatar').textContent = userData.username.charAt(0).toUpperCase();
-            document.getElementById('balanceValue').textContent = userData.workRate.toFixed(2);
-            document.getElementById('usdBalanceValue').textContent = '$' + userData.usdBalance.toFixed(2);
-            document.getElementById('workRateValue').textContent = userData.workRate.toFixed(2);
-            document.getElementById('levelValue').textContent = userData.level;
-            document.getElementById('levelPercent').textContent = userData.levelProgress + '%';
-            document.getElementById('levelProgressBar').style.width = userData.levelProgress + '%';
+        function updateSubmissionHistory() {
+            // Update submission history based on userSubmissions
+            const statusBadges = document.getElementById('statusBadges');
+            if (!statusBadges) return;
             
-            document.getElementById('referralCount').textContent = userData.referralCount;
-            document.getElementById('referralEarnings').textContent = userData.referralEarnings.toFixed(2);
+            statusBadges.innerHTML = '';
             
-            // Update reward details
-            updateRewardDetails();
+            if (userSubmissions.length === 0) {
+                statusBadges.innerHTML = '<div class="status-badge status-pending"><i class="fas fa-clock"></i> No submissions yet</div>';
+                return;
+            }
+            
+            userSubmissions.forEach(submission => {
+                const badge = document.createElement('div');
+                badge.className = `status-badge ${submission.status === 'APPROVED' ? 'status-approved' : 'status-review'}`;
+                
+                const statusIcon = submission.status === 'APPROVED' ? 'fas fa-check-circle' : 'fas fa-clock';
+                const statusText = submission.status === 'APPROVED' ? 'Approved' : 'Under Review';
+                
+                badge.innerHTML = `
+                    <i class="${statusIcon}"></i>
+                    ${statusText}
+                `;
+                
+                statusBadges.appendChild(badge);
+            });
         }
 
-        // Navigate between sections
-        function navigateToSection(sectionId, element) {
-            // Remove active class from all nav items
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
+        function updateCashoutHistory() {
+            // Update cashout history based on userCashouts
+            const cashoutHistory = document.getElementById('cashoutHistory');
+            if (!cashoutHistory) return;
             
-            // Add active class to clicked nav item
-            element.classList.add('active');
+            cashoutHistory.innerHTML = '';
             
-            // Hide all content sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
+            if (userCashouts.length === 0) {
+                cashoutHistory.innerHTML = '<div class="cashout-item"><div class="cashout-header"><div class="cashout-reward">No cashout requests yet</div></div></div>';
+                return;
+            }
             
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
+            userCashouts.forEach(cashout => {
+                const item = document.createElement('div');
+                item.className = 'cashout-item';
+                item.innerHTML = `
+                    <div class="cashout-header">
+                        <div class="cashout-reward">${cashout.reward}</div>
+                        <div class="cashout-status ${cashout.status === 'APPROVED' ? 'status-approved' : 'status-pending'}">${cashout.status}</div>
+                    </div>
+                    <div class="cashout-meta">
+                        <div>Amount: $${cashout.amount}</div>
+                        <div>Work Rate: ${cashout.workRateRequired}</div>
+                        <div>Date: ${new Date(cashout.timestamp).toLocaleDateString()}</div>
+                    </div>
+                `;
+                
+                cashoutHistory.appendChild(item);
+            });
+        }
+
+        // Update reward details
+        function updateRewardDetails() {
+            if (!currentUser) return;
+            
+            const select = document.getElementById('rewardSelect');
+            const details = document.getElementById('rewardDetails');
+            const cashoutBtn = document.getElementById('cashoutBtn');
+            const eligibilityStatus = document.getElementById('eligibilityStatus');
+            
+            if (!select || !details || !cashoutBtn || !eligibilityStatus) return;
+            
+            if (select.value) {
+                const selectedOption = select.options[select.selectedIndex];
+                const workRateRequired = selectedOption.getAttribute('data-workrate');
+                const amount = selectedOption.getAttribute('data-amount');
+                
+                document.getElementById('requiredWorkRate').textContent = workRateRequired;
+                document.getElementById('rewardAmount').textContent = `$${amount}`;
+                document.getElementById('userWorkRate').textContent = currentUser.workRate || '0';
+                document.getElementById('userBalance').textContent = `$${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}`;
+                
+                details.style.display = 'block';
+                
+                // Check eligibility
+                const workRateEligible = parseInt(currentUser.workRate || 0) >= parseInt(workRateRequired);
+                const balanceEligible = parseFloat(currentUser.balanceUSD || 0) >= parseFloat(amount);
+                const isEligible = workRateEligible && balanceEligible;
+                
+                // Update eligibility status
+                if (isEligible) {
+                    eligibilityStatus.innerHTML = '<i class="fas fa-check-circle"></i> You are eligible for this reward!';
+                    eligibilityStatus.className = 'eligibility-status eligible';
+                } else {
+                    let message = 'You are not eligible for this reward. ';
+                    if (!workRateEligible && !balanceEligible) {
+                        message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}) and $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
+                    } else if (!workRateEligible) {
+                        message += `You need ${workRateRequired} Work Rate (you have ${currentUser.workRate || 0}).`;
+                    } else {
+                        message += `You need $${amount} USD balance (you have $${parseFloat(currentUser.balanceUSD || 0).toFixed(2)}).`;
+                    }
+                    eligibilityStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+                    eligibilityStatus.className = 'eligibility-status not-eligible';
+                }
+                
+                cashoutBtn.disabled = !isEligible;
+            } else {
+                details.style.display = 'none';
+                eligibilityStatus.textContent = '';
+                eligibilityStatus.className = 'eligibility-status';
+                cashoutBtn.disabled = true;
+            }
         }
 
         // Submit work function
-        function submitWork() {
+        async function submitWork() {
+            if (!currentUser) {
+                showError('Please login first.');
+                return;
+            }
+            
             const workInput = document.getElementById('workInput');
-            const workText = workInput.value.trim();
+            const workText = workInput ? workInput.value.trim() : '';
             
             if (!workText) {
-                alert('Please enter your work submission');
+                showError('Please enter your work submission.');
                 return;
             }
             
-            // Show loading state
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            submitBtn.disabled = true;
-            
-            // Simulate submission process
-            setTimeout(() => {
-                // Create submission object
-                const submission = {
-                    id: Date.now(),
-                    text: workText,
-                    date: new Date().toLocaleDateString(),
-                    status: 'pending',
-                    workRate: (Math.random() * 2 + 0.5).toFixed(2) // Random work rate between 0.5 and 2.5
-                };
+            try {
+                showLoading('Submitting your work...');
                 
-                // Add to submissions array
-                submissions.unshift(submission);
+                const formData = new FormData();
+                formData.append('action', 'submitWork');
+                formData.append('username', currentUser.username);
+                formData.append('submission', workText);
                 
-                // Update UI
-                updateSubmissionHistory();
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
                 
-                // Clear input
-                workInput.value = '';
+                const result = await response.json();
                 
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                // Show success message
-                alert('Work submitted successfully! It will be reviewed within 24 hours.');
-            }, 1500);
-        }
-
-        // Update submission history in UI
-        function updateSubmissionHistory() {
-            const statusBadges = document.getElementById('statusBadges');
-            
-            if (submissions.length === 0) {
-                statusBadges.innerHTML = `
-                    <div class="status-badge status-pending">
-                        <i class="fas fa-clock"></i>
-                        No submissions yet
-                    </div>
-                `;
-                return;
-            }
-            
-            let html = '';
-            submissions.forEach(submission => {
-                let statusClass = 'status-pending';
-                let statusIcon = 'fa-clock';
-                
-                if (submission.status === 'approved') {
-                    statusClass = 'status-approved';
-                    statusIcon = 'fa-check-circle';
-                } else if (submission.status === 'review') {
-                    statusClass = 'status-review';
-                    statusIcon = 'fa-eye';
+                if (result.status === 'success') {
+                    // Refresh user data
+                    const userDataResponse = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: new FormData().append('action', 'getUserData').append('username', currentUser.username)
+                    });
+                    const userData = await userDataResponse.json();
+                    
+                    if (userData.status === 'success') {
+                        currentUser = userData.user;
+                        userSubmissions = userData.submissions || [];
+                        updateDashboardStats();
+                        updateSubmissionHistory();
+                    }
+                    
+                    if (workInput) workInput.value = '';
+                    hideLoading();
+                    showSuccess('Your work has been submitted successfully!');
+                } else {
+                    hideLoading();
+                    showError(result.message || 'Failed to submit work.');
                 }
-                
-                html += `
-                    <div class="status-badge ${statusClass}">
-                        <i class="fas ${statusIcon}"></i>
-                        ${submission.date} - ${submission.status.charAt(0).toUpperCase() + submission.status.slice(1)}
-                        ${submission.status === 'approved' ? ` (+${submission.workRate} Work Rate)` : ''}
-                    </div>
-                `;
-            });
-            
-            statusBadges.innerHTML = html;
-        }
-
-        // Update reward details when selection changes
-        function updateRewardDetails() {
-            const rewardSelect = document.getElementById('rewardSelect');
-            const selectedOption = rewardSelect.options[rewardSelect.selectedIndex];
-            const rewardDetails = document.getElementById('rewardDetails');
-            const eligibilityStatus = document.getElementById('eligibilityStatus');
-            const cashoutBtn = document.getElementById('cashoutBtn');
-            
-            if (!selectedOption.value) {
-                rewardDetails.style.display = 'none';
-                eligibilityStatus.style.display = 'none';
-                cashoutBtn.disabled = true;
-                return;
+            } catch (error) {
+                console.error('Submit work error:', error);
+                hideLoading();
+                showError('Network error. Please try again.');
             }
-            
-            const requiredWorkRate = parseFloat(selectedOption.getAttribute('data-workrate'));
-            const rewardAmount = parseFloat(selectedOption.getAttribute('data-amount'));
-            
-            // Update reward details
-            document.getElementById('requiredWorkRate').textContent = requiredWorkRate.toFixed(2);
-            document.getElementById('rewardAmount').textContent = '$' + rewardAmount.toFixed(2);
-            document.getElementById('userWorkRate').textContent = userData.workRate.toFixed(2);
-            document.getElementById('userBalance').textContent = '$' + userData.usdBalance.toFixed(2);
-            
-            // Show reward details
-            rewardDetails.style.display = 'block';
-            
-            // Check eligibility
-            if (userData.workRate >= requiredWorkRate && userData.usdBalance >= rewardAmount) {
-                eligibilityStatus.innerHTML = '<i class="fas fa-check-circle"></i> You are eligible for this reward!';
-                eligibilityStatus.className = 'eligibility-status eligible';
-                cashoutBtn.disabled = false;
-            } else {
-                eligibilityStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> You do not meet the requirements for this reward';
-                eligibilityStatus.className = 'eligibility-status not-eligible';
-                cashoutBtn.disabled = true;
-            }
-            
-            eligibilityStatus.style.display = 'block';
         }
 
         // Submit cashout request
-        function submitCashout() {
-            const rewardSelect = document.getElementById('rewardSelect');
-            const selectedOption = rewardSelect.options[rewardSelect.selectedIndex];
-            
-            if (!selectedOption.value) {
-                alert('Please select a reward');
+        async function submitCashout() {
+            if (!currentUser) {
+                showError('Please login first.');
                 return;
             }
             
-            const requiredWorkRate = parseFloat(selectedOption.getAttribute('data-workrate'));
-            const rewardAmount = parseFloat(selectedOption.getAttribute('data-amount'));
-            
-            // Show loading state
-            const cashoutBtn = document.getElementById('cashoutBtn');
-            const originalText = cashoutBtn.innerHTML;
-            cashoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            cashoutBtn.disabled = true;
-            
-            // Simulate cashout process
-            setTimeout(() => {
-                // Create cashout object
-                const cashout = {
-                    id: Date.now(),
-                    reward: selectedOption.text,
-                    workRate: requiredWorkRate,
-                    amount: rewardAmount,
-                    date: new Date().toLocaleDateString(),
-                    status: 'pending'
-                };
-                
-                // Add to cashouts array
-                cashouts.unshift(cashout);
-                
-                // Update user data
-                userData.workRate -= requiredWorkRate;
-                userData.usdBalance -= rewardAmount;
-                
-                // Save updated user data
-                localStorage.setItem('quizbux_user', JSON.stringify(userData));
-                
-                // Update UI
-                updateUserData();
-                updateCashoutHistory();
-                
-                // Reset selection
-                rewardSelect.selectedIndex = 0;
-                updateRewardDetails();
-                
-                // Reset button
-                cashoutBtn.innerHTML = originalText;
-                
-                // Show success message
-                alert('Cashout request submitted successfully! It will be processed within 3-7 business days.');
-            }, 1500);
-        }
-
-        // Update cashout history in UI
-        function updateCashoutHistory() {
-            const cashoutHistory = document.getElementById('cashoutHistory');
-            
-            if (cashouts.length === 0) {
-                cashoutHistory.innerHTML = `
-                    <div style="text-align: center; color: var(--text-secondary); padding: 20px;">
-                        No cashout history yet
-                    </div>
-                `;
+            const select = document.getElementById('rewardSelect');
+            if (!select || !select.value) {
+                showError('Please select a reward first.');
                 return;
             }
             
-            let html = '';
-            cashouts.forEach(cashout => {
-                let statusClass = 'status-pending';
+            const selectedOption = select.options[select.selectedIndex];
+            const rewardName = selectedOption.text;
+            const workRateRequired = selectedOption.getAttribute('data-workrate');
+            const amount = selectedOption.getAttribute('data-amount');
+            
+            try {
+                showLoading('Processing your cashout request...');
                 
-                if (cashout.status === 'approved') {
-                    statusClass = 'status-approved';
-                } else if (cashout.status === 'review') {
-                    statusClass = 'status-review';
+                const formData = new FormData();
+                formData.append('action', 'submitCashout');
+                formData.append('username', currentUser.username);
+                formData.append('reward', rewardName);
+                formData.append('workRateRequired', workRateRequired);
+                formData.append('amount', amount);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Refresh user data
+                    const userDataResponse = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: new FormData().append('action', 'getUserData').append('username', currentUser.username)
+                    });
+                    const userData = await userDataResponse.json();
+                    
+                    if (userData.status === 'success') {
+                        currentUser = userData.user;
+                        userCashouts = userData.cashouts || [];
+                        updateDashboardStats();
+                        updateCashoutHistory();
+                    }
+                    
+                    select.value = '';
+                    document.getElementById('rewardDetails').style.display = 'none';
+                    document.getElementById('eligibilityStatus').textContent = '';
+                    document.getElementById('eligibilityStatus').className = 'eligibility-status';
+                    document.getElementById('cashoutBtn').disabled = true;
+                    
+                    hideLoading();
+                    showSuccess('Your cashout request has been submitted successfully!');
+                } else {
+                    hideLoading();
+                    showError(result.message || 'Failed to submit cashout request.');
                 }
-                
-                html += `
-                    <div class="cashout-item">
-                        <div class="cashout-header">
-                            <span class="cashout-reward">${cashout.reward}</span>
-                            <span class="cashout-status ${statusClass}">${cashout.status.charAt(0).toUpperCase() + cashout.status.slice(1)}</span>
-                        </div>
-                        <div class="cashout-meta">
-                            <span>Date: ${cashout.date}</span>
-                            <span>Work Rate: ${cashout.workRate.toFixed(2)}</span>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            cashoutHistory.innerHTML = html;
+            } catch (error) {
+                console.error('Submit cashout error:', error);
+                hideLoading();
+                showError('Network error. Please try again.');
+            }
         }
 
-        // Open offerwall
-        function openOfferwall(type) {
-            const iframeContainer = document.getElementById('iframeContainer');
-            const iframeTitle = document.getElementById('iframeTitle');
-            const offerwallIframe = document.getElementById('offerwallIframe');
-            
-            // Set iframe title based on type
-            let title = '';
-            let url = 'about:blank';
-            
-            switch(type) {
-                case 'survey':
-                    title = 'Surveys';
-                    url = 'https://example.com/surveys'; // Replace with actual URL
-                    break;
-                case 'video':
-                    title = 'Video Offers';
-                    url = 'https://example.com/videos'; // Replace with actual URL
-                    break;
-                case 'app':
-                    title = 'App Installs';
-                    url = 'https://example.com/apps'; // Replace with actual URL
-                    break;
-                case 'quiz':
-                    title = 'Quizzes';
-                    url = 'https://example.com/quizzes'; // Replace with actual URL
-                    break;
-                case 'signup':
-                    title = 'Sign-up Offers';
-                    url = 'https://example.com/signups'; // Replace with actual URL
-                    break;
-                case 'game':
-                    title = 'Game Offers';
-                    url = 'https://example.com/games'; // Replace with actual URL
-                    break;
+        // Open offerwall in iframe
+        function openOfferWall(offerwall) {
+            if (!currentUser) {
+                showError('Please login first to access offerwalls');
+                return;
             }
             
-            iframeTitle.textContent = title;
-            offerwallIframe.src = url;
+            const iframeContainer = document.getElementById('iframeContainer');
+            const dashboardIframe = document.getElementById('dashboardIframe');
+            
+            if (!iframeContainer || !dashboardIframe) {
+                console.error('Iframe elements not found');
+                return;
+            }
+            
+            const accountNumber = currentUser.username;
+            const url = offerwallUrls[offerwall](accountNumber);
+            
+            dashboardIframe.src = url;
             iframeContainer.classList.add('active');
         }
 
         // Close iframe
         function closeIframe() {
             const iframeContainer = document.getElementById('iframeContainer');
-            const offerwallIframe = document.getElementById('offerwallIframe');
+            const dashboardIframe = document.getElementById('dashboardIframe');
             
-            iframeContainer.classList.remove('active');
-            offerwallIframe.src = 'about:blank';
+            if (iframeContainer && dashboardIframe) {
+                iframeContainer.classList.remove('active');
+                dashboardIframe.src = '';
+            }
         }
 
-        // Copy referral link
-        function copyReferralLink() {
-            const referralLink = document.getElementById('referralLink');
-            referralLink.select();
-            document.execCommand('copy');
+        // Initialize CPX Survey
+        function initializeCPXSurvey() {
+            if (!currentUser) return;
             
-            // Show confirmation
-            alert('Referral link copied to clipboard!');
+            const script1 = {
+                div_id: "onerow",
+                theme_style: 7,
+                order_by: 1,
+                display_mode: 3,
+                limit_surveys: 8
+            };
+             
+            const config = {
+                general_config: {
+                    app_id: 8619,
+                    ext_user_id: currentUser.username,
+                    subid_1: "",
+                    subid_2: "",
+                },
+                style_config: {
+                    text_color: "#2b2b2b",
+                    survey_box: {
+                        topbar_background_color: "#1DA05E",
+                        box_background_color: "white",
+                        rounded_borders: true,
+                        stars_filled: "#ffaf20",
+                        stars_empty: "rgb(221 221 221)",
+                        accent_color_small_box: "#1DA05E",
+                        place_stars_bottom_small_box: true
+                    },  
+                },
+                script_config: [script1],
+                debug: false,
+                useIFrame: true,
+                iFramePosition: 3
+            };
+             
+            window.config = config;
+            
+            if (!document.querySelector('script[src="https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js';
+                document.head.appendChild(script);
+            }
         }
 
-        // Toggle accordion
-        function toggleAccordion(element) {
-            const accordionItem = element.parentElement;
-            accordionItem.classList.toggle('active');
-        }
-
-        // Show notifications modal
+        // Header action functions
         function showNotifications() {
-            document.getElementById('notificationsModal').classList.add('active');
-            
-            // Simulate loading notifications
-            setTimeout(() => {
-                const modalBody = document.querySelector('#notificationsModal .modal-body');
-                modalBody.innerHTML = `
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <div style="padding: 12px; background: var(--glass-bg); border-radius: 12px;">
-                            <div style="font-weight: 600; margin-bottom: 4px;">Work Submission Approved</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">Your work from Nov 15 has been approved. +1.25 Work Rate added.</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">2 hours ago</div>
-                        </div>
-                        <div style="padding: 12px; background: var(--glass-bg); border-radius: 12px;">
-                            <div style="font-weight: 600; margin-bottom: 4px;">Level Up!</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">Congratulations! You've reached Level 3.</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">1 day ago</div>
-                        </div>
-                        <div style="padding: 12px; background: var(--glass-bg); border-radius: 12px;">
-                            <div style="font-weight: 600; margin-bottom: 4px;">New Offer Available</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">Complete our new survey and earn +2.5 Work Rate.</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">2 days ago</div>
-                        </div>
-                    </div>
-                `;
-            }, 1000);
+            showSuccess('No new notifications');
         }
 
-        // Show settings modal
         function showSettings() {
-            document.getElementById('settingsModal').classList.add('active');
+            showSuccess('Settings panel coming soon!');
         }
 
-        // Show help modal
         function showHelp() {
-            document.getElementById('helpModal').classList.add('active');
+            showSuccess('Help center coming soon!');
         }
 
-        // Close modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        // Save settings
-        function saveSettings() {
-            const theme = document.getElementById('themeSelect').value;
-            const language = document.getElementById('languageSelect').value;
-            const notifications = document.getElementById('notificationsToggle').checked;
-            
-            // In a real app, this would save to server/localStorage
-            alert('Settings saved successfully!');
-            closeModal('settingsModal');
-        }
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
